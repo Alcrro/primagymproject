@@ -7,7 +7,9 @@ export default function ScheduleTemplate({ schedule }: { schedule: any }) {
 
   // console.log(schedule.oraStart);
 
-  const currentDate = new Date();
+  const currentDate = new Date(); 
+
+  
 
   let startDate = new Date(currentDate.getTime());
 
@@ -21,7 +23,6 @@ export default function ScheduleTemplate({ schedule }: { schedule: any }) {
   // endDate.setSeconds(endTime.split(":")[2]);
 
   let valid = startDate <= currentDate && endDate >= currentDate;
-  console.log(valid);
 
   return (
     <li

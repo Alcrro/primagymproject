@@ -16,7 +16,6 @@ export default function CosNavbar({ menu }: { menu: any }) {
     );
 
     if (findIndex >= 0) {
-      cart.splice(findIndex, 1);
       setAddToCart((list) => [...list]);
       localStorage.setItem("cart", JSON.stringify(cart) || "[]");
     } else {

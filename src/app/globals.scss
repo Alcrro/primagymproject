@@ -53,23 +53,20 @@ html::-webkit-scrollbar-track {
   }
 }
 
-.main {
-  display: block;
-  max-width: 96rem;
-  margin: 0 auto;
-  position: relative;
-}
-
-main {
+body.home main {
   position: relative;
   width: 100%;
+  max-width: unset;
   // padding: 0 10px;
   margin: 0 auto;
   height: 100vh;
 }
-
-body.home .main {
-  max-width: none;
+body main {
+  position: relative;
+  max-width: 96rem;
+  // padding: 0 10px;
+  margin: 0 auto;
+  height: 100vh;
 }
 
 .multiple-sections {
