@@ -7,7 +7,7 @@ export default function ScheduleTemplate({ schedule }: { schedule: any }) {
 
   // console.log(schedule.oraStart);
 
-  const currentDate = new Date(); 
+  const currentDate = new Date();
 
   console.log("google 1");
 
