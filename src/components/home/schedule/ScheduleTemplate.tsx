@@ -9,7 +9,7 @@ export default function ScheduleTemplate({ schedule }: { schedule: any }) {
 
   const currentDate = new Date(); 
 
-  
+  console.log("google 1");
 
   let startDate = new Date(currentDate.getTime());
 
