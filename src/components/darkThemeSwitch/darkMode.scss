@@ -1,0 +1,15 @@
+.themeSwitch {
+  position: absolute;
+  left: 40%;
+  z-index: 9999;
+
+  cursor: pointer;
+}
+.darkMode::before {
+  content: "\F5A1";
+  font-family: "Bootstrap-icons";
+}
+.lightMode::before {
+  content: "\F494";
+  font-family: "Bootstrap-icons";
+}

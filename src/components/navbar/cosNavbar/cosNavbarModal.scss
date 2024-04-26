@@ -1,0 +1,113 @@
+.modal-container.modal-cos {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 99999 !important;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid #dddddd79;
+  padding: 5px;
+  .ul-cos {
+    display: block;
+    width: 240px;
+    padding: 5px;
+    border-radius: 12px;
+    max-height: 280px;
+    overflow-y: scroll;
+    position: relative;
+    z-index: 99;
+
+    .li-cos {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: space-between;
+      border-bottom: 1px solid #dddddd79;
+      padding: 5px;
+
+      .delete {
+        padding: 4px;
+      }
+      .delete:hover {
+        padding: 4px;
+        color: red;
+        cursor: pointer;
+      }
+    }
+    .li-cos:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .cos-modal-footer {
+    border-top: 1px solid #dddddd79;
+    margin: 0 10px;
+
+    .button-container {
+      display: block;
+      margin: 10px 0;
+
+      .btn.checkout {
+        display: block;
+        padding: 4px;
+        background-color: rgba(0, 153, 255, 0.671);
+        border-radius: 12px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .btn.checkout:hover {
+        background-color: rgb(0, 153, 255);
+      }
+    }
+  }
+}
+
+html.dark .modal-container.modal-cos {
+  background-color: black;
+  color: white;
+}
+html.light .modal-container.modal-cos,
+.modal-container.modal-cos {
+  background-color: white;
+  color: #000;
+}
+
+html.dark body.home .modal-container.modal-cos,
+.modal-container.modal-cos {
+  background-color: transparent;
+  color: white;
+}
+html.light body.home .modal-container.modal-cos,
+.modal-container.modal-cos {
+  background-color: transparent;
+  color: white;
+}
+
+html .ul-cos::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Handle */
+html.dark .ul-cos::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 3px solid rgba(255, 255, 255, 0.534);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+html.dark .ul-cos::-webkit-scrollbar-thumb:hover {
+  border: 3px solid rgb(255, 255, 255);
+}
+
+html.light .ul-cos::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 3px solid rgba(146, 144, 144, 0.836);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+html.light .ul-cos::-webkit-scrollbar-thumb:hover {
+  border: 3px solid rgb(0, 0, 0);
+}

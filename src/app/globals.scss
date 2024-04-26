@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.css");
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+html.dark body {
+  background-color: #000;
+  color: white;
+}
+html.light body {
+  color: #000;
+  background-color: rgb(233 233 233 / 59%);
+}
+
+html::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Handle */
+html.dark::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 3px solid rgba(255, 255, 255, 0.534);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+html.dark::-webkit-scrollbar-thumb:hover {
+  border: 3px solid rgba(36, 36, 36, 0.836);
+}
+
+html.light::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 3px solid rgba(146, 144, 144, 0.836);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+html.light::-webkit-scrollbar-thumb:hover {
+  border: 3px solid rgb(0, 0, 0);
+}
+
+html::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.main {
+  display: block;
+  max-width: 96rem;
+  margin: 0 auto;
+  position: relative;
+}
+
+main {
+  position: relative;
+  width: 100%;
+  // padding: 0 10px;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+body.home .main {
+  max-width: none;
+}
+
+.multiple-sections {
+  position: relative;
+  top: 0;
+  transform: translateY(-50px);
+  // max-width: 96rem;
+  margin: 0 auto;
+}

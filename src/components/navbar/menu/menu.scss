@@ -1,0 +1,132 @@
+.menu-container {
+  display: block;
+  @media (max-width: 690px) {
+    display: none;
+  }
+  ul {
+    display: flex;
+    gap: 1rem;
+
+    li {
+      position: relative;
+      // z-index: 9;
+    }
+  }
+
+  .abonamente,
+  .galerie,
+  .locatie,
+  .cos,
+  .login {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .locatie::before {
+    content: "\F3E8";
+    font-family: "Bootstrap-icons";
+    font-size: 16px;
+  }
+  .galerie::before {
+    content: "\F42B";
+    font-family: "Bootstrap-icons";
+    font-size: 16px;
+  }
+  .abonamente::before {
+    content: "\F809";
+    font-family: "Bootstrap-icons";
+    font-size: 16px;
+  }
+  .cos::before {
+    content: "\F244";
+    font-family: "Bootstrap-icons";
+    font-size: 16px;
+  }
+  .login::before {
+    content: "\F1BE";
+    font-family: "Bootstrap-icons";
+    font-size: 16px;
+  }
+
+  .abonamente::after,
+  .cos::after {
+    content: "\F229";
+    font-family: "Bootstrap-icons";
+    font-size: 12px;
+    color: #ddd;
+    position: relative;
+    top: 2px;
+  }
+  .abonamente:hover:after,
+  .cos:hover:after {
+    content: "\F235";
+    font-family: "Bootstrap-icons";
+    font-size: 12px;
+    color: #ddd;
+    position: relative;
+    top: 2px;
+  }
+}
+
+.menu-container.active {
+  display: none;
+
+  @media (max-width: 690px) {
+    display: block;
+    position: absolute;
+    top: 96%;
+    left: 50%;
+    transform: translate(-50%);
+    // background-color: white;
+    width: 100%;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+
+      li {
+        position: relative;
+        padding: 5px 0;
+      }
+      .li-login {
+        position: relative;
+        z-index: 1;
+      }
+    }
+  }
+}
+
+html.dark .menu-container.active {
+  background-color: black;
+  color: #fff;
+}
+html.light .menu-container.active {
+  background-color: white;
+  color: #000;
+}
+html.dark body.home .menu-container.active {
+  background-color: transparent;
+  color: #fff;
+}
+html.light body.home .menu-container.active {
+  background-color: transparent;
+  color: #fff;
+}
+
+@media (max-width: 690px) {
+  body.home .li-cos:hover ~ .li-login {
+    display: none;
+  }
+  body.home .li-abonamente:hover ~ .li-login,
+  body.home .li-abonamente:hover ~ .li-cos {
+    display: none;
+  }
+
+  body.home .li-cos:hover .modal-cos {
+    background-color: transparent;
+    z-index: 999 !important;
+  }
+}

@@ -1,0 +1,42 @@
+.title-home-container {
+  position: absolute;
+  z-index: 99 !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  ul {
+    display: block;
+    margin: 0 auto;
+    .logo-container {
+      display: block;
+      width: 100%;
+      a {
+        display: block;
+        width: 100%;
+
+        img {
+          display: block;
+          height: 100%;
+          width: inherit;
+          //   min-width: 400px;
+          margin: 0 auto;
+          max-width: 47em;
+        }
+      }
+    }
+  }
+  .description {
+    display: block;
+    text-align: center;
+    padding: 4rem 0;
+    span {
+      color: white;
+      font-size: 5vw;
+      @media (min-width: 640px) {
+        font-size: 3vw;
+      }
+      //   min-width: 400px;
+    }
+  }
+}

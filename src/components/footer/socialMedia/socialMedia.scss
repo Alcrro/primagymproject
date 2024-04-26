@@ -1,0 +1,20 @@
+.footer-social-media-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+
+  .title {
+    font-size: 12px;
+  }
+  .facebook::before {
+    content: "\F344";
+    font-family: "Bootstrap-icons";
+    font-size: 22px;
+  }
+}
+
+html.light .facebook::before {
+  color: rgb(0, 132, 255);
+}

@@ -1,0 +1,132 @@
+.schedule-container {
+  display: block;
+  padding: 1rem 0;
+  position: relative;
+  top: 100%;
+  max-width: 96rem;
+  margin: 0 auto;
+
+  .title {
+    display: block;
+    padding: 1rem;
+    font-size: 22px;
+    border-bottom: 1px solid #888787;
+  }
+
+  .schedule-inner {
+    display: flex;
+    // max-width: 100%;
+    margin: 0 auto;
+    gap: 0.5rem;
+    overflow-x: scroll;
+    border-radius: 10px;
+    margin: 10px;
+
+    @media (max-width: 640px) {
+      overflow-y: scroll;
+      overflow-x: hidden;
+      height: 600px;
+    }
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .ul-schedule {
+      position: relative;
+      padding-left: 5px;
+      width: 320px;
+
+      @media (max-width: 640px) {
+        margin: 0 auto;
+      }
+
+      li {
+        position: relative;
+        padding: 10px;
+      }
+
+      li:before {
+        width: 12px;
+        height: 12px;
+        background: #fff;
+        border: 2px solid #ccc;
+        position: absolute;
+        border-color: #55a79a;
+        left: -11px;
+        top: 17px;
+        content: "";
+        border-radius: 100%;
+      }
+
+      li.active:before {
+        background: #55a79a;
+        border-color: #55a79a;
+      }
+      li > span {
+        font-size: 18px;
+      }
+    }
+    .ul-schedule::before {
+      width: 1px;
+      border-color: #55a79a;
+      background: #55a79a;
+      position: absolute;
+      left: 0px;
+      top: 0;
+      bottom: 0;
+      height: 100%;
+      content: "";
+    }
+
+    .day-schedule {
+      color: #343a40 !important;
+      font-weight: 700 !important;
+      font-size: 1.5rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+  }
+}
+html .schedule-inner::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Handle */
+html.dark .schedule-inner::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.39);
+  background-color: rgba(255, 255, 255, 0.39);
+  height: 2px;
+}
+
+html.dark .schedule-inner::-webkit-scrollbar-thumb:hover {
+  border: 1px solid rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255);
+}
+
+html.light .schedule-inner::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 1px solid rgba(138, 137, 137, 0.514);
+  background-color: rgba(138, 137, 137, 0.514);
+}
+
+html.light .schedule-inner::-webkit-scrollbar-thumb:hover {
+  border: 1px solid rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0);
+}
+
+html .schedule-inner::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+html.dark .schedule-inner {
+  background-color: black;
+  color: #fff;
+}
+html.light .schedule-inner {
+  background-color: #fff;
+  color: #000;
+}

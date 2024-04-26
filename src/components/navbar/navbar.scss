@@ -1,0 +1,71 @@
+.navbar-container {
+  display: block;
+  max-width: 96rem;
+  margin: 0 auto;
+  padding: 10px 0;
+  position: relative;
+  z-index: 2;
+
+  .ul-navbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+
+    @media (max-width: 70px) {
+      .menu-container,
+      .logo-container {
+        max-width: 100%;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+    @media (max-width: 220px) {
+      flex-direction: column;
+    }
+    .button-container {
+      display: block;
+    }
+    @media (min-width: 690px) {
+      .button-container {
+        display: none;
+      }
+    }
+    .collapse-navbar-menu {
+      display: none;
+    }
+    @media (max-width: 759px) {
+      .collapse-navbar-menu {
+        display: block;
+      }
+      .collapse-navbar-menu.inActive::before {
+        content: "\F479";
+        font-family: "Bootstrap-icons";
+        font-size: 25px;
+      }
+      .collapse-navbar-menu.active::before {
+        content: "\F659";
+        font-family: "Bootstrap-icons";
+        font-size: 20px;
+      }
+    }
+  }
+  .li-abonamente:hover > .modal-container.modal-abonamente,
+  .li-cos:hover > .modal-container.modal-cos {
+    display: block;
+  }
+
+  .menu-container.inActive {
+    display: none;
+  }
+}
+
+html.light body.home .navbar-container {
+  background-color: transparent;
+  color: #fff;
+}
+html.dark body.home .navbar-container {
+  background-color: transparent;
+  color: #fff;
+}

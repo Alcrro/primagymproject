@@ -1,0 +1,79 @@
+.trainers-container {
+  display: block;
+  width: 100%;
+  .title {
+    font-size: 22px;
+    padding: 0.25rem;
+  }
+
+  .trainers-inner {
+    padding: 1rem 0;
+    .ul-trainers {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 2rem;
+      max-width: 100%;
+      align-self: center;
+
+      @media (max-width: 320px) {
+        grid-template-columns: 100%;
+      }
+      .li-profile-trainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1rem;
+        border-radius: 12px;
+        gap: 1rem;
+
+        .profile-image {
+          img {
+            display: block;
+            margin: 0 auto;
+            border-radius: 50%;
+          }
+        }
+        .description-container {
+          padding: 0.5rem 0;
+
+          .span-describe {
+            color: rgb(133, 133, 133);
+          }
+          .profile-name-value {
+            text-transform: capitalize;
+          }
+        }
+        .icon-profile-image {
+          display: block;
+          text-align: center;
+        }
+        .icon-profile-image::before {
+          content: "\F4D7";
+          font-family: "Bootstrap-icons";
+          font-size: 80px;
+          color: rgba(170, 169, 169, 0.562);
+          margin: 0 auto;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+html.dark .trainers-container .title {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+html.light .trainers-container .title {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+html.dark .li-profile-trainer {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(255, 253, 253, 0.12) 0px -12px 30px,
+    rgba(255, 254, 254, 0.12) 0px 4px 6px,
+    rgba(255, 255, 255, 0.17) 0px 12px 13px,
+    rgba(255, 255, 255, 0.09) 0px -3px 5px;
+}
+html.light .li-profile-trainer {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}

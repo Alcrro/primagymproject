@@ -1,0 +1,10 @@
+.logo-container {
+  // margin: 0 auto;
+  .logo-image {
+    max-width: 200px;
+
+    @media (max-width: 245px) {
+      max-width: 70vw;
+    }
+  }
+}

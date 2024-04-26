@@ -1,0 +1,22 @@
+.footer-container {
+  // max-width: 96rem;
+  margin: 10px auto;
+  background-color: #e7eff8;
+  padding: 20px 0;
+  position: relative;
+
+  top: 100%;
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    @media (min-width: 360px) {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+  }
+}
+
+html.dark .footer-container {
+  color: white;
+  background-color: black;
+}
