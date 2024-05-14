@@ -11,6 +11,7 @@ export default async function Navbar() {
       <Suspense fallback={<p>Loading</p>}>
         <NavbarModal menu={navbar} />
       </Suspense>
+      gg
     </nav>
   );
 }
