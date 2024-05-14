@@ -6,8 +6,8 @@ const layout = (props: {
 }) => {
   return (
     <div>
-      {props.modal}
       {props.children}
+      {props.modal}
     </div>
   );
 };

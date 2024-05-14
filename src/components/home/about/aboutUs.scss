@@ -1,0 +1,71 @@
+.about-us-container {
+  $border: 5px;
+  display: block;
+  position: relative;
+  top: 100%;
+  max-width: 96rem;
+  margin: 0 auto;
+
+  .about-us {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 1rem;
+
+    .about-inner {
+      // display: flex;
+      align-items: center;
+      //width: 50vw;
+      // width: 90%;
+      margin: auto;
+      // max-width: 22em;
+
+      position: relative;
+      padding: 1rem;
+      box-sizing: border-box;
+
+      background-clip: padding-box; /* !importanté */
+      border: solid $border transparent; /* !importanté */
+      border-radius: 1em;
+
+      &:before {
+        content: " ";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        margin: -$border; /* !importanté */
+        border-radius: inherit; /* !importanté */
+      }
+    }
+  }
+}
+html.dark .about-inner {
+  color: white;
+  background-color: black;
+}
+html.light .about-inner {
+  color: black;
+  background-color: white;
+}
+
+html.light .about-inner {
+  &:before {
+    background: linear-gradient(to left, rgb(0, 0, 0), rgb(9, 223, 238));
+  }
+
+  &:nth-child(even):before {
+    background: linear-gradient(to right, rgb(0, 0, 0), rgb(9, 223, 238));
+  }
+}
+html.dark .about-inner {
+  &:before {
+    background: linear-gradient(to left, rgb(255, 255, 255), rgb(9, 223, 238));
+  }
+
+  &:nth-child(even):before {
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(9, 223, 238));
+  }
+}

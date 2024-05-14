@@ -1,7 +1,6 @@
 "use client";
-import useLocalStorage from "@/app/_lib/addToLocalStorage/AddToLocalStorage";
-import { useAddToCart } from "../../../app/context/addToCart/AddToCartContext";
 import Button from "@/components/button/Button";
+import { useAddToCart } from "@/context/addToCart/AddToCartContext";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
@@ -12,13 +11,7 @@ export default function SubscriptionCard({
   category: any;
   imageCard: any;
 }) {
-  const { addToCart, setAddToCart } = useAddToCart();
-  const addToCartHandler = () => {
-    let cart: any = [...addToCart, category];
-
-    setAddToCart(cart);
-    localStorage.setItem("cart", JSON.stringify(cart) || "[]");
-  };
+  const { addToCart, setAddToCart, addToCartHandler } = useAddToCart();
 
   return (
     <>
@@ -33,7 +26,7 @@ export default function SubscriptionCard({
         <div className="header">Abonament {category.category} </div>
         <div className="body">
           {category.pass < 2 ? (
-            <div className="pass"> {category.pass} intare </div>
+            <div className="pass"> {category.pass} intrare </div>
           ) : (
             <div className="pass"> {category.pass} intrari</div>
           )}
@@ -44,7 +37,7 @@ export default function SubscriptionCard({
           <Button
             title="Doresc abonament"
             className="add-to-cart"
-            handleClick={addToCartHandler}
+            handleClick={() => addToCartHandler(category)}
           />
         </div>
       </div>

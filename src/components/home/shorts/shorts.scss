@@ -1,0 +1,72 @@
+.short-container {
+  display: block;
+  max-width: 96rem;
+  margin: 10px auto;
+  padding: 10px 0;
+
+  .short-inner {
+    .title {
+      border-bottom: 1px solid #cccccccc;
+      .span-title {
+        display: inline-block;
+
+        font-size: 20px;
+        // color: #ccc;
+        padding: 10px;
+      }
+      .span-title::after {
+        content: "\F4F9";
+        font-family: "Bootstrap-icons";
+        color: rgb(0, 183, 255);
+        opacity: 1;
+        padding-left: 10px;
+        vertical-align: middle;
+      }
+      .span-title:hover::after {
+        opacity: 0.6;
+        cursor: pointer;
+      }
+    }
+
+    .short-body {
+      display: block;
+      margin: 0 auto;
+
+      @media (max-width: 400px) {
+        pointer-events: unset;
+      }
+      @media (min-width: 500px) {
+        display: flex;
+        pointer-events: all;
+      }
+
+      .short-timer {
+        display: block;
+        padding: 5px 0;
+      }
+      .short {
+        display: block;
+        padding: 10px 0;
+
+        .short-timer {
+          margin: 10px 0;
+        }
+
+        .short-image {
+          display: block;
+          padding: 5px;
+          height: 100%;
+          border-radius: 12px;
+
+          img {
+            display: block;
+            margin: 0 auto;
+            width: 300px;
+            height: 500px;
+            border-radius: 12px;
+          }
+        }
+      }
+    }
+  }
+}

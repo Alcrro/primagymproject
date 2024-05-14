@@ -1,4 +1,5 @@
 export interface ICart {
+  id: number;
   category: string;
   pass: number;
   price: number;

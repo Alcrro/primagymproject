@@ -1,25 +1,17 @@
 "use client";
-import React, { useEffect } from "react";
-import MenuModal from "../menuModal/MenuModal";
-import { useAddToCart } from "@/app/context/addToCart/AddToCartContext";
+
 import { ICart } from "@/app/_core/subscription";
 import "./cosNavbarModal.scss";
 import Button from "@/components/button/Button";
+import MenuModal from "../menuModal/MenuModal";
+import { useAddToCart } from "@/context/addToCart/AddToCartContext";
+import { useRouter } from "next/navigation";
+
 export default function CosNavbar({ menu }: { menu: any }) {
-  const { addToCart, setAddToCart } = useAddToCart();
-
-  const removeHandler = (sub: any) => {
-    const cart: any = addToCart;
-
-    const findIndex = cart.findIndex(
-      (findIndex: any) => findIndex.id === sub.id
-    );
-
-    if (findIndex >= 0) {
-      setAddToCart((list) => [...list]);
-      localStorage.setItem("cart", JSON.stringify(cart) || "[]");
-    } else {
-    }
+  const { addToCart, setAddToCart, removeHandler } = useAddToCart();
+  const router = useRouter();
+  const moveToHandler = () => {
+    router.push("/cos");
   };
 
   return (
@@ -57,7 +49,11 @@ export default function CosNavbar({ menu }: { menu: any }) {
           )}{" "}
           <span>RON</span>
         </div>
-        <Button title="Cumpara" className="checkout text-white" />
+        <Button
+          title="Cumpara"
+          className="checkout text-white cursor-pointer"
+          handleClick={moveToHandler}
+        />
       </div>
     </MenuModal>
   );

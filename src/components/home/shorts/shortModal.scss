@@ -1,0 +1,65 @@
+.short-modal-container {
+  position: absolute;
+  .short-modal-inner {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    width: 100%;
+    @media (min-width: 500px) {
+      width: max-content;
+    }
+  }
+  .short,
+  .short-body {
+    width: 100%;
+    display: block;
+    @media (max-width: 399px) {
+      pointer-events: none;
+    }
+  }
+  .span-gallery {
+    margin: 0;
+
+    .short-timer {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: -14px;
+      //   width: 100%;
+      height: 10px;
+      background-color: white;
+      border-radius: 12px;
+    }
+
+    .myProgress {
+      position: absolute;
+      left: 0;
+      top: -14px;
+      height: 10px;
+      background-color: green;
+      border-radius: 12px;
+    }
+    .short-image {
+      display: block;
+      width: 100%;
+      img {
+        display: block;
+        width: 100%;
+        height: 600px;
+        border-radius: 12px;
+
+        @media (min-width: 500px) {
+          width: 400px;
+          height: 600px;
+        }
+      }
+    }
+  }
+}
+
+html.dark .short-modal {
+  .span-gallery {
+    background-color: white;
+  }
+}

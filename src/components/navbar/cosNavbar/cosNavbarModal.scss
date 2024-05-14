@@ -9,6 +9,10 @@
   text-align: center;
   border: 1px solid #dddddd79;
   padding: 5px;
+
+  @media (min-width: 691px) and (max-width: 96rem) {
+    transform: translate(-56%);
+  }
   .ul-cos {
     display: block;
     width: 240px;
@@ -37,6 +41,7 @@
         cursor: pointer;
       }
     }
+
     .li-cos:last-child {
       border-bottom: none;
     }

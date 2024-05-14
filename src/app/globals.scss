@@ -2,17 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.css");
+@import "~bootstrap-icons/font/bootstrap-icons";
 
 body {
   position: relative;
   overflow-x: hidden;
 }
 
+//TODO animate fade out to in
 html.dark body {
   background-color: #000;
   color: white;
 }
+//TODO animate fade out to in
 html.light body {
   color: #000;
   background-color: rgb(233 233 233 / 59%);
@@ -30,7 +32,7 @@ html.dark::-webkit-scrollbar-thumb {
 }
 
 html.dark::-webkit-scrollbar-thumb:hover {
-  border: 3px solid rgba(36, 36, 36, 0.836);
+  border: 3px solid rgb(255, 255, 255);
 }
 
 html.light::-webkit-scrollbar-thumb {
@@ -53,20 +55,32 @@ html::-webkit-scrollbar-track {
   }
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+}
+main {
+  position: relative;
+}
+
 body.home main {
   position: relative;
   width: 100%;
-  max-width: unset;
+  max-width: 100%;
   // padding: 0 10px;
   margin: 0 auto;
-  height: 100vh;
+  max-height: 100%;
+  height: 110vh;
 }
 body main {
   position: relative;
   max-width: 96rem;
   // padding: 0 10px;
   margin: 0 auto;
-  height: 100vh;
+
+  padding: 0 10px;
 }
 
 .multiple-sections {
@@ -75,4 +89,8 @@ body main {
   transform: translateY(-50px);
   // max-width: 96rem;
   margin: 0 auto;
+}
+
+body.home .li-cos:hover ~ .bigger {
+  display: none;
 }

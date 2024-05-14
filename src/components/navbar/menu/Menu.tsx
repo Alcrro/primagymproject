@@ -1,26 +1,38 @@
 "use client";
 import Link from "next/link";
 import React, { Dispatch, SetStateAction, useState } from "react";
-
 import "./menu.scss";
-import { menuNavbar } from "@/app/_core/navbarMenu";
+
 import MenuModal from "../menuModal/MenuModal";
 import { subscriptionCategory } from "@/app/_core/subscriptionCategories";
 import CosNavbar from "../cosNavbar/CosNavbar";
 import NotifiedCos from "../cosNavbar/NotifiedCos";
-import { useAddToCart } from "@/app/context/addToCart/AddToCartContext";
+import { useAddToCart } from "@/context/addToCart/AddToCartContext";
 
 interface IMenuProps {
   active?: string;
   setActive?: Dispatch<SetStateAction<boolean>> | any;
+  onHoverHandler?: Dispatch<SetStateAction<boolean>> | any;
+  menu: [];
+  onHoverActive?: boolean;
 }
 
-export default function Menu({ active, setActive }: IMenuProps) {
+export default function Menu({
+  active,
+  setActive,
+  menu,
+  onHoverHandler,
+}: IMenuProps) {
   const { addToCart } = useAddToCart();
+
+  const ggHandler = () => {
+    setActive((prev: any) => !prev);
+  };
+
   return (
     <li className={`menu-container ${active}`}>
       <ul>
-        {menuNavbar.map((menu, key) => (
+        {menu.map((menu: any, key: any) => (
           <li key={key} className={`li-${menu.link}`}>
             <Link href={`/${menu.link}`}>
               {active ? (
@@ -28,7 +40,9 @@ export default function Menu({ active, setActive }: IMenuProps) {
                   {menu.link === "cos" ? <NotifiedCos active={active} /> : null}
                   <span
                     className={menu.link}
-                    onClick={() => setActive((prev: any) => !prev)}
+                    onClick={ggHandler}
+                    onMouseEnter={onHoverHandler}
+                    onMouseLeave={onHoverHandler}
                   >
                     {menu.category}
                   </span>
@@ -45,10 +59,8 @@ export default function Menu({ active, setActive }: IMenuProps) {
                 <ul>
                   {subscriptionCategory.map((category, key) => (
                     <li key={key}>
-                      <Link href={`/${menu.link}/${category}`}>
-                        <span onClick={() => setActive((prev: any) => !prev)}>
-                          {category}
-                        </span>
+                      <Link href={`/${menu.link}/${category.link}`}>
+                        <span>{category.name}</span>
                       </Link>
                     </li>
                   ))}

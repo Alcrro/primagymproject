@@ -7,14 +7,14 @@ interface IButtonPops {
   className?: string;
   active?: boolean;
   setActive?: Dispatch<SetStateAction<boolean>>;
-  handleClick?: React.MouseEventHandler<HTMLButtonElement>;
+  handleClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 export default function Button(props: IButtonPops) {
   return (
     <div className={`button-container`}>
-      <button className={`btn ${props.className}`} onClick={props.handleClick}>
+      <div className={`btn ${props.className}`} onClick={props.handleClick}>
         {props.title}
-      </button>
+      </div>
     </div>
   );
 }

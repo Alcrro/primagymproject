@@ -7,7 +7,7 @@ export default function FooterModal({
   title,
   className,
 }: {
-  props: any;
+  props: [];
   title: string;
   className: string;
 }) {
@@ -19,7 +19,7 @@ export default function FooterModal({
           {props.map((rule: any, key: number) => (
             <li key={key}>
               <Link href={`/${className}/${rule.link}`}>
-                <div className="name">{rule.name}</div>
+                <span className="name">{rule.name}</span>
               </Link>
             </li>
           ))}

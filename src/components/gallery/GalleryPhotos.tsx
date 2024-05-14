@@ -1,21 +1,17 @@
-"use client";
 import "./gallery.scss";
 import Link from "next/link";
 import Image from "next/image";
-import gallery, { WonderImage } from "@/app/_core/gallery";
-import React from "react";
+import React, { lazy } from "react";
+import { getGallery } from "@/app/_lib/gallery/getGallery";
 
-export default function GalleryPhotos() {
+export default async function GalleryPhotos() {
+  const gallery = await getGallery();
+
+  const GetGalley = lazy(() => import("./getGallery"));
   return (
     <div className="gallery-inner">
       <ul className="ul-gallery">
-        {gallery.map((photo) => (
-          <li key={photo.id} className="li-gallery">
-            <Link href={`/galerie/${photo.id}`}>
-              <Image src={photo.src} alt="image" width={1000} height={1000} />
-            </Link>
-          </li>
-        ))}
+        <GetGalley gallery={gallery} />
       </ul>
     </div>
   );

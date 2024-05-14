@@ -4,3 +4,19 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.span-gallery {
+  display: block;
+  padding: 10px;
+  border-radius: 12px;
+  background-color: white;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+html.dark .span-gallery {
+  background-color: black;
+}
+html.light .span-gallery {
+  background-color: white;
+}

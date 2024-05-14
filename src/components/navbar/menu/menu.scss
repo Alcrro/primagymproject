@@ -22,8 +22,7 @@
     align-items: center;
     gap: 4px;
   }
-
-  .locatie::before {
+  f .locatie::before {
     content: "\F3E8";
     font-family: "Bootstrap-icons";
     font-size: 16px;
@@ -101,10 +100,14 @@
 
 html.dark .menu-container.active {
   background-color: black;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
   color: #fff;
 }
 html.light .menu-container.active {
   background-color: white;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
   color: #000;
 }
 html.dark body.home .menu-container.active {
@@ -127,6 +130,12 @@ html.light body.home .menu-container.active {
 
   body.home .li-cos:hover .modal-cos {
     background-color: transparent;
-    z-index: 999 !important;
+  }
+  body.home .li-cos:hover .modal-cos {
+    background-color: transparent;
+  }
+
+  body.home .li-cos:hover ~ .logo-container.hide {
+    display: none !important;
   }
 }

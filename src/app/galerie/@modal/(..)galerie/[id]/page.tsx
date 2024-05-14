@@ -2,20 +2,18 @@ import gallery, { WonderImage } from "@/app/_core/gallery";
 import Modal from "@/components/gallery/modal/Modal";
 import Image from "next/image";
 import React from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { useWidthContext } from "@/app/_lib/resizableWidth";
-
+export const dynamic = "force-dynamic";
 const page = ({ params: { id } }: { params: { id: string } }) => {
   const find: WonderImage = gallery.find((find) => find.id === id)!;
 
   return (
-    <Modal>
+    <Modal className="">
       <Image
         src={find.src}
         alt="image"
         width={600}
         height={400}
-        className="rounded-lg mx-auto"
+        className=" bg-white dark:bg-black rounded-lg mx-auto "
       />
     </Modal>
   );

@@ -8,6 +8,12 @@
   .title {
     font-size: 12px;
   }
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .facebook::before {
     content: "\F344";
     font-family: "Bootstrap-icons";

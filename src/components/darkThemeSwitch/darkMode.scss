@@ -1,8 +1,8 @@
 .themeSwitch {
-  position: absolute;
+  position: fixed;
+  top: 0;
   left: 40%;
   z-index: 9999;
-
   cursor: pointer;
 }
 .darkMode::before {

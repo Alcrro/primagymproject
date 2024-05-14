@@ -1,7 +1,7 @@
-"use client";
 import Location from "@/components/locatie/Location";
-import { Loader } from "@googlemaps/js-api-loader";
-import React, { useEffect, useRef } from "react";
+import React from "react";
+export const dynamic = "force-dynamic";
+
 export default function page() {
   return <Location />;
 }

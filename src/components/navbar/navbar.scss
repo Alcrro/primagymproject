@@ -35,7 +35,10 @@
     .collapse-navbar-menu {
       display: none;
     }
-    @media (max-width: 759px) {
+    .collapse-navbar-menu:hover {
+      cursor: pointer;
+    }
+    @media (max-width: 690px) {
       .collapse-navbar-menu {
         display: block;
       }
@@ -64,8 +67,26 @@
 html.light body.home .navbar-container {
   background-color: transparent;
   color: #fff;
+  margin: 0 auto;
+  padding: unset;
 }
 html.dark body.home .navbar-container {
   background-color: transparent;
   color: #fff;
+  margin: 0 auto;
+  padding: unset;
+}
+html.light body .navbar-container {
+  background-color: white;
+  color: #000;
+  margin: 10px 0;
+  border-radius: 12px;
+  padding: 10px;
+}
+html.dark body .navbar-container {
+  background-color: #000;
+  color: #fff;
+  margin: 10px 0;
+  border-radius: 12px;
+  padding: 10px;
 }

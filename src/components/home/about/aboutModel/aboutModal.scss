@@ -1,0 +1,24 @@
+.about-inner {
+  display: block;
+  margin: 0 auto;
+  max-width: 420px;
+
+  .header {
+    display: block;
+    padding: 10px 0;
+    max-width: 280px;
+    margin: 0 auto;
+    img {
+      display: block;
+    }
+  }
+
+  .body {
+    .title {
+      display: block;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 10px 0;
+    }
+  }
+}

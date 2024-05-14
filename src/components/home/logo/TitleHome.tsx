@@ -1,23 +1,28 @@
 "use client";
 import Logo from "@/components/navbar/logo/Logo";
-import React from "react";
-import { usePathname } from "next/navigation";
+import React, { lazy, Suspense } from "react";
 import "./logoHome.scss";
-import BackgroundVideo from "../backgroundVideo/BackgroundVideo";
-export default function LogoHome() {
-  const pathname = usePathname();
 
+import { useContextApi } from "@/context/contextAPI/ContextAPI";
+
+export default function LogoHome() {
+  const { titleRef, pathname } = useContextApi();
+  const BackgroundVideo = lazy(
+    () => import("../backgroundVideo/BackgroundVideo")
+  );
   return pathname.endsWith("/") ? (
     <div className="thumbnail">
-      <BackgroundVideo />
+      <Suspense>
+        <BackgroundVideo />
+      </Suspense>
       <div className="title-home-container">
         <ul>
-          <Logo />
-          <div className="description">
+          <Logo description="big-logo" />
+          <li className="description" ref={titleRef}>
             <span className="">
               Having good habits every day, it means a lot.
             </span>
-          </div>
+          </li>
         </ul>
       </div>
     </div>

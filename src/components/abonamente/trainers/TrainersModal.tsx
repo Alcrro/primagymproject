@@ -9,7 +9,7 @@ interface ITrainerModal {
 }
 
 export default function TrainersModal({ trainers, slug }: ITrainerModal) {
-  const filterFind = trainers.filter((filter) => filter.category === slug);
+  const filterFind = trainers.filter((filter) => filter.category === slug)!;
 
   return (
     <>

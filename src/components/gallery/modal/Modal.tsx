@@ -1,13 +1,16 @@
 "use client";
 import { useCallback, useRef, useEffect, MouseEventHandler } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import "./galleryModal.scss";
+import { useContextApi } from "@/context/contextAPI/ContextAPI";
 
-import { useWidthContext } from "@/app/_lib/resizableWidth";
-
-export default function Modal({ children }: { children: React.ReactNode }) {
-  const pathName = usePathname();
-  const galerie = pathName.split("/").length.toString();
-
+export default function Modal({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className: string;
+}) {
   const overlay = useRef(null);
   const wrapper = useRef(null);
   const router = useRouter();
@@ -40,14 +43,14 @@ export default function Modal({ children }: { children: React.ReactNode }) {
   return (
     <div
       ref={overlay}
-      className="fixed z-10 left-0 right-0 top-0 bottom-0 mx-auto bg-black/60"
+      className={`${className}-container fixed z-10 left-0 right-0 top-0 bottom-0 bg-black/60`}
       onClick={onClick}
     >
       <div
         ref={wrapper}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  w-[400px] sm:w-10/12 md:w-11/14 lg:w-2/5"
+        className={`${className}-inner absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  w-[400px] sm:w-10/12 md:w-11/14 lg:w-2/5`}
       >
-        {children}
+        <span className="span-gallery">{children}</span>
       </div>
     </div>
   );

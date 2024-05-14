@@ -1,17 +1,40 @@
 .footer-container {
   // max-width: 96rem;
-  margin: 10px auto;
+  margin: 20px auto;
   background-color: #e7eff8;
+  border-radius: 12px;
   padding: 20px 0;
   position: relative;
+  // top: 100vh;
 
-  top: 100%;
+  @font-face {
+    font-family: "Monsterrat Black Italic";
+    src: url(../../../public/fonts/Montserrat-ExtraBoldItalic.woff2);
+  }
+
+  .title {
+    font-family: "Monsterrat Black Italic", Helvetica, Arial, Lucida, sans-serif;
+    padding: 10px 0;
+    border-bottom: none;
+    text-transform: uppercase;
+    font-size: 20px;
+    word-break: break-all;
+  }
+
   .footer-inner {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
+    font-family: "Open Sans", sans-serif;
+    justify-content: center;
+    text-align: center;
+    line-height: 30px;
     gap: 1rem;
     @media (min-width: 360px) {
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    a:hover {
+      opacity: 0.5;
     }
   }
 }
@@ -19,4 +42,12 @@
 html.dark .footer-container {
   color: white;
   background-color: black;
+}
+html.dark .footer-container::before {
+  display: block;
+  content: " ";
+  max-width: 120rem;
+  height: 2px;
+  background-color: #888787a9;
+  margin: 0 auto;
 }

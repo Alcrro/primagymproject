@@ -12,7 +12,7 @@ import "../../../components/abonamente/trainers/trainers.scss";
 interface IParams {
   slug: string;
 }
-
+// export const dynamic = 'force-dynamic';
 export default function page({ params }: { params: IParams }) {
   return (
     <>
