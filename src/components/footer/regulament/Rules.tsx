@@ -1,5 +1,5 @@
 "use client";
-import { rules } from "@/app/_core/rules";
+import { rules } from "../../../app/_core/rules";
 import Link from "next/link";
 import React from "react";
 import "./rules.scss";

@@ -1,13 +1,13 @@
 "use client";
 import Link from "next/link";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import "./menu.scss";
 
 import MenuModal from "../menuModal/MenuModal";
-import { subscriptionCategory } from "@/app/_core/subscriptionCategories";
+import { subscriptionCategory } from "../../../app/_core/subscriptionCategories";
 import CosNavbar from "../cosNavbar/CosNavbar";
 import NotifiedCos from "../cosNavbar/NotifiedCos";
-import { useAddToCart } from "@/context/addToCart/AddToCartContext";
+import { useAddToCart } from "../../../context/addToCart/AddToCartContext";
 
 interface IMenuProps {
   active?: string;

@@ -1,13 +1,13 @@
 import React from "react";
 import "./subscriptionCatCards.scss";
-import Button from "@/components/button/Button";
+import Button from "../../../components/button/Button";
 import { ICart, subscriptions } from "@/app/_core/subscription";
 import fitnessCard from "../../../../public/cardsImages/fitnessCards.jpg";
 import zumbaCard from "../../../../public/cardsImages/zumbaCard.jpg";
 import Image from "next/image";
-import SubscriptionCard from "@/components/abonamente/subscriptionCard/SubscriptionCard";
-import SubscriptionTrainers from "@/components/abonamente/subscriptionCard/SubscriptionTrainsers";
-import { trainers } from "@/app/_core/antrenori";
+import SubscriptionCard from "../../../components/abonamente/subscriptionCard/SubscriptionCard";
+import SubscriptionTrainers from "../../../components/abonamente/subscriptionCard/SubscriptionTrainsers";
+import { trainers } from "../../../app/_core/antrenori";
 import "../../../components/abonamente/trainers/trainers.scss";
 interface IParams {
   slug: string;

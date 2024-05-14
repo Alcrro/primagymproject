@@ -2,8 +2,8 @@ import React, { Suspense } from "react";
 import SocialMedia from "./socialMedia/SocialMedia";
 import "./footer.scss";
 import FooterModal from "./footerModal/FooterModal";
-import { getInformation } from "@/app/_lib/footer/getInformation/getInformation";
-import { getRules } from "@/app/_lib/footer/getRules/getRules";
+import { getInformation } from "../../app/_lib/footer/getInformation/getInformation";
+import { getRules } from "../../app/_lib/footer/getRules/getRules";
 import Contact from "./contact/Contact";
 import Program from "./program/Program";
 

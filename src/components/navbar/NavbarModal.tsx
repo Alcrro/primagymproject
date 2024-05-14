@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Logo from "./logo/Logo";
 import Menu from "./menu/Menu";
 import Button from "../button/Button";
-import { useContextApi } from "@/context/contextAPI/ContextAPI";
+import { useContextApi } from "../../context/contextAPI/ContextAPI";
 
 export default function NavbarModal({ menu }: any) {
   const { onHoverActive, onHoverHandler, active, setActive } = useContextApi();

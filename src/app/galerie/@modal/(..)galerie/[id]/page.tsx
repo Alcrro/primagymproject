@@ -1,5 +1,5 @@
 import gallery, { WonderImage } from "@/app/_core/gallery";
-import Modal from "@/components/gallery/modal/Modal";
+import Modal from "../../../../../components/gallery/modal/Modal";
 import Image from "next/image";
 import React from "react";
 export const dynamic = "force-dynamic";

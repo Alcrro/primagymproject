@@ -1,10 +1,10 @@
 "use client";
 
-import { ICart } from "@/app/_core/subscription";
+import { ICart } from "../../../app/_core/subscription";
 import "./cosNavbarModal.scss";
-import Button from "@/components/button/Button";
+import Button from "../../../components/button/Button";
 import MenuModal from "../menuModal/MenuModal";
-import { useAddToCart } from "@/context/addToCart/AddToCartContext";
+import { useAddToCart } from "../../../context/addToCart/AddToCartContext";
 import { useRouter } from "next/navigation";
 
 export default function CosNavbar({ menu }: { menu: any }) {

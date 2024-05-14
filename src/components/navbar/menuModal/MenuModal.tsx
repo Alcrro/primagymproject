@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import "./menuModal.scss";
-import { useContextApi } from "@/context/contextAPI/ContextAPI";
+import { useContextApi } from "../../../context/contextAPI/ContextAPI";
 
 export default function MenuModal({
   className,

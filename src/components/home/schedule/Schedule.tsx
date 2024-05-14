@@ -3,7 +3,7 @@ import "./schedule.scss";
 
 import ScheduleTemplate from "./ScheduleTemplate";
 import ScheduleTitle from "./scheduleTemplate/ScheduleTitle";
-import getSchedule from "@/app/_lib/home/getSchedule";
+import getSchedule from "../../../app/_lib/home/getSchedule";
 
 export default async function Schedule() {
   const schedules = await getSchedule();
