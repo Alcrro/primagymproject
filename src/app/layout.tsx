@@ -28,18 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script src="http://192.168.1.102:3000/_scripts/googleManager.js" />
-      </head>
       <body>
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-KRBMLMQ6"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          ></iframe>
-        </noscript>
         <ContextAPI>
           <AddToCartProvider>
             <DarkThemeProviders>

@@ -10,28 +10,25 @@ export default function ShortModal() {
     setActiveModal(false);
   }
 
-  if (activeModal) {
-    useEffect(() => {
-      let elem = document.querySelector<HTMLDivElement>(
-        ".short-modal-progress"
-      )!;
-      let width = 1;
-      let id = setInterval(frame, 30);
-      setTimeout(() => {
-        activeModalHandler();
-      }, 3000);
-      function frame() {
-        if (width >= 100) {
-          clearInterval(id);
-        } else {
-          width++;
+  // useEffect(() => {
+  //   let elem = document.querySelector<HTMLDivElement>(".short-modal-progress")!;
+  //   let width = 1;
+  //   let id = setInterval(frame, 30);
+  //   setTimeout(() => {
+  //     activeModalHandler();
+  //   }, 3000);
+  //   function frame() {
+  //     if (width >= 100) {
+  //       clearInterval(id);
+  //     } else {
+  //       width++;
 
-          elem.style.backgroundColor = "green";
-          elem.style.width = width + "%";
-        }
-      }
-    }, []);
-  }
+  //       elem.style.backgroundColor = "green";
+  //       elem.style.width = width + "%";
+  //     }
+  //   }
+  //   //react - hooks / exhaustive - deps;
+  // }, []);
 
   return (
     <>
