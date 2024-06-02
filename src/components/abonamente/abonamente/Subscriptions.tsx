@@ -10,7 +10,10 @@ export default async function Subscriptions() {
     <div className="abonamente-container">
       <div className="abonamente-inner">
         {subscriptionsC.map((subscription: any, key: any) => (
-          <div className={`${subscription.className}-container`} key={key}>
+          <div
+            className={`abonament ${subscription.className}-container`}
+            key={key}
+          >
             <Link
               href={`/abonamente/${subscription.link}`}
               className="relative"
@@ -22,6 +25,7 @@ export default async function Subscriptions() {
                 width={1000}
                 height={1000}
               />
+
               <span className="description text-white">
                 {subscription.className}
               </span>

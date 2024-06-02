@@ -4,13 +4,10 @@ import React from "react";
 import logoImage from "../../../../public/cardsImages/primaGymBacgroundCards-removebg-preview.png";
 import "./logo.scss";
 import Link from "next/link";
-import { useContextApi } from "../../../context/contextAPI/ContextAPI";
 
-export default function Logo({ description }: { description?: string }) {
-  const { logoRef } = useContextApi();
-
+export default function Logo() {
   return (
-    <li className={`logo-container bigger ${description}`} ref={logoRef}>
+    <li className={`logo-container`}>
       <Link href="/">
         <Image
           src={logoImage}

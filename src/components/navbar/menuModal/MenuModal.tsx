@@ -21,7 +21,9 @@ export default function MenuModal({
         const entry = entries[0];
 
         if (entry.intersectionRect.height >= 280) {
-          logoRef?.current?.classList?.add("hide");
+          if (logoRef?.current?.className === "big-logo") {
+            logoRef?.current?.classList?.add("hide");
+          }
         } else {
           logoRef?.current?.classList?.remove("hide");
         }

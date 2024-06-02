@@ -1,65 +1,46 @@
-.short-modal-container {
+.shortModal-container {
   position: absolute;
-  .short-modal-inner {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -40%);
-    width: 100%;
-    @media (min-width: 500px) {
-      width: max-content;
-    }
-  }
-  .short,
-  .short-body {
-    width: 100%;
+  width: 100%;
+  height: 100%;
+  // z-index: 99;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .shortModal-inner {
     display: block;
-    @media (max-width: 399px) {
-      pointer-events: none;
-    }
+    position: absolute;
+
+    width: 100%;
+    height: 100vh;
   }
-  .span-gallery {
-    margin: 0;
 
-    .short-timer {
-      display: block;
-      position: absolute;
-      left: 0;
-      top: -14px;
-      //   width: 100%;
-      height: 10px;
-      background-color: white;
-      border-radius: 12px;
-    }
-
-    .myProgress {
-      position: absolute;
-      left: 0;
-      top: -14px;
-      height: 10px;
-      background-color: green;
-      border-radius: 12px;
-    }
-    .short-image {
-      display: block;
-      width: 100%;
-      img {
-        display: block;
-        width: 100%;
-        height: 600px;
-        border-radius: 12px;
-
-        @media (min-width: 500px) {
-          width: 400px;
-          height: 600px;
-        }
-      }
-    }
+  .shortModal-inner:hover {
+    cursor: pointer;
   }
-}
 
-html.dark .short-modal {
-  .span-gallery {
-    background-color: white;
+  .short-timer {
+    width: 100%;
+    height: 6px;
+    background-color: transparent;
+    position: relative;
+    top: -10px;
+    border-radius: 12px;
+  }
+
+  .short-timer::after {
+    background-color: green;
+  }
+
+  .short-image {
+    display: block;
+    width: 100%;
+    img {
+      width: 400px;
+      max-width: unset;
+      height: 600px;
+      border-radius: 12px;
+      margin: 0 auto;
+    }
   }
 }

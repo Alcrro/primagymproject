@@ -2,7 +2,6 @@
 import { useCallback, useRef, useEffect, MouseEventHandler } from "react";
 import { useRouter } from "next/navigation";
 import "./galleryModal.scss";
-import { useContextApi } from "@/context/contextAPI/ContextAPI";
 
 export default function Modal({
   children,
@@ -43,7 +42,7 @@ export default function Modal({
   return (
     <div
       ref={overlay}
-      className={`${className}-container fixed z-10 left-0 right-0 top-0 bottom-0 bg-black/60`}
+      className={`${className}-container left-0 right-0 top-0 bottom-0 bg-black/60`}
       onClick={onClick}
     >
       <div

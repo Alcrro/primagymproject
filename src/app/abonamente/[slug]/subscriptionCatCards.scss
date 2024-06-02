@@ -1,11 +1,14 @@
 .subscription-category-cards-container {
+  display: block;
+  max-width: 96rem;
+  margin: 0 auto;
   .subscription-cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;
 
     @media (max-width: 650px) {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
     @media (max-width: 300px) {
       grid-template-columns: 100%;
@@ -53,8 +56,12 @@
         text-align: left;
         font-size: 24px;
       }
-      .price {
-        color: red;
+      .footer-subscription-container {
+        text-align: left;
+        font-size: 18px;
+        .price {
+          color: red;
+        }
       }
       // height: 200px;
     }

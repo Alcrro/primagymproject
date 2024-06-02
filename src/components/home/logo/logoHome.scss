@@ -1,5 +1,8 @@
 .thumbnail {
+  display: block;
+  position: relative;
   height: 110vh;
+
   .title-home-container {
     position: absolute;
     z-index: 99 !important;
@@ -48,6 +51,11 @@
 
 @media (max-width: 690px) {
   .description.bigger {
+    display: none;
+  }
+}
+@media (max-width: 690px) {
+  .big-logo.hide {
     display: none;
   }
 }

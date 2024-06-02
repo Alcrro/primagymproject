@@ -7,7 +7,7 @@ const page = ({ params: { id } }: { params: { id: string } }) => {
   const find: WonderImage = gallery.find((find) => find.id === id)!;
 
   return (
-    <Modal className="">
+    <Modal className="gallery-modal">
       <Image
         src={find.src}
         alt="image"

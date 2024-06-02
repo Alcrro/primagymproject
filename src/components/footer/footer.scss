@@ -1,11 +1,11 @@
 .footer-container {
-  // max-width: 96rem;
+  display: block;
+  max-width: 96rem;
   margin: 20px auto;
   background-color: #e7eff8;
   border-radius: 12px;
   padding: 20px 0;
   position: relative;
-  // top: 100vh;
 
   @font-face {
     font-family: "Monsterrat Black Italic";
@@ -29,12 +29,24 @@
     text-align: center;
     line-height: 30px;
     gap: 1rem;
-    @media (min-width: 360px) {
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    @media (min-width: 300px) {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    @media (min-width: 580px) {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
     }
 
     a:hover {
       opacity: 0.5;
+    }
+
+    .footer-col {
+      // display: block;
+      // padding: 0 5px;
+      margin: 0 auto;
+      max-width: 100%;
     }
   }
 }

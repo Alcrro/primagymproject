@@ -1,44 +1,67 @@
 "use client";
-import Modal from "../../../components/gallery/modal/Modal";
-import React, { useEffect } from "react";
+import React, {
+  MouseEventHandler,
+  useCallback,
+  useEffect,
+  useRef,
+} from "react";
 import ShortBody from "./ShortBody";
-import { useContextApi } from "../../../context/contextAPI/ContextAPI";
 import "./shortModal.scss";
+import { useContextApi } from "@/context/contextAPI/ContextAPI";
+import { useRouter } from "next/navigation";
 export default function ShortModal() {
-  const { activeModal, setActiveModal } = useContextApi();
-  function activeModalHandler() {
-    setActiveModal(false);
-  }
+  const { shortActive, setShortActive } = useContextApi();
+  const modalRef: React.MutableRefObject<HTMLDivElement | any> = useRef();
 
-  // if (activeModal) {
-  //   useEffect(() => {
-  //     let elem = document.querySelector<HTMLDivElement>(
-  //       ".short-modal-progress"
-  //     )!;
-  //     let width = 1;
-  //     let id = setInterval(frame, 30);
-  //     setTimeout(() => {
-  //       activeModalHandler();
-  //     }, 3000);
-  //     function frame() {
-  //       if (width >= 100) {
-  //         clearInterval(id);
-  //       } else {
-  //         width++;
+  const closeModalHandler = () => {};
 
-  //         elem.style.backgroundColor = "green";
-  //         elem.style.width = width + "%";
-  //       }
-  //     }
-  //   }, []);
-  // }
+  const overlay: React.MutableRefObject<HTMLDivElement | any> = useRef(null);
+  const wrapper = useRef(null);
+  const router = useRouter();
 
+  const onDismiss = useCallback(() => {
+    if (overlay.current.className === "active") {
+      console.log("test");
+    } else {
+      setShortActive(false);
+    }
+  }, [router]);
+
+  const onClick: MouseEventHandler = useCallback(
+    (e: any) => {
+      if (e.target === overlay.current || e.target === wrapper.current) {
+        if (onDismiss) onDismiss();
+      }
+    },
+    [onDismiss, overlay, wrapper]
+  );
+
+  const onKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape") onDismiss();
+    },
+    [onDismiss]
+  );
+
+  useEffect(() => {
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [onKeyDown]);
   return (
     <>
-      {activeModal ? (
-        <Modal className="short-modal">
-          <ShortBody shortModal="short-modal-progress" />
-        </Modal>
+      {shortActive ? (
+        <div
+          className={`shortModal-container ${
+            shortActive ? "active" : "inActive"
+          }`}
+          onClick={onClick}
+          ref={overlay}
+        >
+          <div className="short-timer"></div>
+          <div className="shortModal-inner" ref={wrapper}>
+            <ShortBody />
+          </div>
+        </div>
       ) : null}
     </>
   );

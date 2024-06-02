@@ -12,7 +12,7 @@ export default function FooterModal({
   className: string;
 }) {
   return (
-    <div className="footer-rules-container">
+    <div className="footer-col footer-rules-container">
       <div className="title">{title}</div>
       <div className={`footer-${className}`}>
         <ul>

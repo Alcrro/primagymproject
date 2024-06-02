@@ -25,11 +25,11 @@ export default function TrainersModal({ trainers, slug }: ITrainerModal) {
                       <Image
                         src={`/profileTrainers/${trainer.thumbnail}.png`}
                         alt="profile-image"
-                        width={200}
-                        height={200}
+                        width={500}
+                        height={500}
                       />
                     ) : (
-                      <div className="icon-profile-image" />
+                      <div className="icon-profile-image"></div>
                     )}
                   </div>
                   <div className="description-container">

@@ -2,7 +2,7 @@ import React from "react";
 import "./contact.scss";
 export default function Contact() {
   return (
-    <div className="footer-contact break-words">
+    <div className="footer-col footer-contact break-words">
       <div className="title">Contact</div>
 
       <ul className="body">

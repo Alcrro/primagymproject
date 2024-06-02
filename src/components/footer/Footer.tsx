@@ -32,8 +32,8 @@ export default async function Footer() {
             className="regulament"
           />
         </Suspense>
-        <SocialMedia />
       </div>
+      <SocialMedia />
     </div>
   );
 }

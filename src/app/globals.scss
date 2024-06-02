@@ -56,41 +56,32 @@ html::-webkit-scrollbar-track {
 }
 
 body {
+  display: block;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   height: 100%;
 }
 main {
+  display: block;
   position: relative;
 }
 
-body.home main {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  // padding: 0 10px;
-  margin: 0 auto;
-  max-height: 100%;
-  height: 110vh;
-}
 body main {
   position: relative;
-  max-width: 96rem;
-  // padding: 0 10px;
-  margin: 0 auto;
-
-  padding: 0 10px;
-}
-
-.multiple-sections {
-  position: relative;
-  top: 0;
-  transform: translateY(-50px);
-  // max-width: 96rem;
   margin: 0 auto;
 }
 
 body.home .li-cos:hover ~ .bigger {
   display: none;
+}
+
+video {
+  height: 110vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+body.home .main {
+  height: unset;
 }

@@ -1,7 +1,7 @@
-"use client";
 import React from "react";
 import "./shorts.scss";
 import ShortBody from "./ShortBody";
+import ShortModal from "./ShortModal";
 
 export default function Shorts() {
   return (
@@ -11,9 +11,10 @@ export default function Shorts() {
           <span className="span-title">Shorts</span>
         </div>
         <div className="short-body">
-          <ShortBody shortModal="" />
+          <ShortBody />
         </div>
       </div>
+      <ShortModal />
     </div>
   );
 }

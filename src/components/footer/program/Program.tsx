@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Program() {
   return (
-    <div className="footer-program">
+    <div className="footer-col footer-program">
       <div className="title">Program</div>
 
       <ul>

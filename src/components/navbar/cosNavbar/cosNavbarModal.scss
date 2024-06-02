@@ -10,12 +10,12 @@
   border: 1px solid #dddddd79;
   padding: 5px;
 
-  @media (min-width: 691px) and (max-width: 96rem) {
-    transform: translate(-56%);
+  @media (min-width: 691px) and (max-width: 1660px) {
+    transform: translate(-67%);
   }
   .ul-cos {
     display: block;
-    width: 240px;
+    width: 360px;
     padding: 5px;
     border-radius: 12px;
     max-height: 280px;
@@ -23,6 +23,13 @@
     position: relative;
     z-index: 99;
 
+    .head {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+      &:last-child::before {
+        content: "    ";
+      }
+    }
     .li-cos {
       width: 100%;
       display: flex;
@@ -31,7 +38,9 @@
       justify-content: space-between;
       border-bottom: 1px solid #dddddd79;
       padding: 5px;
-
+      .subscription-description {
+        width: 140px;
+      }
       .delete {
         padding: 4px;
       }
@@ -50,6 +59,11 @@
   .cos-modal-footer {
     border-top: 1px solid #dddddd79;
     margin: 0 10px;
+
+    .total {
+      display: block;
+      padding: 10px 0;
+    }
 
     .button-container {
       display: block;

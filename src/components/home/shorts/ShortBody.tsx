@@ -3,12 +3,11 @@ import { useContextApi } from "@/context/contextAPI/ContextAPI";
 import Image from "next/image";
 import React from "react";
 
-export default function ShortBody({ shortModal }: { shortModal: string }) {
-  const { activeModal, setActiveModal } = useContextApi();
-  console.log(activeModal);
+export default function ShortBody() {
+  const { shortActive, setShortActive } = useContextApi();
+
   return (
-    <div className="short" onClick={() => setActiveModal((prev: any) => !prev)}>
-      <div className={`short-timer ${shortModal}`}></div>
+    <div className="short" onClick={() => setShortActive((prev) => !prev)}>
       <div className="short-image">
         <Image
           src={"/cardsImages/cycling2.jpg"}

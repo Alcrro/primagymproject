@@ -3,6 +3,8 @@
 import { usePathname } from "next/navigation";
 import {
   createContext,
+  Dispatch,
+  SetStateAction,
   useContext,
   useEffect,
   useLayoutEffect,
@@ -11,18 +13,45 @@ import {
 } from "react";
 
 interface IContextProps {
-  pathname: string;
+  logoRef: any;
+  titleRef: any;
+  width: number | null;
+  pathname: string | undefined;
+  onHoverActive: boolean;
+  setHoverActive: Dispatch<SetStateAction<boolean>>;
+  active: boolean;
+  setActive: Dispatch<SetStateAction<boolean>>;
+  activeModal: boolean;
+  setActiveModal: Dispatch<SetStateAction<boolean>>;
+  onHoverHandler: Dispatch<SetStateAction<void | undefined>>;
+  shortActive: boolean;
+  setShortActive: Dispatch<SetStateAction<boolean>>;
 }
 
-const ContextAPIProvider = createContext<any>({});
+const ContextAPIProvider = createContext<IContextProps>({
+  width: null,
+  logoRef: null,
+  titleRef: null,
+  pathname: "",
+  onHoverActive: false,
+  setHoverActive: () => false,
+  active: false,
+  setActive: () => false,
+  activeModal: false,
+  setActiveModal: () => false,
+  onHoverHandler: () => undefined,
+  shortActive: false,
+  setShortActive: () => false,
+});
 
 export const ContextAPI = ({ children }: { children: React.ReactNode }) => {
-  const pathname = usePathname();
+  const pathname: string = usePathname();
   const [onHoverActive, setHoverActive] = useState(false);
+  const [shortActive, setShortActive] = useState(false);
   const [active, setActive] = useState(false);
   const [activeModal, setActiveModal] = useState(false);
 
-  const [width, setWidth] = useState();
+  const [width, setWidth] = useState<number | null>(null);
 
   const logoRef: React.MutableRefObject<HTMLLIElement | null> =
     useRef<HTMLLIElement | null>(null);
@@ -68,12 +97,15 @@ export const ContextAPI = ({ children }: { children: React.ReactNode }) => {
         logoRef,
         titleRef,
         onHoverActive,
+        setHoverActive,
         onHoverHandler,
         width,
         active,
         setActive,
         activeModal,
         setActiveModal,
+        shortActive,
+        setShortActive,
       }}
     >
       {children}

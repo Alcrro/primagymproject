@@ -10,10 +10,22 @@ import React, {
   useState,
 } from "react";
 
+export interface IAddToCart {
+  id: number;
+  category: string;
+  pass: number;
+  price: number;
+  description: string;
+  student?: boolean;
+  holydays?: boolean;
+  count: number;
+  title: string;
+}
+
 interface IAddToCartProps {
-  addToCart: [];
-  setAddToCart: Dispatch<SetStateAction<[]>>;
-  removeHandler: (sub: ICart) => void;
+  addToCart: IAddToCart[];
+  setAddToCart: Dispatch<SetStateAction<IAddToCart[]>>;
+  removeHandler: (sub: any) => void;
   addToCartHandler: (sub: any) => void;
 }
 
@@ -29,7 +41,7 @@ export default function AddToCartProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [addToCart, setAddToCart] = useState<[]>([]);
+  const [addToCart, setAddToCart] = useState<IAddToCart[]>([]);
 
   useEffect(() => {
     const load = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -50,20 +62,35 @@ export default function AddToCartProvider({
     if (findIndex >= 0) {
       addToCart.splice(findIndex, 1);
       setAddToCart((list) => [...list]);
+
       localStorage.setItem("cart", JSON.stringify(cart) || "[]");
     } else {
     }
   };
 
-  const addToCartHandler = (category: any) => {
-    let cart: any = [...addToCart, category];
+  const addToCartHandler = (category: ICart) => {
+    const findIndex = addToCart.findIndex(
+      (findIndex: IAddToCart) => findIndex.id === category.id
+    );
 
-    setAddToCart(cart);
-    localStorage.setItem("cart", JSON.stringify(cart) || "[]");
+    if (findIndex >= 0) {
+      addToCart[findIndex].count += 1;
+      setAddToCart((list: any) => [...list]);
+      localStorage.setItem("cart", JSON.stringify(addToCart) || "[]");
+    } else {
+      const item = {
+        ...category,
+        count: 1,
+      };
+
+      let cart: any = [...addToCart, item];
+      setAddToCart(cart);
+      localStorage.setItem("cart", JSON.stringify(cart) || "[]");
+    }
   };
   return (
     <AddToCartContext.Provider
-      value={{ addToCart, setAddToCart, removeHandler ,addToCartHandler}}
+      value={{ addToCart, setAddToCart, removeHandler, addToCartHandler }}
     >
       {children}
     </AddToCartContext.Provider>

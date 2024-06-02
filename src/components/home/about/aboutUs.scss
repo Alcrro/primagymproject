@@ -10,8 +10,12 @@
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
-    padding: 1rem;
+    padding: 5px;
+    text-align: center;
 
+    @media (min-width: 500px) {
+      padding: 1rem;
+    }
     .about-inner {
       // display: flex;
       align-items: center;
@@ -21,13 +25,16 @@
       // max-width: 22em;
 
       position: relative;
-      padding: 1rem;
+      padding: 5px;
       box-sizing: border-box;
 
       background-clip: padding-box; /* !importanté */
       border: solid $border transparent; /* !importanté */
       border-radius: 1em;
 
+      @media (min-width: 500px) {
+        padding: 1rem;
+      }
       &:before {
         content: " ";
         position: absolute;

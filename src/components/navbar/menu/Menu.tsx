@@ -2,12 +2,12 @@
 import Link from "next/link";
 import React, { Dispatch, SetStateAction } from "react";
 import "./menu.scss";
-
 import MenuModal from "../menuModal/MenuModal";
 import { subscriptionCategory } from "../../../app/_core/subscriptionCategories";
 import CosNavbar from "../cosNavbar/CosNavbar";
 import NotifiedCos from "../cosNavbar/NotifiedCos";
 import { useAddToCart } from "../../../context/addToCart/AddToCartContext";
+import { usePathname } from "next/navigation";
 
 interface IMenuProps {
   active?: string;
@@ -24,6 +24,8 @@ export default function Menu({
   onHoverHandler,
 }: IMenuProps) {
   const { addToCart } = useAddToCart();
+  const pathname = usePathname();
+
 
   const ggHandler = () => {
     setActive((prev: any) => !prev);
@@ -34,16 +36,11 @@ export default function Menu({
       <ul>
         {menu.map((menu: any, key: any) => (
           <li key={key} className={`li-${menu.link}`}>
-            <Link href={`/${menu.link}`}>
+            <Link href={`/${menu.link}`} onMouseEnter={onHoverHandler}>
               {active ? (
                 <>
                   {menu.link === "cos" ? <NotifiedCos active={active} /> : null}
-                  <span
-                    className={menu.link}
-                    onClick={ggHandler}
-                    onMouseEnter={onHoverHandler}
-                    onMouseLeave={onHoverHandler}
-                  >
+                  <span className={menu.link} onClick={ggHandler}>
                     {menu.category}
                   </span>
                 </>
@@ -60,7 +57,15 @@ export default function Menu({
                   {subscriptionCategory.map((category, key) => (
                     <li key={key}>
                       <Link href={`/${menu.link}/${category.link}`}>
-                        <span>{category.name}</span>
+                        <span
+                          className={`${
+                            pathname.split("/")[2] === category.link
+                              ? "font-semibold"
+                              : ""
+                          }`}
+                        >
+                          {category.name}
+                        </span>
                       </Link>
                     </li>
                   ))}
