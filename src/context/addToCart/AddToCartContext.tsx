@@ -50,7 +50,7 @@ export default function AddToCartProvider({
   }, []);
 
   const removeHandler = (sub: ICart) => {
-    console.log(sub);
+
 
     const cart: any = addToCart;
     // console.log(cart);

@@ -1,14 +1,13 @@
+"use client";
 import React from "react";
 import "./schedule.scss";
-
 import ScheduleTemplate from "./ScheduleTemplate";
 import ScheduleTitle from "./scheduleTemplate/ScheduleTitle";
 import getSchedule from "../../../app/_lib/home/getSchedule";
 
 export default async function Schedule() {
   const schedules = await getSchedule();
-  const today = new Date();
-  console.log("test");
+
   const weekday = [
     "Sunday",
     "Monday",

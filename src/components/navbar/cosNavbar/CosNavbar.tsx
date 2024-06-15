@@ -29,7 +29,7 @@ export default function CosNavbar({ menu }: { menu: any }) {
               <div className="subscription-description">
                 <div>Abonament:</div>
                 <span>
-                  {sub.category}/{sub.title.split(" ").splice(1)}
+                  {sub.category}/{sub?.title?.split(" ").splice(1)}
                 </span>
               </div>
               <div className="pass">

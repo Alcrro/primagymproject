@@ -20,7 +20,7 @@ export default function LogoHome() {
           </div>
           <li className="description" ref={titleRef}>
             <span className="">
-              Facand sport in fiecare zi, corpul iti va multumii!
+              Facand sport in fiecare zi, corpul iti va multumi!
             </span>
           </li>
         </ul>

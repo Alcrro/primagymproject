@@ -13,19 +13,17 @@ export default function ShortModal() {
   const { shortActive, setShortActive } = useContextApi();
   const modalRef: React.MutableRefObject<HTMLDivElement | any> = useRef();
 
-  const closeModalHandler = () => {};
-
   const overlay: React.MutableRefObject<HTMLDivElement | any> = useRef(null);
   const wrapper = useRef(null);
   const router = useRouter();
 
   const onDismiss = useCallback(() => {
     if (overlay.current.className === "active") {
-      console.log("test");
     } else {
       setShortActive(false);
     }
-  }, [router]);
+    //react-hooks/exhaustive-deps
+  }, [router, shortActive]);
 
   const onClick: MouseEventHandler = useCallback(
     (e: any) => {
