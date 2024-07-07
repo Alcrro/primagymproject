@@ -7,14 +7,14 @@ export const schedules = [
         category: "Cycling",
         oraStart: "17:00",
         oraEnd: "18:00",
-        trainer: "Andreea",
+        trainer: "Freyia",
       },
       {
         id: 1,
         category: "H.I.I.T",
         oraStart: "18:00",
         oraEnd: "19:00",
-        trainer: "Alexandra",
+        trainer: "Sarah",
       },
       {
         id: 2,

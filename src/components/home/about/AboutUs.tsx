@@ -21,7 +21,7 @@ export default function AboutUs() {
         />
         <AboutModel
           photo=""
-          title="Comunitatea PrimaGym"
+          title="Comunitatea Gym"
           description=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
           quidem asperiores illum facilis similique aperiam esse dignissimos,
           cupiditate odit ullam!"

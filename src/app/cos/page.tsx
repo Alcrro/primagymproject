@@ -3,7 +3,7 @@ import Cart from "../../components/cart/Cart";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "PrimaGym - Cos",
+  title: "Gym - Cos",
 };
 
 export default function page() {

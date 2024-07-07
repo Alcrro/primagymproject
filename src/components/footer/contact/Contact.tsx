@@ -9,7 +9,7 @@ export default function Contact() {
         <li className="address">
           <span>strada: </span>
           <span> X, </span>
-          <span>Satu Mare....</span>
+          <span></span>
         </li>
         <li className="phone-number">
           <span>telefon: </span>
@@ -17,7 +17,7 @@ export default function Contact() {
         </li>
         <li className="email-contact">
           <span>email: </span>
-          <span>primagym@primagym.ro</span>
+          <span>gym@alcrro.ro</span>
         </li>
       </ul>
     </div>

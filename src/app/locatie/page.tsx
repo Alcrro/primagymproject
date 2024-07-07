@@ -4,7 +4,7 @@ import React from "react";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "PrimaGym - Locatie",
+  title: "Gym - Locatie",
 };
 
 export default function page() {

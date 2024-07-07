@@ -2,13 +2,12 @@ body .navbar-container:has(.home) {
   position: absolute;
   display: block;
   width: 96rem;
+  max-width: 100%;
   margin: 0 auto;
   padding: 10px 0;
   z-index: 2;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
-  max-width: 96rem;
   background-color: transparent;
   color: white;
 
@@ -20,13 +19,15 @@ body .navbar-container:has(.notHome) {
   display: block;
   position: relative;
   padding: 10px;
-  max-width: 96rem;
+  width: 96rem;
+  max-width: 100%;
   margin: 10px auto;
   border-radius: 12px;
 
   .main {
     display: block;
-    max-width: 96rem;
+    width: 96rem;
+    max-width: 100%;
   }
 }
 .ul-navbar {

@@ -15,7 +15,7 @@ export default function LogoHome() {
       </Suspense>
       <div className="title-home-container">
         <ul>
-          <div className="big-logo" ref={logoRef}>
+          <div className="big-logo text-center" ref={logoRef}>
             <Logo />
           </div>
           <li className="description" ref={titleRef}>

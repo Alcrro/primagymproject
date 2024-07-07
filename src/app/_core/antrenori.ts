@@ -17,7 +17,7 @@ export const trainers: IAntrenorProfile[] = [
   },
   {
     id: 2,
-    name: "alexandra",
+    name: "freyia",
     category: "zumba",
     thumbnail: "",
     age: 22,
@@ -25,7 +25,7 @@ export const trainers: IAntrenorProfile[] = [
   },
   {
     id: 3,
-    name: "andreea",
+    name: "sarah",
     category: "cycling",
     thumbnail: "",
     age: 24,

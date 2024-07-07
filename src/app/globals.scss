@@ -63,7 +63,10 @@ body {
   height: 100%;
 }
 main {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
   position: relative;
 }
 
