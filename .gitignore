@@ -43,3 +43,7 @@ videos/*
 public/_next-video
 
 /src/generated/prisma
+
+# docs & analyzes (kept local only)
+/analyzes
+/src/components/antrenori/docs
