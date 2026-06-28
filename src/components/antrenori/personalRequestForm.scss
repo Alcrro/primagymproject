@@ -1,0 +1,114 @@
+.prf-wrap { margin-top: 1.5rem; }
+
+.prf-trigger {
+  padding: 0.65rem 1.75rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  font-family: inherit;
+
+  &:hover { background-color: var(--color-primary-hover); }
+}
+
+.prf-form-wrap {
+  padding: 1.5rem;
+  background-color: var(--color-card);
+  border-radius: 14px;
+  border: 1px solid rgba(128,128,128,0.12);
+}
+
+.prf-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-content);
+  margin-bottom: 1.25rem;
+  text-transform: capitalize;
+}
+
+.prf-form { display: flex; flex-direction: column; gap: 1rem; }
+
+.prf-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.prf-input,
+.prf-textarea {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(128,128,128,0.25);
+  border-radius: 8px;
+  background-color: var(--color-surface);
+  color: var(--color-content);
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.15s;
+  width: 100%;
+
+  &:focus { outline: none; border-color: var(--color-primary); }
+}
+
+.prf-textarea { resize: vertical; }
+
+.prf-error {
+  font-size: 0.85rem;
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.prf-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+}
+
+.prf-success {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #16a34a;
+  margin-top: 1rem;
+}
+
+.prf-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  padding-top: 0.5rem;
+}
+
+.prf-btn-cancel {
+  padding: 0.5rem 1.1rem;
+  border: 1px solid rgba(128,128,128,0.25);
+  border-radius: 8px;
+  background: none;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  &:hover { background-color: rgba(128,128,128,0.06); }
+}
+
+.prf-btn-submit {
+  padding: 0.5rem 1.5rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  &:hover:not(:disabled) { background-color: var(--color-primary-hover); }
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
