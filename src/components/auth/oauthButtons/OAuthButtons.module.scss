@@ -1,0 +1,57 @@
+.container {
+  margin-top: 1.5rem;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: var(--color-muted);
+    opacity: 0.3;
+  }
+
+  span {
+    color: var(--color-muted);
+    font-size: 0.813rem;
+    white-space: nowrap;
+  }
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+
+  form {
+    display: contents;
+  }
+}
+
+.oauthBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  border: 1px solid var(--color-muted);
+  border-radius: 8px;
+  background-color: var(--color-card);
+  color: var(--color-content);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s;
+  width: 100%;
+
+  &:hover {
+    background-color: var(--color-surface);
+    border-color: var(--color-content);
+  }
+}
