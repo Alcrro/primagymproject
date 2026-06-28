@@ -46,4 +46,5 @@ public/_next-video
 
 # docs & analyzes (kept local only)
 /analyzes
+/docs
 /src/components/antrenori/docs
