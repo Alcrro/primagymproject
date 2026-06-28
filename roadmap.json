@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Abonamente",
+    "status": "done"
+  },
+  {
+    "name": "Antrenori",
+    "status": "in-progress"
+  },
+  {
+    "name": "Auth",
+    "status": "in-progress"
+  },
+  {
+    "name": "Booking Sesiuni",
+    "status": "in-progress"
+  },
+  {
+    "name": "Cos",
+    "status": "done"
+  },
+  {
+    "name": "Dark Mode",
+    "status": "done"
+  },
+  {
+    "name": "Footer",
+    "status": "done"
+  },
+  {
+    "name": "Galerie",
+    "status": "done"
+  },
+  {
+    "name": "Home",
+    "status": "done"
+  },
+  {
+    "name": "Locatie",
+    "status": "done"
+  },
+  {
+    "name": "Locatii",
+    "status": "in-progress"
+  },
+  {
+    "name": "Navbar",
+    "status": "done"
+  },
+  {
+    "name": "Profil",
+    "status": "in-progress"
+  },
+  {
+    "name": "QR Acces",
+    "status": "in-progress"
+  }
+]
