@@ -3,7 +3,7 @@ import "./globals.scss";
 import Navbar from "@/components/navbarV2/NavbarV2";
 import DarkThemeProviders from "./darkThemeProviders";
 import Footer from "@/components/footer/Footer";
-import localFont from "next/font/local";
+import { Roboto } from "next/font/google";
 import { ContextAPI } from "@/context/contextAPI/ContextAPI";
 import AddToCartProvider from "@/context/addToCart/AddToCartContext";
 import Head from "next/head";
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
 	},
 };
 
-const roboto = localFont({
-	src: "../../public/fonts/roboto-400.woff2",
+const roboto = Roboto({
 	weight: "400",
+	subsets: ["latin", "latin-ext"],
 	display: "swap",
 });
 
