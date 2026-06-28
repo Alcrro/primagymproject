@@ -48,17 +48,16 @@ export const ContextAPI = ({ children }: { children: React.ReactNode }) => {
   };
 
   useLayoutEffect(() => {
-    const container: any = document.querySelector(".navbar-container");
-    const collapseActive =
-      document.querySelector(".collapse-navbar-menu") || null;
-    const menuContainer = document.querySelector(".menu-container.mobile");
+    const container = document.querySelector(".navbar-container");
 
-    window?.addEventListener("resize", () => {
-      if (container?.clientWidth >= 690) {
+    const handleResize = () => {
+      if (container && container.clientWidth >= 900) {
         setActive(false);
-      } else {
       }
-    });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [width]);
 
   return (

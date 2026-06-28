@@ -1,118 +1,275 @@
+@keyframes cartDropdownIn {
+  from {
+    opacity: 0;
+    transform: translate(-56%, -6px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-56%, 0);
+  }
+}
+
 .modal-container.modal-cos {
   display: none;
   position: absolute;
   top: 100%;
   left: 50%;
-  transform: translate(-50%);
-  z-index: 99999 !important;
-  border-radius: 12px;
-  text-align: center;
-  border: 1px solid #dddddd79;
-  padding: 5px;
+  transform: translate(-56%);
+  z-index: 99999;
+  width: 300px;
+  padding-top: 8px;
+  animation: cartDropdownIn 0.18s ease forwards;
 
   @media (min-width: 691px) and (max-width: 96rem) {
     transform: translate(-56%);
   }
-  .ul-cos {
-    display: block;
-    width: 240px;
-    padding: 5px;
-    border-radius: 12px;
-    max-height: 280px;
-    overflow-y: scroll;
-    position: relative;
-    z-index: 99;
+}
 
-    .li-cos {
-      width: 100%;
+// ── Toate stilurile nested în .cart-dropdown pentru specificity > .menu-container ul ──
+
+.cart-dropdown {
+  background-color: var(--color-modal);
+  border: 1px solid rgba(128, 128, 128, 0.15);
+  border-radius: 16px;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 10px 30px -5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+
+  // ── Header ────────────────────────────────────────────────────────────────
+  .cart-dropdown-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem 0.75rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.12);
+  }
+
+  .cart-dropdown-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-content);
+    letter-spacing: 0.02em;
+  }
+
+  .cart-dropdown-count {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    font-weight: 500;
+  }
+
+  // ── Item list — specificity 0-2-0 bate .menu-container ul (0-1-1) ─────────
+  .cart-dropdown-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+    max-height: 220px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(128, 128, 128, 0.25) transparent;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(128, 128, 128, 0.25);
+      border-radius: 4px;
+    }
+  }
+
+  // ── Item — specificity 0-3-0 bate .menu-container ul li (0-1-2) ──────────
+  .cart-dropdown-list .cart-item {
+    display: block;
+    width: 100%;
+    padding: 0 0.75rem;
+
+    & + .cart-item {
+      border-top: 1px solid rgba(128, 128, 128, 0.1);
+    }
+  }
+
+  .cart-item-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 0;
+    width: 100%;
+  }
+
+  .cart-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .cart-item-category {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-content);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .cart-item-pass {
+    font-size: 0.72rem;
+    color: var(--color-muted);
+  }
+
+  .cart-item-price {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .cart-item-stepper {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    flex-shrink: 0;
+
+    .stepper-btn {
       display: flex;
       align-items: center;
-      gap: 10px;
-      justify-content: space-between;
-      border-bottom: 1px solid #dddddd79;
-      padding: 5px;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      border: 1px solid rgba(128, 128, 128, 0.25);
+      background: transparent;
+      color: var(--color-content);
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+      flex-shrink: 0;
 
-      .delete {
-        padding: 4px;
+      i {
+        font-size: 12px;
+        line-height: 1;
       }
-      .delete:hover {
-        padding: 4px;
-        color: red;
-        cursor: pointer;
+
+      &:hover {
+        background: rgba(255, 92, 0, 0.1);
+        border-color: var(--color-primary);
+        color: var(--color-primary);
       }
     }
 
-    .li-cos:last-child {
-      border-bottom: none;
+    .stepper-qty {
+      min-width: 18px;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-content);
+    }
+  }
+
+  .cart-item-delete {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    color: var(--color-muted);
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    font-family: inherit;
+    flex-shrink: 0;
+
+    i {
+      font-size: 0.8rem;
+    }
+
+    &:hover {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
     }
   }
 
-  .cos-modal-footer {
-    border-top: 1px solid #dddddd79;
-    margin: 0 10px;
+  // ── Footer ────────────────────────────────────────────────────────────────
+  .cart-dropdown-footer {
+    padding: 0.75rem 1rem 1rem;
+    border-top: 1px solid rgba(128, 128, 128, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 
-    .button-container {
-      display: block;
-      margin: 10px 0;
+  .cart-total {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-      .btn.checkout {
-        display: block;
-        padding: 4px;
-        background-color: rgba(0, 153, 255, 0.671);
-        border-radius: 12px;
-        margin: 0 auto;
-        width: 100%;
-      }
+  .cart-total-label {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
 
-      .btn.checkout:hover {
-        background-color: rgb(0, 153, 255);
+  .cart-total-amount {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--color-content);
+  }
+
+  .cart-checkout-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.7rem 1rem;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    letter-spacing: 0.02em;
+    font-family: inherit;
+
+    i {
+      font-size: 0.8rem;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      background: var(--color-primary-hover);
+
+      i {
+        transform: translateX(3px);
       }
     }
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
   }
-}
-
-html.dark .modal-container.modal-cos {
-  background-color: black;
-  color: white;
-}
-html.light .modal-container.modal-cos,
-.modal-container.modal-cos {
-  background-color: white;
-  color: #000;
-}
-
-html.dark body.home .modal-container.modal-cos,
-.modal-container.modal-cos {
-  background-color: transparent;
-  color: white;
-}
-html.light body.home .modal-container.modal-cos,
-.modal-container.modal-cos {
-  background-color: transparent;
-  color: white;
-}
-
-html .ul-cos::-webkit-scrollbar {
-  width: 6px;
-}
-
-/* Handle */
-html.dark .ul-cos::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  border: 3px solid rgba(255, 255, 255, 0.534);
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-html.dark .ul-cos::-webkit-scrollbar-thumb:hover {
-  border: 3px solid rgb(255, 255, 255);
-}
-
-html.light .ul-cos::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  border: 3px solid rgba(146, 144, 144, 0.836);
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-html.light .ul-cos::-webkit-scrollbar-thumb:hover {
-  border: 3px solid rgb(0, 0, 0);
 }

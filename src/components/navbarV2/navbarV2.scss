@@ -1,0 +1,485 @@
+// ── Container ─────────────────────────────────────────────────────────────────
+
+.navbar-v2-container {
+  background-color: var(--color-navbar);
+  color: var(--color-content);
+  border-radius: 12px;
+  padding: 0 20px;
+  margin: 10px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 50;
+}
+
+body.home .navbar-v2-container {
+  background-color: transparent;
+  color: #fff;
+  box-shadow: none;
+
+  .v2-link,
+  .v2-user-name,
+  .v2-auth-trigger {
+    color: #fff;
+  }
+
+  .v2-chevron {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .v2-link:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .v2-divider {
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+}
+
+// ── Inner row ─────────────────────────────────────────────────────────────────
+
+.v2-inner {
+  display: flex;
+  align-items: center;
+  height: 72px;
+  position: relative;
+}
+
+// ── Logo ──────────────────────────────────────────────────────────────────────
+
+.v2-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  img {
+    height: 52px;
+    width: auto;
+    object-fit: contain;
+  }
+}
+
+// ── Nav — centrat absolut față de navbar ──────────────────────────────────────
+
+.v2-nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+}
+
+// ── Link ──────────────────────────────────────────────────────────────────────
+
+.v2-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--color-content);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: color 0.15s, background-color 0.15s;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 12px;
+    right: 12px;
+    height: 2px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
+    color: var(--color-primary);
+    background-color: rgba(255, 92, 0, 0.06);
+
+    &::after {
+      transform: scaleX(1);
+    }
+
+    .v2-chevron {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.v2-chevron {
+  color: var(--color-muted);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+// ── Dropdown wrapper ──────────────────────────────────────────────────────────
+
+.v2-dropdown-wrap {
+  position: relative;
+
+  &:hover > .modal-container.modal-abonamente,
+  &:hover > .modal-container.modal-antrenori,
+  &:hover > .modal-container.modal-cos {
+    display: block;
+  }
+
+  &:hover .v2-link {
+    color: var(--color-primary);
+    background-color: rgba(255, 92, 0, 0.06);
+
+    &::after {
+      transform: scaleX(1);
+    }
+
+    .v2-chevron {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+// Right-align the cos dropdown so it doesn't go off-screen
+.v2-cos-wrap .modal-container.modal-cos {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+
+// ── Cart badge ────────────────────────────────────────────────────────────────
+
+.v2-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 5px;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+// ── Actions (auth + theme + hamburger) ────────────────────────────────────────
+
+.v2-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+// Separator vizual între auth și ThemeSwitch
+.v2-auth-theme-sep {
+  width: 1px;
+  height: 22px;
+  background-color: rgba(128, 128, 128, 0.2);
+  flex-shrink: 0;
+  margin: 0 4px;
+}
+
+// ── Auth ──────────────────────────────────────────────────────────────────────
+
+.v2-auth-wrap {
+  position: relative;
+
+  &:hover .v2-auth-dropdown {
+    display: flex;
+  }
+
+  &:hover .v2-chevron {
+    transform: rotate(180deg);
+  }
+
+  // Invisible bridge fills the 8px gap so hover isn't lost mid-movement
+  &:hover::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 8px;
+  }
+}
+
+.v2-auth-trigger {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 10px 5px 5px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+    border-color: rgba(128, 128, 128, 0.15);
+  }
+}
+
+.v2-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(255, 92, 0, 0.25);
+}
+
+.v2-avatar-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(255, 92, 0, 0.35);
+}
+
+.v2-user-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+
+  @media (max-width: 1100px) {
+    display: none;
+  }
+}
+
+.v2-auth-dropdown {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 148px;
+  background-color: var(--color-modal);
+  border: 1px solid rgba(128, 128, 128, 0.15);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14), 0 2px 6px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.v2-auth-item {
+  display: block;
+  width: 100%;
+  padding: 0.65rem 1rem;
+  text-decoration: none;
+  color: var(--color-content);
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.15s, color 0.15s;
+  font-family: inherit;
+
+  &:hover {
+    background-color: rgba(255, 92, 0, 0.07);
+    color: var(--color-primary);
+  }
+
+  &--admin {
+    color: var(--color-primary);
+    font-weight: 600;
+    border-top: 1px solid rgba(128, 128, 128, 0.1);
+    margin-top: 2px;
+
+    &:hover {
+      background-color: rgba(255, 92, 0, 0.1);
+    }
+  }
+}
+
+// ── Login button ──────────────────────────────────────────────────────────────
+
+.v2-login-btn {
+  padding: 0.45rem 1.2rem;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.15s, transform 0.1s;
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+// ── Hamburger ─────────────────────────────────────────────────────────────────
+
+.v2-hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  color: currentColor;
+  transition: background-color 0.15s;
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.12);
+  }
+
+  @media (max-width: 900px) {
+    display: flex;
+  }
+}
+
+// ── Mobile menu ───────────────────────────────────────────────────────────────
+
+.v2-mobile {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 4px 14px;
+  border-top: 1px solid rgba(128, 128, 128, 0.1);
+  gap: 2px;
+}
+
+.v2-mobile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  text-decoration: none;
+  color: var(--color-content);
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  border-radius: 8px;
+  transition: background-color 0.15s, color 0.15s;
+  width: 100%;
+  text-align: left;
+
+  &:hover {
+    background-color: rgba(255, 92, 0, 0.07);
+    color: var(--color-primary);
+  }
+}
+
+.v2-mobile-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.v2-mobile-label {
+  display: block;
+  padding: 8px 14px 3px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.v2-mobile-sub {
+  padding-left: 28px;
+  font-size: 0.875rem;
+}
+
+// ── Responsive: ecrane mici ───────────────────────────────────────────────────
+
+// Sub 600px: ascunde separatorul și redu padding-ul navbar-ului
+@media (max-width: 600px) {
+  .navbar-v2-container {
+    padding: 0 12px;
+  }
+
+  .v2-auth-theme-sep {
+    display: none;
+  }
+}
+
+// Sub 400px: logo mai mic, navbar mai scund, ascunde chevron din auth
+@media (max-width: 400px) {
+  .navbar-v2-container {
+    padding: 0 10px;
+    border-radius: 8px;
+  }
+
+  .v2-inner {
+    height: 60px;
+  }
+
+  .v2-logo img {
+    height: 38px;
+  }
+
+  .v2-auth-trigger {
+    padding: 4px 6px 4px 4px;
+    gap: 5px;
+  }
+
+  .v2-chevron {
+    display: none;
+  }
+
+  .v2-avatar,
+  .v2-avatar-img {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+}
+
+// Sub 300px: flex column — logo sus, actions jos
+@media (max-width: 300px) {
+  .navbar-v2-container {
+    padding: 8px 10px;
+  }
+
+  .v2-inner {
+    flex-direction: column;
+    height: auto;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .v2-logo {
+    img {
+      height: 32px;
+    }
+  }
+
+  .v2-actions {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,8 +1,18 @@
 .logo-container {
-  // display: block;
-
   .logo-image {
     max-width: 200px;
+
+    @media (max-width: 768px) {
+      max-width: 140px;
+    }
+
+    @media (max-width: 400px) {
+      max-width: 120px;
+    }
+
+    @media (max-width: 300px) {
+      max-width: 90px;
+    }
 
     @media (max-width: 245px) {
       max-width: 70vw;

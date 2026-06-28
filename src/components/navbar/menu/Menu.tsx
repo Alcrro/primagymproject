@@ -1,20 +1,25 @@
 "use client";
 import Link from "next/link";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import "./menu.scss";
 
 import MenuModal from "../menuModal/MenuModal";
-import { subscriptionCategory } from "@/app/_core/subscriptionCategories";
 import CosNavbar from "../cosNavbar/CosNavbar";
 import NotifiedCos from "../cosNavbar/NotifiedCos";
 import { useAddToCart } from "@/context/addToCart/AddToCartContext";
+import type { INavbarItem } from "@/types/navbar";
+
+interface IMenuCategory {
+  slug: string;
+  name: string;
+}
 
 interface IMenuProps {
   active?: string;
-  setActive?: Dispatch<SetStateAction<boolean>> | any;
-  onHoverHandler?: Dispatch<SetStateAction<boolean>> | any;
-  menu: [];
-  onHoverActive?: boolean;
+  setActive?: Dispatch<SetStateAction<boolean>>;
+  onHoverHandler?: () => void;
+  menu: INavbarItem[];
+  categories: IMenuCategory[];
 }
 
 export default function Menu({
@@ -22,54 +27,53 @@ export default function Menu({
   setActive,
   menu,
   onHoverHandler,
+  categories,
 }: IMenuProps) {
   const { addToCart } = useAddToCart();
 
-  const ggHandler = () => {
-    setActive((prev: any) => !prev);
+  const closeMobileMenuHandler = () => {
+    setActive?.((prev) => !prev);
   };
 
   return (
     <li className={`menu-container ${active}`}>
       <ul>
-        {menu.map((menu: any, key: any) => (
-          <li key={key} className={`li-${menu.link}`}>
-            <Link href={`/${menu.link}`}>
+        {menu.map((item: INavbarItem, key: number) => (
+          <li key={key} className={`li-${item.link}`}>
+            <Link href={`/${item.link}`}>
               {active ? (
                 <>
-                  {menu.link === "cos" ? <NotifiedCos active={active} /> : null}
+                  {item.link === "cos" ? <NotifiedCos active={active} /> : null}
                   <span
-                    className={menu.link}
-                    onClick={ggHandler}
+                    className={item.link}
+                    onClick={closeMobileMenuHandler}
                     onMouseEnter={onHoverHandler}
                     onMouseLeave={onHoverHandler}
                   >
-                    {menu.category}
+                    {item.category}
                   </span>
                 </>
               ) : (
                 <>
-                  {menu.link === "cos" ? <NotifiedCos /> : null}
-                  <span className={menu.link}> {menu.category}</span>
+                  {item.link === "cos" ? <NotifiedCos /> : null}
+                  <span className={item.link}>{item.category}</span>
                 </>
               )}
             </Link>
-            {menu.modal && menu.link === "abonamente" ? (
-              <MenuModal className={menu.link}>
+            {item.modal && item.link === "abonamente" ? (
+              <MenuModal className={item.link}>
                 <ul>
-                  {subscriptionCategory.map((category, key) => (
-                    <li key={key}>
-                      <Link href={`/${menu.link}/${category.link}`}>
+                  {categories.map((category) => (
+                    <li key={category.slug}>
+                      <Link href={`/${item.link}/${category.slug}`}>
                         <span>{category.name}</span>
                       </Link>
                     </li>
                   ))}
                 </ul>
               </MenuModal>
-            ) : menu.modal && menu.link === "cos" && addToCart.length > 0 ? (
-              <>
-                <CosNavbar menu={menu} />
-              </>
+            ) : item.modal && item.link === "cos" && addToCart.length > 0 ? (
+              <CosNavbar menu={item} />
             ) : null}
           </li>
         ))}

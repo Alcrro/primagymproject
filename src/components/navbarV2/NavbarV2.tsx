@@ -1,15 +1,18 @@
-import React, { Suspense } from "react";
-import "./navbar.scss";
-import NavbarModal from "./NavbarModal";
-import { menuNavbar } from "@/app/_core/navbarMenu";
+import { Suspense } from "react";
+import NavbarV2Client from "./NavbarV2Client";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import type { IAuthUser } from "@/types/auth";
 
-export default async function Navbar() {
-  const [session, categories] = await Promise.all([
+export default async function NavbarV2() {
+  const [session, categories, locations] = await Promise.all([
     auth(),
     prisma.subscriptionCategory.findMany({
+      where: { isActive: true },
+      orderBy: { sortOrder: "asc" },
+      select: { slug: true, name: true },
+    }),
+    prisma.location.findMany({
       where: { isActive: true },
       orderBy: { sortOrder: "asc" },
       select: { slug: true, name: true },
@@ -27,9 +30,9 @@ export default async function Navbar() {
     : null;
 
   return (
-    <nav className="nav navbar-container">
+    <nav className="navbar-v2-container">
       <Suspense fallback={null}>
-        <NavbarModal menu={menuNavbar} user={user} categories={categories} />
+        <NavbarV2Client user={user} categories={categories} locations={locations} />
       </Suspense>
     </nav>
   );
