@@ -24,7 +24,7 @@ export default async function ProfilPage() {
   ])
 
   const isOAuth = !user?.password
-  const paidOrders = orders.filter((o) => o.status === "PAID")
+  const paidOrders = orders.filter((o: (typeof orders)[number]) => o.status === "PAID")
 
   const now = new Date()
   const hasActiveSub = paidOrders.some((o) =>
