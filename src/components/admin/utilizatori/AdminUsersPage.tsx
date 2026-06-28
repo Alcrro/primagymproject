@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useTransition } from "react"
+import Image from "next/image"
 import { updateUserRoleAction, toggleUserActiveAction } from "@/app/actions/users"
 import type { UserRole } from "@/types/auth"
 import "./adminUsers.scss"
@@ -120,7 +121,7 @@ export default function AdminUsersPage({ users, currentUserId }: IAdminUsersPage
                     <div className="au-user-cell">
                       <div className="au-avatar">
                         {user.image
-                          ? <img src={user.image} alt={user.name ?? ""} />
+                          ? <Image src={user.image} alt={user.name ?? ""} width={32} height={32} />
                           : <span>{initials}</span>
                         }
                       </div>

@@ -113,7 +113,7 @@ export default function Cart({ isLoggedIn }: { isLoggedIn: boolean }) {
             )}
           </div>
           {discountError && <p className="discount-error">{discountError}</p>}
-          {appliedCode && <p className="discount-success">Cod „{appliedCode}" aplicat</p>}
+          {appliedCode && <p className="discount-success">Cod &bdquo;{appliedCode}&rdquo; aplicat</p>}
 
           <div className="summary-rows">
             <div className="summary-row">

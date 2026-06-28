@@ -9,7 +9,7 @@ export default function SuccesPage() {
 
   useEffect(() => {
     clearCartHandler();
-  }, []);
+  }, [clearCartHandler]);
 
   return (
     <div className="succes-container">
