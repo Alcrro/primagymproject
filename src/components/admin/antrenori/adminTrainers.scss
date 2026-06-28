@@ -1,0 +1,378 @@
+.at-wrapper {
+  padding: 2rem 1.5rem 4rem;
+}
+
+.at-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.at-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-content);
+}
+
+.at-btn-add {
+  padding: 0.5rem 1.25rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+  }
+}
+
+.at-filters {
+  margin-bottom: 1.25rem;
+}
+
+.at-select {
+  padding: 0.45rem 0.875rem;
+  border: 1px solid rgba(128, 128, 128, 0.25);
+  border-radius: 8px;
+  background-color: var(--color-card);
+  color: var(--color-content);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.at-table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(128, 128, 128, 0.12);
+}
+
+.at-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+
+  th {
+    background-color: var(--color-card);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 700;
+    color: var(--color-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.12);
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 0.875rem 1rem;
+    color: var(--color-content);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.08);
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background-color: rgba(128, 128, 128, 0.03);
+  }
+}
+
+.at-row-inactive td {
+  opacity: 0.5;
+}
+
+.at-cell-name {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.at-muted {
+  color: var(--color-muted);
+}
+
+.at-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.at-badge {
+  background-color: rgba(255, 92, 0, 0.1);
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+  text-transform: capitalize;
+}
+
+.at-status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 100px;
+
+  &.active {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: #16a34a;
+  }
+
+  &.inactive {
+    background-color: rgba(128, 128, 128, 0.1);
+    color: var(--color-muted);
+  }
+}
+
+.at-row-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.at-btn-edit,
+.at-btn-toggle,
+.at-btn-delete {
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  transition: background-color 0.15s;
+}
+
+.at-btn-edit {
+  border-color: rgba(128, 128, 128, 0.3);
+  color: var(--color-content);
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.08);
+  }
+}
+
+.at-btn-toggle {
+  border-color: rgba(255, 92, 0, 0.4);
+  color: var(--color-primary);
+
+  &:hover {
+    background-color: rgba(255, 92, 0, 0.06);
+  }
+}
+
+.at-btn-delete {
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+
+  &:hover {
+    background-color: rgba(239, 68, 68, 0.06);
+  }
+}
+
+.at-empty {
+  text-align: center;
+  color: var(--color-muted);
+  padding: 2rem !important;
+}
+
+// ── Form modal ────────────────────────────────────────────────────────────────
+
+.tf-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.tf-modal {
+  background-color: var(--color-modal);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 640px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 1.75rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.tf-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.tf-modal-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-content);
+}
+
+.tf-close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--color-muted);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+    color: var(--color-content);
+  }
+}
+
+.tf-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.tf-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tf-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tf-hint {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.75rem;
+}
+
+.tf-input,
+.tf-textarea {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(128, 128, 128, 0.25);
+  border-radius: 8px;
+  background-color: var(--color-surface);
+  color: var(--color-content);
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.15s;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+}
+
+.tf-textarea {
+  resize: vertical;
+}
+
+.tf-fieldset {
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  border-radius: 8px;
+  padding: 0.875rem 1rem;
+}
+
+.tf-legend {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0 6px;
+}
+
+.tf-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.tf-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-content);
+  cursor: pointer;
+  text-transform: capitalize;
+
+  input[type="checkbox"] {
+    accent-color: var(--color-primary);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+}
+
+.tf-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+.tf-btn-cancel {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid rgba(128, 128, 128, 0.25);
+  border-radius: 8px;
+  background: none;
+  color: var(--color-content);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.08);
+  }
+}
+
+.tf-btn-save {
+  padding: 0.5rem 1.5rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+  }
+}

@@ -1,0 +1,166 @@
+.as-wrapper {
+  padding: 2rem 1.5rem 4rem;
+}
+
+.as-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.as-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-content);
+}
+
+.as-btn-add {
+  padding: 0.5rem 1.25rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+  }
+}
+
+.as-filters {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.as-select {
+  padding: 0.45rem 0.875rem;
+  border: 1px solid rgba(128, 128, 128, 0.25);
+  border-radius: 8px;
+  background-color: var(--color-card);
+  color: var(--color-content);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.as-table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(128, 128, 128, 0.12);
+}
+
+.as-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+
+  th {
+    background-color: var(--color-card);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 700;
+    color: var(--color-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.12);
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 0.875rem 1rem;
+    color: var(--color-content);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.08);
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background-color: rgba(128, 128, 128, 0.03);
+  }
+}
+
+.as-muted {
+  color: var(--color-muted);
+}
+
+.as-category {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.as-row-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.as-btn-edit,
+.as-btn-cancel {
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  transition: background-color 0.15s;
+}
+
+.as-btn-edit {
+  border-color: rgba(128, 128, 128, 0.3);
+  color: var(--color-content);
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.08);
+  }
+}
+
+.as-btn-cancel {
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+
+  &:hover {
+    background-color: rgba(239, 68, 68, 0.06);
+  }
+}
+
+.as-empty {
+  text-align: center;
+  color: var(--color-muted);
+  padding: 2rem !important;
+}
+
+// ── Status badges ─────────────────────────────────────────────────────────────
+
+.as-status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+
+  &.scheduled {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: #16a34a;
+  }
+
+  &.cancelled {
+    background-color: rgba(128, 128, 128, 0.1);
+    color: var(--color-muted);
+  }
+
+  &.completed {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #2563eb;
+  }
+}

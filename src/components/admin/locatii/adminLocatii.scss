@@ -1,0 +1,206 @@
+// Page-specific overrides for Locatii admin
+// Core table/form styles come from adminTrainers.scss (imported via AdminLocatiiPage & AdminLocationForm)
+
+.al-wrapper {
+  padding: 2rem 1.5rem 4rem;
+}
+
+.al-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.al-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-content);
+}
+
+.al-btn-add {
+  padding: 0.5rem 1.25rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+  }
+}
+
+.al-table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(128, 128, 128, 0.12);
+}
+
+.al-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+
+  th {
+    background-color: var(--color-card);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 700;
+    color: var(--color-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.12);
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 0.875rem 1rem;
+    color: var(--color-content);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.08);
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background-color: rgba(128, 128, 128, 0.03);
+  }
+}
+
+.al-row-inactive td {
+  opacity: 0.5;
+}
+
+.al-cell-name {
+  font-weight: 600;
+}
+
+.al-muted {
+  color: var(--color-muted);
+}
+
+.al-status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 100px;
+
+  &.active {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: #16a34a;
+  }
+
+  &.inactive {
+    background-color: rgba(128, 128, 128, 0.1);
+    color: var(--color-muted);
+  }
+}
+
+.al-row-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.al-btn-edit,
+.al-btn-toggle,
+.al-btn-delete {
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  transition: background-color 0.15s;
+}
+
+.al-btn-edit {
+  border-color: rgba(128, 128, 128, 0.3);
+  color: var(--color-content);
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.08);
+  }
+}
+
+.al-btn-toggle {
+  border-color: rgba(255, 92, 0, 0.4);
+  color: var(--color-primary);
+
+  &:hover {
+    background-color: rgba(255, 92, 0, 0.06);
+  }
+}
+
+.al-btn-delete {
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+
+  &:hover {
+    background-color: rgba(239, 68, 68, 0.06);
+  }
+}
+
+.al-empty {
+  text-align: center;
+  color: var(--color-muted);
+  padding: 2rem !important;
+}
+
+// ── Schedule editor ───────────────────────────────────────────────────────────
+
+.al-schedule-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.al-schedule-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border: 1px dashed rgba(128, 128, 128, 0.35);
+  border-radius: 6px;
+  background: none;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  margin-top: 0.25rem;
+
+  &:hover {
+    color: var(--color-primary);
+    border-color: rgba(255, 92, 0, 0.4);
+  }
+}
+
+.al-schedule-remove {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: none;
+  color: var(--color-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s;
+
+  &:hover {
+    color: #ef4444;
+  }
+}

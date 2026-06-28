@@ -1,0 +1,273 @@
+.ab-wrapper {
+  padding: 2rem 1.5rem 4rem;
+}
+
+.ab-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.ab-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-content);
+}
+
+.ab-empty-global {
+  text-align: center;
+  color: var(--color-muted);
+  padding: 2rem;
+}
+
+// ── Category section ──────────────────────────────────────────────────────────
+
+.ab-category {
+  margin-bottom: 2rem;
+  border: 1px solid rgba(128, 128, 128, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.ab-category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 1.25rem;
+  background-color: var(--color-card);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.12);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.ab-category-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ab-category-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-content);
+}
+
+.ab-btn-toggle-cat {
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 92, 0, 0.4);
+  color: var(--color-primary);
+  background: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: rgba(255, 92, 0, 0.06);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// ── Table ─────────────────────────────────────────────────────────────────────
+
+.ab-table-wrap {
+  overflow-x: auto;
+}
+
+.ab-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+
+  th {
+    background-color: var(--color-card);
+    padding: 0.625rem 1rem;
+    text-align: left;
+    font-weight: 700;
+    color: var(--color-muted);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.12);
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 0.8rem 1rem;
+    color: var(--color-content);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.08);
+    vertical-align: middle;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background-color: rgba(128, 128, 128, 0.03);
+  }
+}
+
+.ab-row-inactive td {
+  opacity: 0.5;
+}
+
+.ab-cell-name {
+  font-weight: 600;
+}
+
+.ab-muted {
+  color: var(--color-muted);
+}
+
+.ab-discount {
+  background-color: rgba(255, 92, 0, 0.1);
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+.ab-status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+
+  &.active {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: #16a34a;
+  }
+
+  &.inactive {
+    background-color: rgba(128, 128, 128, 0.1);
+    color: var(--color-muted);
+  }
+}
+
+// ── Inline price edit ─────────────────────────────────────────────────────────
+
+.ab-cell-price {
+  min-width: 160px;
+}
+
+.ab-price-value {
+  font-weight: 600;
+}
+
+.ab-price-edit {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.ab-price-input {
+  width: 90px;
+  padding: 4px 8px;
+  border: 1px solid var(--color-primary);
+  border-radius: 6px;
+  background-color: var(--color-surface);
+  color: var(--color-content);
+  font-size: 0.875rem;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+}
+
+.ab-btn-save-price,
+.ab-btn-cancel-price {
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.ab-btn-save-price {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.ab-btn-cancel-price {
+  background: none;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  color: var(--color-content);
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.08);
+  }
+}
+
+// ── Row actions ───────────────────────────────────────────────────────────────
+
+.ab-row-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.ab-btn-edit,
+.ab-btn-toggle {
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  transition: background-color 0.15s;
+}
+
+.ab-btn-edit {
+  border-color: rgba(128, 128, 128, 0.3);
+  color: var(--color-content);
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.08);
+  }
+}
+
+.ab-btn-toggle {
+  border-color: rgba(255, 92, 0, 0.4);
+  color: var(--color-primary);
+
+  &:hover {
+    background-color: rgba(255, 92, 0, 0.06);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.ab-empty {
+  text-align: center;
+  color: var(--color-muted);
+  padding: 1.5rem !important;
+}
