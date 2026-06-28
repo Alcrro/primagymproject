@@ -1,0 +1,199 @@
+// ── Container ─────────────────────────────────────────────────────────────────
+
+.sv2s-container {
+  padding: 1.5rem 0;
+}
+
+// ── Header ────────────────────────────────────────────────────────────────────
+
+.sv2s-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 0.875rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+}
+
+.sv2s-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-primary);
+}
+
+// ── Grid ──────────────────────────────────────────────────────────────────────
+
+.sv2s-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+// ── Card ──────────────────────────────────────────────────────────────────────
+
+.sv2s-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.02);
+
+    .sv2s-play {
+      opacity: 1;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+    border-radius: 14px;
+  }
+}
+
+// ── Image wrapper ─────────────────────────────────────────────────────────────
+
+.sv2s-img-wrap {
+  position: relative;
+  width: 180px;
+  height: 300px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+
+  @media (max-width: 400px) {
+    width: 150px;
+    height: 250px;
+  }
+}
+
+.sv2s-img {
+  object-fit: cover;
+  object-position: center;
+}
+
+// ── Play overlay ──────────────────────────────────────────────────────────────
+
+.sv2s-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.35);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: 14px;
+}
+
+// ── Card label ────────────────────────────────────────────────────────────────
+
+.sv2s-card-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+// ── Modal overlay ─────────────────────────────────────────────────────────────
+
+.sv2s-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ── Modal content ─────────────────────────────────────────────────────────────
+
+.sv2s-modal {
+  position: relative;
+  width: 340px;
+  max-width: 90vw;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+
+  @media (max-width: 400px) {
+    width: 85vw;
+  }
+}
+
+// ── Progress bar ──────────────────────────────────────────────────────────────
+
+.sv2s-progress-track {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sv2s-progress-bar {
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: 3px;
+  transition: width 0.05s linear;
+}
+
+// ── Close button ──────────────────────────────────────────────────────────────
+
+.sv2s-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+}
+
+// ── Modal image ───────────────────────────────────────────────────────────────
+
+.sv2s-modal-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+}
+
+.sv2s-modal-img {
+  object-fit: cover;
+}
+
+// ── Modal video ───────────────────────────────────────────────────────────────
+
+.sv2s-video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  display: block;
+}

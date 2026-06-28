@@ -1,13 +1,19 @@
 "use client";
 import React from "react";
+import { IScheduleEntry } from "@/types/schedule";
 
-export default function ScheduleTime({ schedule, valid, checkDay }: any) {
+interface IScheduleTimeProps {
+  schedule: IScheduleEntry;
+  valid: boolean;
+  checkDay: boolean;
+}
+
+export default function ScheduleTime({ schedule, valid, checkDay }: IScheduleTimeProps) {
   return (
     <>
       {checkDay ? (
         <span className="text-center font-semibold text-red-500">
           <span>ACUM - Inchis</span>
-          {/* <span></span> */}
         </span>
       ) : !valid ? (
         <span className="text-center">

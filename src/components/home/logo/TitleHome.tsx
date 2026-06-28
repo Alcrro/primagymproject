@@ -1,5 +1,6 @@
 "use client";
 import Logo from "@/components/navbar/logo/Logo";
+import Link from "next/link";
 import React, { lazy, Suspense } from "react";
 import "./logoHome.scss";
 
@@ -19,9 +20,12 @@ export default function LogoHome() {
         <ul>
           <Logo description="big-logo" />
           <li className="description" ref={titleRef}>
-            <span className="">
-              Having good habits every day, it means a lot.
-            </span>
+            <span>Fii activ. Fii sănătos. Fii ApexFit.</span>
+          </li>
+          <li className="hero-cta">
+            <Link href="/abonamente" className="hero-cta-btn">
+              Alege abonamentul tău →
+            </Link>
           </li>
         </ul>
       </div>

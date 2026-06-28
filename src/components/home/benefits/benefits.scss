@@ -1,0 +1,67 @@
+.ben-container {
+  padding: 3rem 0 2rem;
+}
+
+.ben-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.ben-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-content);
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
+}
+
+.ben-subtitle {
+  font-size: 1rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.ben-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: 1.25rem;
+}
+
+.ben-card {
+  background-color: var(--color-card);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s, transform 0.2s;
+
+  &:hover {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.11);
+    transform: translateY(-3px);
+  }
+}
+
+.ben-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.ben-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-content);
+  margin: 0;
+}
+
+.ben-card-desc {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  line-height: 1.7;
+  margin: 0;
+}
