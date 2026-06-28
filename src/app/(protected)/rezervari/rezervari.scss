@@ -1,0 +1,124 @@
+.rz-section {
+  margin-top: 2rem;
+}
+
+.rz-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-content);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-primary);
+  display: inline-block;
+}
+
+.rz-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.rz-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background-color: var(--color-card);
+  border-radius: 12px;
+  border: 1px solid rgba(128,128,128,0.1);
+  flex-wrap: wrap;
+
+  &--cancelled { opacity: 0.55; }
+}
+
+.rz-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.rz-item-category {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+}
+
+.rz-item-date {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-content);
+  text-transform: capitalize;
+}
+
+.rz-item-trainer {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  text-transform: capitalize;
+}
+
+.rz-item-location {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+.rz-item-message {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.rz-item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.rz-status {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &--confirmed { background: rgba(34,197,94,0.1);   color: #16a34a; }
+  &--cancelled  { background: rgba(128,128,128,0.1); color: var(--color-muted); }
+  &--pending    { background: rgba(234,179,8,0.12);  color: #b45309; }
+  &--accepted   { background: rgba(34,197,94,0.1);   color: #16a34a; }
+  &--rejected   { background: rgba(239,68,68,0.1);   color: #ef4444; }
+}
+
+.rz-btn-cancel {
+  padding: 4px 10px;
+  border: 1px solid rgba(239,68,68,0.4);
+  border-radius: 6px;
+  background: none;
+  color: #ef4444;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  font-family: inherit;
+
+  &:hover { background-color: rgba(239,68,68,0.06); }
+}
+
+.rz-empty {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  padding: 1.5rem 0;
+}
+
+.rz-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  &:hover { text-decoration: underline; }
+}
