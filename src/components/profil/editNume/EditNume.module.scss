@@ -1,0 +1,82 @@
+.editBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: none;
+  border: none;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: color 0.15s, background-color 0.15s;
+  font-family: inherit;
+
+  &:hover {
+    color: var(--color-primary);
+    background-color: rgba(255, 92, 0, 0.08);
+  }
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.input {
+  padding: 0.35rem 0.75rem;
+  border: 1.5px solid rgba(128, 128, 128, 0.3);
+  border-radius: 8px;
+  background-color: var(--color-surface);
+  color: var(--color-content);
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+  min-width: 0;
+  width: 200px;
+
+  &:focus { border-color: var(--color-primary); }
+}
+
+.saveBtn {
+  padding: 0.35rem 0.875rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.15s;
+
+  &:hover:not(:disabled) { background-color: var(--color-primary-hover); }
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+}
+
+.cancelBtn {
+  padding: 0.35rem 0.75rem;
+  background: none;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s;
+
+  &:hover { border-color: var(--color-muted); }
+}
+
+.error {
+  width: 100%;
+  font-size: 0.78rem;
+  color: #ef4444;
+  margin: 0;
+}

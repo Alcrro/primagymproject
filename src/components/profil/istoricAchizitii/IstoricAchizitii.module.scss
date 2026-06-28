@@ -1,0 +1,148 @@
+.card {
+  background-color: var(--color-card);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.iconWrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background-color: rgba(255, 92, 0, 0.1);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-content);
+  margin: 0;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.emptyIcon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.emptyText {
+  font-size: 0.938rem;
+  font-weight: 500;
+  color: var(--color-content);
+  margin: 0;
+}
+
+.emptySubtext {
+  font-size: 0.813rem;
+  color: var(--color-muted);
+  margin: 0;
+  max-width: 280px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.order {
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.orderMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.orderDate {
+  font-size: 0.813rem;
+  color: var(--color-muted);
+}
+
+.badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badgePaid      { background: rgba(34,197,94,0.12);  color: #16a34a; }
+.badgePending   { background: rgba(234,179,8,0.12);  color: #a16207; }
+.badgeCancelled { background: rgba(239,68,68,0.12);  color: #dc2626; }
+.badgeExpired   { background: rgba(107,114,128,0.12); color: #6b7280; }
+
+.itemList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.orderItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.orderItemName {
+  flex: 1;
+  color: var(--color-content);
+  font-weight: 500;
+}
+
+.orderItemQty {
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+
+.orderItemPrice {
+  font-weight: 600;
+  color: var(--color-content);
+}
+
+.orderTotal {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(0,0,0,0.07);
+
+  strong {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+}

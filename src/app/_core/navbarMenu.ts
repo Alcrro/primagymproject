@@ -1,12 +1,9 @@
-export const menuNavbar = [
+import type { INavbarItem } from "@/types/navbar"
+
+export const menuNavbar: INavbarItem[] = [
   {
     category: "Locatie",
     link: "locatie",
-    modal: false,
-  },
-  {
-    category: "Galerie",
-    link: "galerie",
     modal: false,
   },
   {
@@ -14,15 +11,9 @@ export const menuNavbar = [
     link: "abonamente",
     modal: true,
   },
-
   {
     category: "Cos",
     link: "cos",
     modal: true,
   },
-  {
-    category: "Login",
-    link: "login",
-    modal: false,
-  },
-];
+]

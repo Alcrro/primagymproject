@@ -1,9 +1,9 @@
-export async function getGallery() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/gallery`, {
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
+import { prisma } from '@/lib/prisma';
+import { IGalleryPhoto } from '@/types/gallery';
+
+export async function getGallery(): Promise<IGalleryPhoto[]> {
+  return prisma.galleryPhoto.findMany({
+    where: { isActive: true },
+    orderBy: { sortOrder: 'asc' },
   });
-  return res.json();
 }
