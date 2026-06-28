@@ -1,0 +1,341 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── Auth ────────────────────────────────────────────────────────────────────
+
+model User {
+  id                  String               @id @default(cuid())
+  name                String?
+  email               String               @unique
+  emailVerified       DateTime?
+  image               String?
+  password            String?
+  role                UserRole             @default(MEMBER)
+  isActive            Boolean              @default(true)
+  accounts            Account[]
+  sessions            Session[]
+  passwordResetTokens PasswordResetToken[]
+  orders              Order[]
+  checkIns            CheckIn[]
+  scannedCheckIns     CheckIn[]            @relation("ScannedBy")
+  classBookings       ClassBooking[]
+  personalRequests    PersonalRequest[]    @relation("MemberRequests")
+  trainerProfile      Trainer?
+  trainerReviews      TrainerReview[]
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+}
+
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+}
+
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  token     String   @unique @default(cuid())
+  userId    String
+  expires   DateTime
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+enum UserRole {
+  MEMBER
+  TRAINER
+  ADMIN
+}
+
+// ─── Abonamente ──────────────────────────────────────────────────────────────
+
+model SubscriptionCategory {
+  id        Int                @id @default(autoincrement())
+  slug      String             @unique
+  name      String
+  imageUrl  String?
+  isActive  Boolean            @default(true)
+  sortOrder Int                @default(0)
+  plans     SubscriptionPlan[]
+}
+
+enum PlanType {
+  ENTRIES
+  MONTHLY
+}
+
+model SubscriptionPlan {
+  id             Int                  @id @default(autoincrement())
+  categoryId     Int
+  category       SubscriptionCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  name           String
+  planType       PlanType             @default(ENTRIES)
+  entries        Int?
+  durationMonths Int?
+  withTrainer    Boolean?
+  priceRon       Decimal              @db.Decimal(10, 2)
+  discountPct    Decimal              @default(0) @db.Decimal(5, 2)
+  isActive       Boolean              @default(true)
+  sortOrder      Int                  @default(0)
+  orderItems     OrderItem[]
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+}
+
+model DiscountCode {
+  id          Int       @id @default(autoincrement())
+  code        String    @unique
+  discountPct Decimal?  @db.Decimal(5, 2)
+  discountRon Decimal?  @db.Decimal(10, 2)
+  validFrom   DateTime?
+  validUntil  DateTime?
+  maxUses     Int?
+  currentUses Int       @default(0)
+  isActive    Boolean   @default(true)
+  orders      Order[]
+  createdAt   DateTime  @default(now())
+}
+
+// ─── Antrenori ───────────────────────────────────────────────────────────────
+
+model Location {
+  id            Int            @id @default(autoincrement())
+  slug          String         @unique
+  name          String
+  city          String?
+  county        String?
+  postalCode    String?
+  address       String?
+  phone         String?
+  email         String?
+  lat           Float?
+  lng           Float?
+  photo         String?
+  amenities     String[]       @default([])
+  schedule      Json?
+  isActive      Boolean        @default(true)
+  sortOrder     Int            @default(0)
+  trainers      Trainer[]
+  classSessions ClassSession[]
+  createdAt     DateTime       @default(now())
+
+  @@index([sortOrder])
+}
+
+model Trainer {
+  id               Int               @id @default(autoincrement())
+  name             String
+  age              Int?
+  category         String
+  classes          String[]          @default([])
+  specializations  String[]          @default([])
+  certifications   String[]          @default([])
+  description      String?
+  bio              String?
+  instagram        String?
+  email            String?
+  thumbnail        String?
+  locationId       Int?
+  location         Location?         @relation(fields: [locationId], references: [id], onDelete: SetNull)
+  userId           String?           @unique
+  user             User?             @relation(fields: [userId], references: [id], onDelete: SetNull)
+  isActive         Boolean           @default(true)
+  sortOrder        Int               @default(0)
+  classSessions    ClassSession[]
+  personalRequests PersonalRequest[]
+  reviews          TrainerReview[]
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  @@index([locationId])
+  @@index([category])
+}
+
+model TrainerReview {
+  id        Int      @id @default(autoincrement())
+  trainerId Int
+  trainer   Trainer  @relation(fields: [trainerId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now())
+
+  @@unique([trainerId, userId])
+  @@index([trainerId])
+}
+
+// ─── Booking ─────────────────────────────────────────────────────────────────
+
+enum SessionStatus {
+  SCHEDULED
+  CANCELLED
+  COMPLETED
+}
+
+enum BookingStatus {
+  CONFIRMED
+  CANCELLED
+}
+
+enum RequestStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  CANCELLED
+}
+
+model ClassSession {
+  id              Int              @id @default(autoincrement())
+  trainerId       Int
+  trainer         Trainer          @relation(fields: [trainerId], references: [id], onDelete: Cascade)
+  locationId      Int?
+  location        Location?        @relation(fields: [locationId], references: [id], onDelete: SetNull)
+  categorySlug    String
+  startAt         DateTime
+  durationMinutes Int              @default(60)
+  maxCapacity     Int              @default(20)
+  status          SessionStatus    @default(SCHEDULED)
+  notes           String?
+  bookings        ClassBooking[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  @@index([trainerId])
+  @@index([startAt])
+  @@index([categorySlug, startAt])
+}
+
+model ClassBooking {
+  id        Int           @id @default(autoincrement())
+  sessionId Int
+  session   ClassSession  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status    BookingStatus @default(CONFIRMED)
+  createdAt DateTime      @default(now())
+
+  @@unique([sessionId, userId])
+  @@index([sessionId])
+  @@index([userId])
+}
+
+model PersonalRequest {
+  id           Int           @id @default(autoincrement())
+  memberId     String
+  member       User          @relation("MemberRequests", fields: [memberId], references: [id], onDelete: Cascade)
+  trainerId    Int
+  trainer      Trainer       @relation(fields: [trainerId], references: [id], onDelete: Cascade)
+  requestedAt  DateTime
+  message      String?
+  status       RequestStatus @default(PENDING)
+  responseNote String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  @@index([trainerId, status])
+  @@index([memberId])
+}
+
+// ─── Comenzi ─────────────────────────────────────────────────────────────────
+
+model Order {
+  id            Int           @id @default(autoincrement())
+  userId        String?
+  user          User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+  status        OrderStatus   @default(PENDING)
+  totalRon      Decimal       @db.Decimal(10, 2)
+  discountCode  String?
+  discount      DiscountCode? @relation(fields: [discountCode], references: [code])
+  discountRon   Decimal       @default(0) @db.Decimal(10, 2)
+  paymentMethod String?
+  paymentRef    String?
+  items         OrderItem[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model OrderItem {
+  id            Int               @id @default(autoincrement())
+  orderId       Int
+  order         Order             @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  planId        Int?
+  plan          SubscriptionPlan? @relation(fields: [planId], references: [id])
+  planName      String
+  categoryName  String
+  quantity      Int               @default(1)
+  priceRon      Decimal           @db.Decimal(10, 2)
+  totalEntries  Int?
+  expiresAt     DateTime?
+  checkIns      CheckIn[]
+  createdAt     DateTime          @default(now())
+}
+
+model CheckIn {
+  id          Int       @id @default(autoincrement())
+  orderItemId Int
+  orderItem   OrderItem @relation(fields: [orderItemId], references: [id], onDelete: Cascade)
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  scannedById String
+  scannedBy   User      @relation("ScannedBy", fields: [scannedById], references: [id])
+  scannedAt   DateTime  @default(now())
+
+  @@index([orderItemId])
+  @@index([userId])
+  @@index([scannedAt])
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  CANCELLED
+  EXPIRED
+}
+
+// ─── Galerie ─────────────────────────────────────────────────────────────────
+
+model GalleryPhoto {
+  id        Int      @id @default(autoincrement())
+  filename  String
+  url       String
+  altText   String?
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
