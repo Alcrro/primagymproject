@@ -1,5 +1,4 @@
 import React from "react";
-export const dynamic = "force-dynamic";
-export default async function NotFound() {
+export default function NotFound() {
   return <div></div>;
 }

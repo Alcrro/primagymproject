@@ -1,7 +1,5 @@
-import Location from "@/components/locatie/Location";
-import React from "react";
-export const dynamic = "force-dynamic";
+import { redirect } from "next/navigation";
 
-export default function page() {
-  return <Location />;
+export default function LocatiePage() {
+  redirect("/locatii");
 }

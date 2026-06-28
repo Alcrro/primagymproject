@@ -1,39 +1,28 @@
-import React, { Suspense } from "react";
-import SocialMedia from "./socialMedia/SocialMedia";
-import "./footer.scss";
-import FooterModal from "./footerModal/FooterModal";
-import { getInformation } from "@/app/_lib/footer/getInformation/getInformation";
-import { getRules } from "@/app/_lib/footer/getRules/getRules";
-import Contact from "./contact/Contact";
-import Program from "./program/Program";
+import React from "react"
+import "./footer.scss"
+import Contact from "./contact/Contact"
+import Program from "./program/Program"
+import FooterModal from "./footerModal/FooterModal"
+import SocialMedia from "./socialMedia/SocialMedia"
+import { information } from "@/app/_core/information"
+import { rules } from "@/app/_core/rules"
 
-export default async function Footer() {
-  const gInformation: Promise<[]> = getInformation();
-  const gRules: Promise<[]> = getRules();
-
-  const [information, rules] = await Promise.all([gInformation, gRules]);
+export default function Footer() {
+  const year = new Date().getFullYear()
 
   return (
-    <div className="footer-container">
-      <div className="footer-inner">
+    <footer className="footer-container">
+      <div className="footer-grid">
         <Contact />
         <Program />
-        <Suspense>
-          <FooterModal
-            props={information}
-            title="Informatii"
-            className="informatii"
-          />
-        </Suspense>
-        <Suspense>
-          <FooterModal
-            props={rules}
-            title="Regulament"
-            className="regulament"
-          />
-        </Suspense>
-        <SocialMedia />
+        <FooterModal links={information} title="Informații" slug="informatii" />
+        <FooterModal links={rules} title="Regulament" slug="regulament" />
       </div>
-    </div>
-  );
+
+      <div className="footer-bottom">
+        <SocialMedia />
+        <p className="footer-copyright">© {year} ApexFit. Toate drepturile rezervate.</p>
+      </div>
+    </footer>
+  )
 }

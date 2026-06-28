@@ -4,20 +4,47 @@
 
 @import "~bootstrap-icons/font/bootstrap-icons";
 
+// ─── Design Tokens ───────────────────────────────────────────────────────────
+
+:root {
+  // Backgrounds
+  --color-surface:  #eef0f3;
+  --color-card:     #ffffff;
+  --color-navbar:   #ffffff;
+  --color-modal:    #ffffff;
+
+  // Text
+  --color-content:  #0d0d0d;
+  --color-muted:    #6b7280;
+
+  // Accent
+  --color-primary:        #FF5C00;
+  --color-primary-hover:  #e05200;
+}
+
+html.dark {
+  // Backgrounds
+  --color-surface:  #000000;
+  --color-card:     #1a1f2e;
+  --color-navbar:   #0f1117;
+  --color-modal:    #1e2433;
+
+  // Text
+  --color-content:  #ffffff;
+  --color-muted:    #9ca3af;
+
+  // Accent (același în ambele teme)
+  --color-primary:        #FF5C00;
+  --color-primary-hover:  #e05200;
+}
+
+// ─── Base ────────────────────────────────────────────────────────────────────
+
 body {
   position: relative;
   overflow-x: hidden;
-}
-
-//TODO animate fade out to in
-html.dark body {
-  background-color: #000;
-  color: white;
-}
-//TODO animate fade out to in
-html.light body {
-  color: #000;
-  background-color: rgb(233 233 233 / 59%);
+  background-color: var(--color-surface);
+  color: var(--color-content);
 }
 
 html::-webkit-scrollbar {
@@ -77,10 +104,15 @@ body.home main {
 body main {
   position: relative;
   max-width: 96rem;
-  // padding: 0 10px;
   margin: 0 auto;
-
   padding: 0 10px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
 }
 
 .multiple-sections {

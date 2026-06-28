@@ -1,30 +1,26 @@
-"use client";
-import Link from "next/link";
-import React from "react";
-import "./footerModal.scss";
-export default function FooterModal({
-  props,
-  title,
-  className,
-}: {
-  props: [];
-  title: string;
-  className: string;
-}) {
+import React from "react"
+import Link from "next/link"
+import type { IFooterLink } from "@/types/footer"
+
+interface IFooterModalProps {
+  links: IFooterLink[]
+  title: string
+  slug: string
+}
+
+export default function FooterModal({ links, title, slug }: IFooterModalProps) {
   return (
-    <div className="footer-rules-container">
-      <div className="title">{title}</div>
-      <div className={`footer-${className}`}>
-        <ul>
-          {props.map((rule: any, key: number) => (
-            <li key={key}>
-              <Link href={`/${className}/${rule.link}`}>
-                <span className="name">{rule.name}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className="footer-section">
+      <h3 className="footer-section-title">{title}</h3>
+      <ul className="footer-list">
+        {links.map((item) => (
+          <li key={item.link}>
+            <Link href={`/${slug}/${item.link}`} className="footer-nav-link">
+              {item.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
-  );
+  )
 }
