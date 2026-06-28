@@ -1,27 +1,49 @@
 "use client";
-import { ICart } from "@/app/_core/subscription";
+import { ICart } from "@/types/subscription";
+import { useAddToCart } from "@/context/addToCart/AddToCartContext";
 import React from "react";
 
-interface IModalCart {
-  cart: ICart;
-}
+export default function ModalCart({ cart }: { cart: ICart }) {
+  const { addToCartHandler, removeHandler, deleteHandler } = useAddToCart();
+  const qty = cart.quantity ?? 1;
 
-export default function ModalCart({ cart }: IModalCart) {
   return (
-    <div key={cart.id} className="flex gap-4 justify-between">
-      <div>
-        <span>Abonament: </span>
-        <li className="block text-center">{cart.category}</li>
+    <li className="cart-item">
+      <div className="cart-item-col cart-item-col--name">
+        <span className="cart-item-label">Abonament</span>
+        <span className="cart-item-value">{cart.category}</span>
       </div>
-
-      <div>
-        <span>Intrari: </span>
-        <li className="block text-center">{cart.pass}</li>
+      <div className="cart-item-col">
+        <span className="cart-item-label">{cart.planType === 'entries' ? 'Intrări' : 'Durată'}</span>
+        <span className="cart-item-value">
+          {cart.planType === 'entries'
+            ? cart.pass
+            : `${cart.durationMonths} ${cart.durationMonths === 1 ? 'lună' : 'luni'}`}
+        </span>
       </div>
-      <div>
-        <span>Pret: </span>
-        <li className="block text-center">{cart.price}</li>
+      <div className="cart-item-col">
+        <span className="cart-item-label">Cantitate</span>
+        <div className="cart-qty-stepper">
+          <button type="button" className="qty-btn" onClick={() => removeHandler(cart)} aria-label="Scade">
+            <i className="bi bi-dash" />
+          </button>
+          <span className="qty-value">{qty}</span>
+          <button type="button" className="qty-btn" onClick={() => addToCartHandler(cart)} aria-label="Crește">
+            <i className="bi bi-plus" />
+          </button>
+        </div>
       </div>
-    </div>
+      <div className="cart-item-col">
+        <span className="cart-item-label">Preț/buc</span>
+        <span className="cart-item-value">{cart.price} Lei</span>
+      </div>
+      <div className="cart-item-col">
+        <span className="cart-item-label">Total</span>
+        <span className="cart-item-value cart-item-value--total">{cart.price * qty} Lei</span>
+      </div>
+      <button onClick={() => deleteHandler(cart)} aria-label={`Șterge ${cart.category}`} className="cart-item-remove" type="button">
+        <i className="bi bi-x-lg" />
+      </button>
+    </li>
   );
 }

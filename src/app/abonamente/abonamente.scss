@@ -1,13 +1,11 @@
 .abonamente-container {
+  padding: 1.5rem 1rem 4rem;
+
   .abonamente-inner {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
     min-height: 400px;
     gap: 1rem;
-
-    @media (max-width: 380px) {
-      grid-template-columns: 1fr;
-    }
   }
 
   .image {
@@ -25,21 +23,19 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: all 0.4s ease-in-out;
-    opacity: 0.2;
-    font-size: 2rem;
-  }
-  .description:hover {
-    font-size: 4rem;
-    opacity: 0.8;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.9;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
   }
 
-  .image:hover ~ .description {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 4rem;
-    opacity: 0.8;
+  a:hover .description {
+    font-size: 2rem;
+    opacity: 1;
+    color: var(--color-primary);
   }
 }

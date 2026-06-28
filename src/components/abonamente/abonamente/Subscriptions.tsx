@@ -1,30 +1,28 @@
-import { getSubCategories } from "@/app/_lib/abonamente/getSubCategories";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import { prisma } from '@/lib/prisma';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 
 export default async function Subscriptions() {
-  const subscriptionsC = await getSubCategories();
+  const categories = await prisma.subscriptionCategory.findMany({
+    where: { isActive: true },
+    orderBy: { sortOrder: 'asc' },
+  });
 
   return (
     <div className="abonamente-container">
       <div className="abonamente-inner">
-        {subscriptionsC.map((subscription: any, key: any) => (
-          <div className={`${subscription.className}-container`} key={key}>
-            <Link
-              href={`/abonamente/${subscription.link}`}
-              className="relative"
-            >
+        {categories.map((category) => (
+          <div className={`${category.slug}-container`} key={category.slug}>
+            <Link href={`/abonamente/${category.slug}`} className="relative">
               <Image
-                src={`/cardsImages/${subscription.image}`}
-                alt={subscription.className}
+                src={category.imageUrl ?? `/cardsImages/${category.slug}.jpg`}
+                alt={category.name}
                 className="image"
                 width={1000}
                 height={1000}
               />
-              <span className="description text-white">
-                {subscription.className}
-              </span>
+              <span className="description text-white">{category.name}</span>
             </Link>
           </div>
         ))}

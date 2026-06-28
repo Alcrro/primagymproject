@@ -12,7 +12,7 @@ interface IButtonPops {
 export default function Button(props: IButtonPops) {
   return (
     <div className={`button-container`}>
-      <div className={`btn ${props.className}`} onClick={props.handleClick}>
+      <div className={`btn ${props.className}`} onClick={props.handleClick} tabIndex={0}>
         {props.title}
       </div>
     </div>
