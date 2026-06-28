@@ -1,9 +1,9 @@
-import gallery from "@/app/_core/gallery";
+import { prisma } from '@/lib/prisma';
 
-export async function GET(){
-    try {
-        return Response.json(gallery)
-    } catch (error) {
-        console.log(error);
-    }
+export async function GET() {
+  const photos = await prisma.galleryPhoto.findMany({
+    where: { isActive: true },
+    orderBy: { sortOrder: 'asc' },
+  });
+  return Response.json(photos);
 }

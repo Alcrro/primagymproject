@@ -1,17 +1,29 @@
 import "./gallery.scss";
 import Link from "next/link";
 import Image from "next/image";
-import React, { lazy } from "react";
+import React from "react";
 import { getGallery } from "@/app/_lib/gallery/getGallery";
 
 export default async function GalleryPhotos() {
-  const gallery = await getGallery();
+  const photos = await getGallery();
 
-  const GetGalley = lazy(() => import("./getGallery"));
   return (
     <div className="gallery-inner">
       <ul className="ul-gallery">
-        <GetGalley gallery={gallery} />
+        {photos.map((photo) => (
+          <li key={photo.id} className="li-gallery">
+            <Link href={`/galerie/${photo.id}`}>
+              <Image
+                src={photo.url}
+                alt={photo.altText ?? photo.filename}
+                width={1000}
+                height={1000}
+                className="image-gallery"
+                priority
+              />
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   );

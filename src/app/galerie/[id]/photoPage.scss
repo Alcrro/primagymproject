@@ -1,0 +1,29 @@
+.gp-container {
+  padding: 2rem 1rem 4rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.gp-back {
+  display: inline-block;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  transition: color 0.15s;
+
+  &:hover { color: var(--color-primary); }
+}
+
+.gp-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--color-card);
+}
+
+.gp-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
