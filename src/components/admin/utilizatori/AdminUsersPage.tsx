@@ -25,9 +25,10 @@ const ROLE_LABELS: Record<UserRole, string> = {
   MEMBER: "Membru",
   TRAINER: "Antrenor",
   ADMIN: "Admin",
+  HR_MANAGER: "HR Manager",
 }
 
-const ROLES: UserRole[] = ["MEMBER", "TRAINER", "ADMIN"]
+const ROLES: UserRole[] = ["MEMBER", "TRAINER", "ADMIN", "HR_MANAGER"]
 
 export default function AdminUsersPage({ users, currentUserId }: IAdminUsersPageProps) {
   const [search, setSearch] = useState("")

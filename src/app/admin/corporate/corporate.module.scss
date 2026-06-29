@@ -1,0 +1,143 @@
+.wrapper {
+  padding: 2rem 0;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--color-content);
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.tableWrap {
+  background: var(--color-card);
+  border-radius: 14px;
+  border: 1px solid rgba(128, 128, 128, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.tableHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-content);
+
+  > i {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.table th {
+  text-align: left;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+.table td {
+  padding: 0.875rem 1.25rem;
+  color: var(--color-content);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.06);
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.statusActive {
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+}
+
+.statusSuspended {
+  background: rgba(234, 179, 8, 0.12);
+  color: #eab308;
+}
+
+.statusCancelled {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+}
+
+.seatsBar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.seatsTrack {
+  flex: 1;
+  height: 6px;
+  background: rgba(128, 128, 128, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+  min-width: 60px;
+}
+
+.seatsFill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.seatsLabel {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.empty {
+  padding: 3rem 1.25rem;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.muted {
+  color: var(--color-muted);
+}

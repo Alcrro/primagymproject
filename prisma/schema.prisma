@@ -28,6 +28,8 @@ model User {
   trainerProfile      Trainer?
   trainerReviews      TrainerReview[]
   badges              UserBadge[]
+  managedCorporate    CorporateAccount?    @relation("HRManager")
+  corporateMembership CorporateMember[]    @relation("CorporateMembers")
   createdAt           DateTime             @default(now())
   updatedAt           DateTime             @updatedAt
 }
@@ -81,6 +83,7 @@ enum UserRole {
   MEMBER
   TRAINER
   ADMIN
+  HR_MANAGER
 }
 
 // ─── Abonamente ──────────────────────────────────────────────────────────────
@@ -344,6 +347,60 @@ model UserBadge {
   @@unique([userId, badgeId])
   @@index([userId])
   @@index([badgeId])
+}
+
+// ─── Corporate ───────────────────────────────────────────────────────────────
+
+enum CorporateStatus {
+  ACTIVE
+  SUSPENDED
+  CANCELLED
+}
+
+model CorporateAccount {
+  id                   String            @id @default(cuid())
+  companyName          String
+  seatsTotal           Int
+  seatsUsed            Int               @default(0)
+  stripeSubscriptionId String?
+  status               CorporateStatus   @default(ACTIVE)
+  hrManagerId          String            @unique
+  hrManager            User              @relation("HRManager", fields: [hrManagerId], references: [id], onDelete: Restrict)
+  members              CorporateMember[]
+  invites              CorporateInvite[]
+  createdAt            DateTime          @default(now())
+  updatedAt            DateTime          @updatedAt
+
+  @@index([hrManagerId])
+  @@index([stripeSubscriptionId])
+}
+
+model CorporateMember {
+  id                 String           @id @default(cuid())
+  corporateAccountId String
+  corporateAccount   CorporateAccount @relation(fields: [corporateAccountId], references: [id], onDelete: Cascade)
+  userId             String
+  user               User             @relation("CorporateMembers", fields: [userId], references: [id], onDelete: Cascade)
+  joinedAt           DateTime         @default(now())
+  revokedAt          DateTime?
+
+  @@unique([corporateAccountId, userId])
+  @@index([corporateAccountId])
+  @@index([userId])
+}
+
+model CorporateInvite {
+  id                 String           @id @default(cuid())
+  corporateAccountId String
+  corporateAccount   CorporateAccount @relation(fields: [corporateAccountId], references: [id], onDelete: Cascade)
+  email              String
+  token              String           @unique @default(cuid())
+  expiresAt          DateTime
+  acceptedAt         DateTime?
+  createdAt          DateTime         @default(now())
+
+  @@index([corporateAccountId])
+  @@index([token])
 }
 
 // ─── Galerie ─────────────────────────────────────────────────────────────────

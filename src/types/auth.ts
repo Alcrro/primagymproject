@@ -1,6 +1,6 @@
 import type { DefaultSession } from "next-auth"
 
-export type UserRole = "MEMBER" | "TRAINER" | "ADMIN"
+export type UserRole = "MEMBER" | "TRAINER" | "ADMIN" | "HR_MANAGER"
 
 export interface IAuthUser {
   id: string

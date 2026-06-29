@@ -11,6 +11,7 @@ const roleLabels: Record<UserRole, string> = {
   MEMBER: "Membru",
   TRAINER: "Antrenor",
   ADMIN: "Administrator",
+  HR_MANAGER: "HR Manager",
 }
 
 const NAV_ITEMS = [

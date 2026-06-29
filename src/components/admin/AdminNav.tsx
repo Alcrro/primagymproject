@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { href: "/admin/analytics", label: "Analytics", icon: "bi-graph-up" },
   { href: "/admin/antrenori", label: "Antrenori", icon: "bi-person-badge" },
   { href: "/admin/utilizatori", label: "Utilizatori", icon: "bi-people" },
+  { href: "/admin/corporate", label: "Corporate", icon: "bi-building" },
   { href: "/admin/sesiuni", label: "Sesiuni", icon: "bi-calendar-event" },
   { href: "/admin/locatii", label: "Locații", icon: "bi-geo-alt" },
   { href: "/admin/abonamente", label: "Abonamente", icon: "bi-credit-card" },

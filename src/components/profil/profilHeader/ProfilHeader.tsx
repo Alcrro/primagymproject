@@ -20,12 +20,14 @@ const roleLabels: Record<UserRole, string> = {
   MEMBER: "Membru",
   TRAINER: "Antrenor",
   ADMIN: "Administrator",
+  HR_MANAGER: "HR Manager",
 }
 
 const roleClass: Record<UserRole, string> = {
   MEMBER: styles.roleMember,
   TRAINER: styles.roleTrainer,
   ADMIN: styles.roleAdmin,
+  HR_MANAGER: styles.roleTrainer,
 }
 
 export default function ProfilHeader({
