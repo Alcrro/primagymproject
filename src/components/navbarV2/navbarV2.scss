@@ -11,6 +11,12 @@
   z-index: 50;
 }
 
+body.admin .navbar-v2-container {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 0;
+}
+
 body.home .navbar-v2-container {
   background-color: transparent;
   color: #fff;

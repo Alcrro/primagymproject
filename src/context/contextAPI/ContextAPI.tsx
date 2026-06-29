@@ -37,6 +37,11 @@ export const ContextAPI = ({ children }: { children: React.ReactNode }) => {
     } else {
       body?.classList.remove("home");
     }
+    if (pathname.startsWith("/admin")) {
+      body?.classList.add("admin");
+    } else {
+      body?.classList.remove("admin");
+    }
   }, [pathname]);
 
   const onHoverHandler = () => {
