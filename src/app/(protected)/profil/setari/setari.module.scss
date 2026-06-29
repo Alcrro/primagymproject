@@ -1,20 +1,19 @@
-.noSubCard {
+.oauthCard {
   background-color: var(--color-card);
   border-radius: 16px;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+  padding: 1.75rem;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
 }
 
-.noSubTitle {
-  font-size: 1rem;
+.oauthTitle {
+  font-size: 0.938rem;
   font-weight: 600;
   color: var(--color-content);
   margin: 0 0 0.375rem;
 }
 
-.noSubText {
-  font-size: 0.875rem;
+.oauthText {
+  font-size: 0.813rem;
   color: var(--color-muted);
   margin: 0;
   line-height: 1.5;

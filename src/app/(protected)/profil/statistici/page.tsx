@@ -1,26 +1,17 @@
-import Link from "next/link"
 import { Suspense } from "react"
 import { auth } from "@/auth"
 import { getStatsForUser } from "@/app/actions/statistici"
 import StatsOverview from "@/components/statistici/StatsOverview"
 import StatsSkeleton from "@/components/statistici/StatsSkeleton"
-import styles from "./statistici.module.scss"
 
 export default async function StatisticiPage() {
   const session = await auth()
   const userId = session!.user.id
 
   return (
-    <div className={styles.wrapper}>
-      <nav className={styles.subNav}>
-        <Link href="/profil" className={styles.subNavLink}>Profil</Link>
-        <Link href="/profil/statistici" className={`${styles.subNavLink} ${styles.subNavActive}`}>Statistici</Link>
-      </nav>
-      <h1 className={styles.heading}>Statisticile mele</h1>
-      <Suspense fallback={<StatsSkeleton />}>
-        <StatsContent userId={userId} />
-      </Suspense>
-    </div>
+    <Suspense fallback={<StatsSkeleton />}>
+      <StatsContent userId={userId} />
+    </Suspense>
   )
 }
 
