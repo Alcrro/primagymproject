@@ -4,12 +4,24 @@
     "status": "done"
   },
   {
+    "name": "Admin Dashboard",
+    "status": "done"
+  },
+  {
+    "name": "Analytics Admin",
+    "status": "done"
+  },
+  {
     "name": "Antrenori",
     "status": "in-progress"
   },
   {
     "name": "Auth",
     "status": "in-progress"
+  },
+  {
+    "name": "Badges & Achievements",
+    "status": "done"
   },
   {
     "name": "Booking Sesiuni",
@@ -54,5 +66,9 @@
   {
     "name": "QR Acces",
     "status": "in-progress"
+  },
+  {
+    "name": "Statistici Membri",
+    "status": "done"
   }
 ]

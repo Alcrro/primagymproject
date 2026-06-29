@@ -10,9 +10,13 @@
   "Auth.js",
   "Stripe",
   "Resend",
+  "Recharts",
   "next-themes",
   "Google Maps",
   "QRCode",
+  "ZXing",
   "Embla Carousel",
+  "Bootstrap Icons",
+  "bcryptjs",
   "Vercel"
 ]
