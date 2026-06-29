@@ -157,22 +157,32 @@ body.home .navbar-v2-container {
   transform: none;
 }
 
-// ── Cart badge ────────────────────────────────────────────────────────────────
+// ── Cart icon + badge ─────────────────────────────────────────────────────────
+
+.v2-cart-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
 
 .v2-badge {
+  position: absolute;
+  top: -7px;
+  right: -8px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 19px;
-  height: 19px;
-  padding: 0 5px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
   background-color: var(--color-primary);
   color: white;
-  border-radius: 10px;
-  font-size: 0.7rem;
+  border-radius: 8px;
+  font-size: 0.625rem;
   font-weight: 700;
   line-height: 1;
-  flex-shrink: 0;
+  border: 2px solid var(--color-navbar);
 }
 
 // ── Actions (auth + theme + hamburger) ────────────────────────────────────────
