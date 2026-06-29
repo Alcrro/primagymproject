@@ -1,0 +1,117 @@
+$cell: 16px;
+$gap: 4px;
+$week-label-h: 18px;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inner {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+}
+
+// Day-of-week labels column — pushed down to align with the grid rows
+.dowLabels {
+  display: grid;
+  grid-template-rows: repeat(7, $cell);
+  gap: $gap;
+  padding-top: calc(#{$week-label-h} + #{$gap});
+  flex-shrink: 0;
+}
+
+.dowLabel {
+  font-size: 0.625rem;
+  color: var(--color-muted);
+  line-height: $cell;
+  width: 18px;
+  text-align: right;
+}
+
+// Wraps week labels + grid together so columns align
+.colsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+.weekLabels {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: $cell;
+  column-gap: $gap;
+  height: $week-label-h;
+  align-items: center;
+}
+
+.weekLabel {
+  font-size: 0.563rem;
+  color: var(--color-muted);
+  text-align: center;
+  line-height: 1;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: repeat(7, $cell);
+  grid-auto-flow: column;
+  grid-auto-columns: $cell;
+  gap: $gap;
+}
+
+.cell,
+.cellPad {
+  width: $cell;
+  height: $cell;
+  border-radius: 4px;
+}
+
+.cellPad {
+  background: transparent;
+}
+
+.inactive {
+  background-color: rgba(0, 0, 0, 0.1);
+
+  :global(.dark) & {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.active {
+  background-color: var(--color-primary);
+}
+
+.future {
+  background-color: rgba(255, 92, 0, 0.2);
+  border: 1px dashed rgba(255, 92, 0, 0.5);
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+.legendLabel {
+  font-size: 0.688rem;
+  color: var(--color-muted);
+}
+
+.legendSep {
+  width: 1px;
+  height: 12px;
+  background-color: var(--color-muted);
+  opacity: 0.3;
+  margin: 0 2px;
+}
+
+.legendCell {
+  width: $cell;
+  height: $cell;
+  border-radius: 4px;
+}

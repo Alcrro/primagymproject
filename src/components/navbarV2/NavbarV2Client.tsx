@@ -129,6 +129,7 @@ export default function NavbarV2Client({ user, categories, locations }: INavbarV
               </div>
               <div className="v2-auth-dropdown">
                 <Link href="/profil" className="v2-auth-item">Profil</Link>
+                <Link href="/profil/statistici" className="v2-auth-item">Statisticile mele</Link>
                 {user.role === "MEMBER" && (
                   <Link href="/rezervari" className="v2-auth-item">Rezervările mele</Link>
                 )}
@@ -216,9 +217,13 @@ export default function NavbarV2Client({ user, categories, locations }: INavbarV
           </Link>
 
           {user ? (
-            <form action={logoutAction}>
-              <button type="submit" className="v2-mobile-link">Logout</button>
-            </form>
+            <>
+              <Link href="/profil" className="v2-mobile-link" onClick={() => setMobileOpen(false)}>Profil</Link>
+              <Link href="/profil/statistici" className="v2-mobile-link" onClick={() => setMobileOpen(false)}>Statisticile mele</Link>
+              <form action={logoutAction}>
+                <button type="submit" className="v2-mobile-link">Logout</button>
+              </form>
+            </>
           ) : (
             <Link href="/login" className="v2-mobile-link" onClick={() => setMobileOpen(false)}>Login</Link>
           )}

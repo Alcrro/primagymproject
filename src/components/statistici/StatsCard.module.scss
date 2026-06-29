@@ -1,0 +1,36 @@
+.card {
+  background-color: var(--color-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  font-size: 0.813rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-content);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.value.expired {
+  color: #ef4444;
+}
+
+.sub {
+  font-size: 0.813rem;
+  color: var(--color-muted);
+  margin: 0.25rem 0 0;
+}
