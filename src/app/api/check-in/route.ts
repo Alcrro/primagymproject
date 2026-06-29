@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
+import { revalidatePath } from "next/cache"
 import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
 import { checkAndAwardBadges } from "@/app/_core/badgeActions"
@@ -59,7 +60,8 @@ export async function POST(req: NextRequest) {
       },
     })
 
-    checkAndAwardBadges(memberUserId, 'checkin').catch(() => {})
+    await checkAndAwardBadges(memberUserId, 'checkin')
+    revalidatePath('/profil')
 
     return NextResponse.json({ remainingEntries: remaining - 1 })
   }
@@ -77,7 +79,8 @@ export async function POST(req: NextRequest) {
       },
     })
 
-    checkAndAwardBadges(memberUserId, 'checkin').catch(() => {})
+    await checkAndAwardBadges(memberUserId, 'checkin')
+    revalidatePath('/profil')
 
     return NextResponse.json({ remainingEntries: null })
   }
