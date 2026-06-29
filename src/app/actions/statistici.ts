@@ -88,6 +88,24 @@ function toCalendarData(dates: Date[], futureDays = 0): ICalendarDay[] {
   return Array.from(map.values())
 }
 
+export async function getMiniStats(userId: string): Promise<{ streakDays: number; checkInsThisMonth: number }> {
+  const now = new Date()
+  const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1)
+
+  const checkIns = await prisma.checkIn.findMany({
+    where: { userId },
+    select: { scannedAt: true },
+    orderBy: { scannedAt: "desc" },
+  })
+
+  const dates = checkIns.map((c) => c.scannedAt)
+
+  return {
+    streakDays: computeStreak(dates),
+    checkInsThisMonth: dates.filter((d) => d >= startOfMonth).length,
+  }
+}
+
 export async function getStatsForUser(userId: string): Promise<IStatsOverview> {
   const session = await auth()
   if (!session?.user?.id) throw new Error("Neautentificat")

@@ -1,18 +1,23 @@
 import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
+import { getMiniStats } from "@/app/actions/statistici"
 import QrCodeSection from "@/components/profil/qrCodeSection/QrCodeSection"
 import AbonamenteActive from "@/components/profil/abonamenteActive/AbonamenteActive"
+import MiniStats from "@/components/profil/miniStats/MiniStats"
 import styles from "./profil.module.scss"
 
 export default async function ProfilPage() {
   const session = await auth()
   const userId = session!.user.id
 
-  const orders = await prisma.order.findMany({
-    where: { userId, status: "PAID" },
-    include: { items: true },
-    orderBy: { createdAt: "desc" },
-  })
+  const [orders, miniStats] = await Promise.all([
+    prisma.order.findMany({
+      where: { userId, status: "PAID" },
+      include: { items: true },
+      orderBy: { createdAt: "desc" },
+    }),
+    getMiniStats(userId),
+  ])
 
   const now = new Date()
   const hasActiveSub = orders.some((o) =>
@@ -24,7 +29,7 @@ export default async function ProfilPage() {
   )
 
   return (
-    <>
+    <div className={styles.twoCol}>
       {hasActiveSub ? (
         <QrCodeSection />
       ) : (
@@ -35,7 +40,10 @@ export default async function ProfilPage() {
           </p>
         </div>
       )}
-      <AbonamenteActive orders={orders} />
-    </>
+      <div className={styles.rightCol}>
+        <MiniStats streakDays={miniStats.streakDays} checkInsThisMonth={miniStats.checkInsThisMonth} />
+        <AbonamenteActive orders={orders} />
+      </div>
+    </div>
   )
 }
