@@ -19,9 +19,9 @@ export default async function ProfilLayout({ children }: { children: React.React
         image={session!.user.image ?? null}
         role={session!.user.role}
       />
-      <main className={styles.content}>
+      <div className={styles.content}>
         {children}
-      </main>
+      </div>
     </div>
   )
 }
