@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
+import { checkAndAwardBadges } from "@/app/_core/badgeActions"
 
 interface CheckInBody {
   orderItemId: number
@@ -58,6 +59,8 @@ export async function POST(req: NextRequest) {
       },
     })
 
+    checkAndAwardBadges(memberUserId, 'checkin').catch(() => {})
+
     return NextResponse.json({ remainingEntries: remaining - 1 })
   }
 
@@ -73,6 +76,8 @@ export async function POST(req: NextRequest) {
         scannedById: session.user.id,
       },
     })
+
+    checkAndAwardBadges(memberUserId, 'checkin').catch(() => {})
 
     return NextResponse.json({ remainingEntries: null })
   }

@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import { revalidatePath } from "next/cache";
 import { Resend } from "resend";
+import { checkAndAwardBadges } from "@/app/_core/badgeActions";
 
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL ?? "noreply@apexfit.ro";
 
@@ -143,6 +144,8 @@ export async function bookSessionAction(sessionId: number) {
 
   revalidatePath(`/sesiuni/${sessionId}`);
   revalidatePath("/rezervari");
+
+  checkAndAwardBadges(user.id, 'booking').catch(() => {});
 
   if (user.email) {
     const resend = new Resend(process.env.RESEND_API_KEY);

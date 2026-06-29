@@ -1,0 +1,67 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.875rem 0.5rem;
+  border-radius: 12px;
+  background-color: var(--color-card);
+  cursor: default;
+  transition: transform 0.15s;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(15, 15, 20, 0.92);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    padding: 6px 10px;
+    border-radius: 7px;
+    font-size: 0.72rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+    z-index: 20;
+    width: max-content;
+    max-width: 200px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+.locked .icon,
+.locked .title {
+  opacity: 0.35;
+  filter: grayscale(1);
+}
+
+.unlocked {
+  box-shadow: 0 2px 12px rgba(255, 92, 0, 0.12);
+}
+
+.icon {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.title {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--color-content);
+  text-align: center;
+  line-height: 1.2;
+}

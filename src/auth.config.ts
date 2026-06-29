@@ -27,10 +27,17 @@ export const authConfig: NextAuthConfig = {
         return isLoggedIn && role === "ADMIN"
       }
 
-      if (
-        nextUrl.pathname.startsWith("/profil") ||
-        nextUrl.pathname.startsWith("/rezervari")
-      ) {
+      if (nextUrl.pathname.startsWith("/rezervari")) {
+        return isLoggedIn
+      }
+
+      if (nextUrl.pathname.startsWith("/profil")) {
+        const protectedSubRoutes = new Set(['statistici', 'abonamente', 'setari'])
+        const segments = nextUrl.pathname.slice(1).split('/')
+        // /profil/[userId] — public profile page
+        if (segments.length === 2 && segments[1] && !protectedSubRoutes.has(segments[1])) {
+          return true
+        }
         return isLoggedIn
       }
 
