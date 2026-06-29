@@ -19,7 +19,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Neautentificat' }, { status: 401 });
   }
 
-  const items: ICart[] = await req.json();
+  const body: { items: ICart[]; discountCode?: string } = await req.json();
+  const items = body.items;
 
   if (!Array.isArray(items) || items.length === 0) {
     return NextResponse.json({ error: 'Coșul este gol' }, { status: 400 });

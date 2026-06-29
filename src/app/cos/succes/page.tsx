@@ -9,7 +9,8 @@ export default function SuccesPage() {
 
   useEffect(() => {
     clearCartHandler();
-  }, [clearCartHandler]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="succes-container">

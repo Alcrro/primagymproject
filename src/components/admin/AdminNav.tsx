@@ -6,6 +6,7 @@ import "./adminNav.scss"
 
 const NAV_LINKS = [
   { href: "/admin", label: "Dashboard", icon: "bi-speedometer2" },
+  { href: "/admin/analytics", label: "Analytics", icon: "bi-graph-up" },
   { href: "/admin/antrenori", label: "Antrenori", icon: "bi-person-badge" },
   { href: "/admin/utilizatori", label: "Utilizatori", icon: "bi-people" },
   { href: "/admin/sesiuni", label: "Sesiuni", icon: "bi-calendar-event" },

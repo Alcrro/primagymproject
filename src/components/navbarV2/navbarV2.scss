@@ -150,11 +150,29 @@ body.home .navbar-v2-container {
   }
 }
 
-// Right-align the cos dropdown so it doesn't go off-screen
+// Right-align the cos dropdown. Uses a separate keyframe because the original
+// cartDropdownIn animation applies transform: translate(-56%) with fill-mode:
+// forwards, which overrides any transform set via CSS rules.
+@keyframes cartDropdownInCenter {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes cartDropdownInRight {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .v2-cos-wrap .modal-container.modal-cos {
-  left: auto;
-  right: 0;
-  transform: none;
+  left: 50%;
+  right: auto;
+  animation-name: cartDropdownInCenter;
+
+  @media (max-width: 900px) {
+    left: auto;
+    right: 0;
+    animation-name: cartDropdownInRight;
+  }
 }
 
 // ── Cart icon + badge ─────────────────────────────────────────────────────────

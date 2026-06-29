@@ -1,8 +1,13 @@
 /** @type {import('next').NextConfig} */
+const baseUrl =
+  process.env.NEXT_PUBLIC_BASE_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+
 const nextConfig = {
-  env: { NEXT_PUBLIC_API_URL: "http://localhost:3000" },
-  // env: { NEXT_PUBLIC_API_URL: "http://0.0.0.0:3000" },
-  // env: { NEXT_PUBLIC_API_URL: "https://primagym.lucruri-utile.ro" },
+  env: {
+    NEXT_PUBLIC_BASE_URL: baseUrl,
+    NEXT_PUBLIC_API_URL: baseUrl,
+  },
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "lh3.googleusercontent.com" },

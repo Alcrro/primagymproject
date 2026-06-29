@@ -1,0 +1,82 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--color-card);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.presets {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.presetBtn {
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--color-muted);
+  background: transparent;
+  color: var(--color-content);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+
+  &:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  &.active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #ffffff;
+  }
+}
+
+.customForm {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.dateInput {
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--color-muted);
+  background: var(--color-surface);
+  color: var(--color-content);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: border-color 0.15s;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+}
+
+.separator {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.applyBtn {
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+  }
+}

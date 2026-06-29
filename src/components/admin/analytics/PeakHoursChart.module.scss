@@ -1,0 +1,24 @@
+.chartWrapper {
+  width: 100%;
+}
+
+.tooltip {
+  background-color: var(--color-card);
+  border: 1.5px solid var(--color-muted);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.tooltipLabel {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin: 0 0 0.2rem;
+}
+
+.tooltipValue {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+}

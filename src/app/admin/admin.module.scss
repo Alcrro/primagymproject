@@ -1,84 +1,234 @@
 .wrapper {
-  padding: 2rem 1.5rem 4rem;
+  padding: 2rem 2rem 4rem;
+}
+
+// ─── Header ──────────────────────────────────────────────────────────────────
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  gap: 1rem;
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 1.625rem;
   font-weight: 700;
   color: var(--color-content);
-  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
 }
 
 .subtitle {
+  font-size: 0.875rem;
   color: var(--color-muted);
-  font-size: 0.938rem;
-  margin-bottom: 2rem;
 
-  strong {
-    color: var(--color-content);
+  strong { color: var(--color-content); }
+}
+
+.dateChip {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  background: var(--color-card);
+  border: 1px solid rgba(128, 128, 128, 0.12);
+  padding: 0.4rem 0.875rem;
+  border-radius: 20px;
+  white-space: nowrap;
+  text-transform: capitalize;
+  flex-shrink: 0;
+}
+
+// ─── KPI Cards ───────────────────────────────────────────────────────────────
+
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 900px) { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 500px) { grid-template-columns: 1fr; }
+}
+
+.kpiCard {
+  background: var(--color-card);
+  border-radius: 14px;
+  padding: 1.25rem 1.25rem 1.25rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid rgba(128, 128, 128, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.kpiIcon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: rgba(255, 92, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  i {
+    font-size: 1.2rem;
+    color: var(--color-primary);
   }
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
+.kpiIconGreen {
+  background: rgba(34, 197, 94, 0.1);
+  i { color: #22c55e; }
 }
 
-.statCard {
-  background-color: var(--color-card);
-  border-radius: 12px;
-  padding: 1.5rem;
+.kpiIconBlue {
+  background: rgba(59, 130, 246, 0.1);
+  i { color: #3b82f6; }
+}
+
+.kpiIconPurple {
+  background: rgba(168, 85, 247, 0.1);
+  i { color: #a855f7; }
+}
+
+.kpiBody {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  gap: 0.2rem;
 }
 
-.statLabel {
-  font-size: 0.813rem;
+.kpiValue {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-content);
+  line-height: 1;
+}
+
+.kpiLabel {
+  font-size: 0.72rem;
   font-weight: 500;
   color: var(--color-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
-.statValue {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-primary);
-}
+// ─── Activity panels ─────────────────────────────────────────────────────────
 
-.actions {
-  display: flex;
+.activityGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  margin-top: 2rem;
-  flex-wrap: wrap;
+
+  @media (max-width: 700px) { grid-template-columns: 1fr; }
 }
 
-.actionCard {
+.panel {
+  background: var(--color-card);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(128, 128, 128, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-content);
+
+  > i { color: var(--color-muted); font-size: 0.95rem; }
+}
+
+.panelLink {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  i { font-size: 0.7rem; }
+  &:hover { text-decoration: underline; }
+}
+
+.panelBody { padding: 0.25rem 0; }
+
+.activityRow {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1rem 1.5rem;
-  background: var(--color-card);
-  border-radius: 12px;
-  font-size: 0.938rem;
-  font-weight: 600;
+  padding: 0.7rem 1.25rem;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.06);
+  }
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 92, 0, 0.12);
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+
+.activityInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.activityName {
+  font-size: 0.875rem;
+  font-weight: 500;
   color: var(--color-content);
-  text-decoration: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-  i {
-    font-size: 1.25rem;
-    color: var(--color-primary);
-  }
+.activityMeta {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-  &:hover {
-    background: var(--color-primary);
-    color: white;
+.checkIcon {
+  color: #22c55e;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
 
-    i { color: white; }
-  }
+.orderAmount {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #22c55e;
+  flex-shrink: 0;
+}
+
+.empty {
+  padding: 2rem 1.25rem;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  text-align: center;
 }
