@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
 import ProfilHeader from "@/components/profil/profilHeader/ProfilHeader"
@@ -46,6 +47,11 @@ export default async function ProfilPage() {
         isOAuth={isOAuth}
         emailVerified={user?.emailVerified ?? null}
       />
+
+      <nav className={styles.subNav}>
+        <Link href="/profil" className={`${styles.subNavLink} ${styles.subNavActive}`}>Profil</Link>
+        <Link href="/profil/statistici" className={styles.subNavLink}>Statistici</Link>
+      </nav>
 
       <div className={styles.grid}>
         {/* Sidebar primul în DOM → apare primul pe mobil */}

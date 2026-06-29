@@ -6,6 +6,36 @@
   gap: 1.5rem;
 }
 
+.subNav {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.subNavLink {
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color 0.15s, background-color 0.15s;
+
+  &:hover {
+    color: var(--color-content);
+    background-color: rgba(128, 128, 128, 0.08);
+  }
+}
+
+.subNavActive {
+  color: var(--color-primary);
+  background-color: rgba(255, 92, 0, 0.08);
+
+  &:hover {
+    color: var(--color-primary);
+    background-color: rgba(255, 92, 0, 0.12);
+  }
+}
+
 .heading {
   font-size: 1.5rem;
   font-weight: 700;
