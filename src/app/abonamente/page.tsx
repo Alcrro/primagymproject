@@ -4,6 +4,7 @@ import './abonamente.scss';
 import Subscriptions from '@/components/abonamente/abonamente/Subscriptions';
 import Trainers from '@/components/abonamente/trainers/Trainers';
 import Faq from '@/components/abonamente/faq/Faq';
+import AiRecommendButton from '@/components/ai/AiRecommendButton';
 
 export const metadata: Metadata = {
   title: 'Abonamente Sală',
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function page() {
   return (
     <>
+      <AiRecommendButton />
       <Subscriptions />
       <Trainers slug="" />
       <Faq />
