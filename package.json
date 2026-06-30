@@ -24,7 +24,7 @@
     "@types/google.maps": "^3.55.7",
     "@types/pg": "^8.20.0",
     "@zxing/browser": "^0.2.0",
-    "@zxing/library": "^0.23.0",
+    "@zxing/library": "^0.22.0",
     "bcryptjs": "^3.0.3",
     "bootstrap-icons": "^1.11.3",
     "embla-carousel-autoplay": "^8.0.2",
