@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.scss";
 import Navbar from "@/components/navbarV2/NavbarV2";
 import DarkThemeProviders from "./darkThemeProviders";
@@ -6,7 +6,10 @@ import Footer from "@/components/footer/Footer";
 import { Roboto } from "next/font/google";
 import { ContextAPI } from "@/context/contextAPI/ContextAPI";
 import AddToCartProvider from "@/context/addToCart/AddToCartContext";
-import Head from "next/head";
+import AiChatbot from "@/components/ai/AiChatbot"
+import AiIntakeGate from "@/components/ai/AiIntakeGate"
+import PwaInstallPrompt from "@/components/pwa/PwaInstallPrompt"
+import { Suspense } from "react";
 const BASE_URL = 'https://apexfit.ro';
 
 export const metadata: Metadata = {
@@ -40,6 +43,20 @@ export const metadata: Metadata = {
 		description: 'Sala de fitness, zumba, aerobic și cycling din Bacău.',
 		images: ['/cardsImages/fitnessCards.jpg'],
 	},
+	appleWebApp: {
+		capable: true,
+		statusBarStyle: "black-translucent",
+		title: "ApexFit",
+	},
+	applicationName: "ApexFit",
+	formatDetection: { telephone: false },
+};
+
+export const viewport: Viewport = {
+	themeColor: [
+		{ media: "(prefers-color-scheme: light)", color: "#FF5C00" },
+		{ media: "(prefers-color-scheme: dark)", color: "#FF5C00" },
+	],
 };
 
 const roboto = Roboto({
@@ -66,6 +83,11 @@ export default function RootLayout({
 								<Navbar />
 								<div className="page-content">{children}</div>
 								<Footer />
+								<AiChatbot />
+								<Suspense fallback={null}>
+									<AiIntakeGate />
+								</Suspense>
+								<PwaInstallPrompt />
 							</main>
 						</DarkThemeProviders>
 					</AddToCartProvider>

@@ -173,7 +173,7 @@ Toate documentele respectă **exact** această ordine de secțiuni:
 
 ## Architecture
 
-Next.js 14 App Router project for a Romanian gym website (PrimaGym). TypeScript, SCSS (co-located), Tailwind CSS.
+Next.js 14 App Router project for a Romanian gym website (ApexFitness). TypeScript, SCSS (co-located), Tailwind CSS.
 
 ### Data layer (`src/app/_core/`)
 
@@ -202,11 +202,65 @@ Two React Context providers in `layout.tsx`:
 | `/` | Home: hero, schedule, about, shorts |
 | `/abonamente` | Subscription category grid |
 | `/abonamente/[slug]` | Cards filtered by category slug |
+| `/corporate/dashboard` | HR Manager: gestionare angajați, seats, invitații |
+| `/corporate/invite/[token]` | Public: acceptare invitație angajat |
+| `/admin/corporate` | Admin: listă companii corporate, creare cont |
+| `/admin/corporate/[id]` | Admin: detalii companie, editare seats, anulare |
 | `/galerie` | Gallery with parallel + intercepting route modal |
 | `/galerie/[id]` | Full-page image (also `@modal` slot) |
-| `/locatie` | Google Maps |
+| `/locatie` | Google Maps (single location) |
+| `/locatii` | All gym locations with photos, hours, facilities |
+| `/antrenori` | Trainers list per location |
+| `/antrenori/[slug]` | Trainer detail: bio, classes, contact |
 | `/cos` | Shopping cart |
+| `/profil` | Authenticated member profile, active subscriptions |
+| `/profil/statistici` | Member activity dashboard (check-ins, streaks) |
+| `/admin` | Admin analytics dashboard |
+| `/booking` | Class and personal trainer session booking |
 
 ### Styling
 
 SCSS co-located with components for layout/structure. Tailwind inline for utilities. Dark mode via `next-themes` (`attribute="class"`) — use `dark:` Tailwind prefix or `:global(.dark)` in SCSS.
+
+## Documentație existentă
+
+Înainte de a implementa sau modifica un feature, citește documentul corespunzător din `docs/`.
+
+### Features (`docs/features/`)
+
+| Fișier | Feature |
+|---|---|
+| `abonamente.md` | Abonamente individuale — categorii, carduri, adăugare în coș |
+| `abonamente-corporate.md` | Abonamente corporate/de grup gestionate de HR Manager |
+| `admin-analytics.md` | Dashboard admin: venituri, membri, ore de vârf |
+| `antrenori.md` | Pagina antrenorilor per locație + pagini de detalii |
+| `auth.md` | Autentificare și autorizare (member, trainer, admin) |
+| `badges.md` | Sistem de badge-uri/achievements pe baza activității |
+| `booking.md` | Rezervare clase de grup și ședințe personale |
+| `cos.md` | Coș de cumpărături |
+| `galerie.md` | Galerie foto cu modal intercepting route |
+| `locatie.md` | Hartă Google Maps (o singură locație) |
+| `locatii.md` | Toate locațiile sălii cu facilități și contact |
+| `panou-statistici-membri.md` | Dashboard personal: check-in-uri, streak, intrări rămase |
+| `qr-acces.md` | QR code la intrare, scanat de staff |
+| `ai-asistent.md` | AI: quiz recomandare abonament, chat liber, retenție email, chatbot suport |
+
+### Layout (`docs/layout/`)
+
+| Fișier | Componentă |
+|---|---|
+| `navbar.md` | Navbar — navigare, coș, stare auth |
+| `footer.md` | Footer — contact, program, linkuri |
+| `dark-mode.md` | Comutare temă light/dark |
+
+### Pages (`docs/pages/`)
+
+| Fișier | Pagină |
+|---|---|
+| `home.md` | Pagina principală — hero, orar, about, shorts |
+| `profil.md` | Profil membru — date cont, abonamente, istoric |
+
+### Alte fișiere
+
+- `docs/structure.md` — structura completă a folderelor din `src/`
+- `docs/diferentiere.md` — idei de diferențiere față de competiție
