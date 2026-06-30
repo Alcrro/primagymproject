@@ -9,7 +9,16 @@ export default async function UtilizatoriPage() {
 
   const users = await prisma.user.findMany({
     orderBy: { createdAt: "desc" },
-    select: { id: true, name: true, email: true, role: true, isActive: true, createdAt: true, image: true },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      isActive: true,
+      createdAt: true,
+      image: true,
+      clientProfile: { select: { id: true } },
+    },
   })
 
   return <AdminUsersPage users={users} currentUserId={session.user.id} />

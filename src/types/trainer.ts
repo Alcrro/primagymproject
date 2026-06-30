@@ -11,6 +11,8 @@ export interface ITrainer {
   instagram: string | null;
   email: string | null;
   thumbnail: string | null;
+  teachingStyle: string | null;
+  avoidedApproaches: string | null;
   locationId: number | null;
   isActive: boolean;
   sortOrder: number;

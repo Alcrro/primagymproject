@@ -112,6 +112,28 @@ export default function TrainerForm({ trainer, locations, onClose }: ITrainerFor
             <textarea className="tf-textarea" name="bio" rows={4} defaultValue={trainer?.bio ?? ""} />
           </label>
 
+          <label className="tf-label">
+            Stil de predare / caracter
+            <textarea
+              className="tf-textarea"
+              name="teachingStyle"
+              rows={2}
+              defaultValue={trainer?.teachingStyle ?? ""}
+              placeholder="Ex: motivațional și energic, empatic cu începătorii, axat pe tehnică, strict dar corect..."
+            />
+          </label>
+
+          <label className="tf-label">
+            Ce evită / nu face
+            <textarea
+              className="tf-textarea"
+              name="avoidedApproaches"
+              rows={2}
+              defaultValue={trainer?.avoidedApproaches ?? ""}
+              placeholder="Ex: evită exercițiile de impact mare, nu lucrează cu greutăți extreme, nu face cardio intens..."
+            />
+          </label>
+
           <div className="tf-row">
             <label className="tf-label">
               Instagram (fără @)

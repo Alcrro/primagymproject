@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { updateUserRoleAction, toggleUserActiveAction } from "@/app/actions/users"
 import type { UserRole } from "@/types/auth"
 import "./adminUsers.scss"
@@ -14,6 +15,7 @@ interface IUser {
   isActive: boolean
   createdAt: Date
   image: string | null
+  clientProfile: { id: string } | null
 }
 
 interface IAdminUsersPageProps {
@@ -99,6 +101,7 @@ export default function AdminUsersPage({ users, currentUserId }: IAdminUsersPage
               <th>Utilizator</th>
               <th>Rol curent</th>
               <th>Înregistrat</th>
+              <th>Fișă client</th>
               <th>Schimbă rol</th>
               <th>Acces</th>
             </tr>
@@ -141,6 +144,22 @@ export default function AdminUsersPage({ users, currentUserId }: IAdminUsersPage
                     {new Date(user.createdAt).toLocaleDateString("ro-RO", {
                       day: "2-digit", month: "short", year: "numeric",
                     })}
+                  </td>
+                  <td>
+                    {user.role === "MEMBER" ? (
+                      user.clientProfile ? (
+                        <Link href={`/profil/${user.id}`} className="au-profile-link au-profile-link--done">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                          Vezi fișa
+                        </Link>
+                      ) : (
+                        <span className="au-profile-link au-profile-link--missing">Lipsă</span>
+                      )
+                    ) : (
+                      <span className="au-self-note">—</span>
+                    )}
                   </td>
                   <td>
                     {isSelf ? (
