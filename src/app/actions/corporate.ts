@@ -88,8 +88,14 @@ export async function inviteEmployee(corporateAccountId: string, email: string) 
     data: { corporateAccountId, email, expiresAt },
   })
 
-  const resend = new Resend(process.env.RESEND_API_KEY)
   const inviteUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/corporate/invite/${invite.token}`
+
+  if (!process.env.RESEND_API_KEY) {
+    revalidatePath("/corporate/dashboard")
+    return { ...invite, devUrl: inviteUrl }
+  }
+
+  const resend = new Resend(process.env.RESEND_API_KEY)
   await resend.emails.send({
     from: process.env.RESEND_FROM_EMAIL ?? "noreply@apexfit.ro",
     to: email,
@@ -108,6 +114,88 @@ export async function inviteEmployee(corporateAccountId: string, email: string) 
 
   revalidatePath("/corporate/dashboard")
   return invite
+}
+
+export async function bulkInviteEmployees(
+  corporateAccountId: string,
+  emails: string[]
+): Promise<{ email: string; success: boolean; error?: string; devUrl?: string }[]> {
+
+  const session = await auth()
+  if (!session?.user) throw new Error("Unauthorized")
+
+  const account = await prisma.corporateAccount.findUnique({
+    where: { id: corporateAccountId },
+  })
+  if (!account || account.hrManagerId !== session.user.id) throw new Error("Unauthorized")
+  if (account.status !== "ACTIVE") throw new Error("Contul corporate nu este activ")
+
+  const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
+  const results: { email: string; success: boolean; error?: string; devUrl?: string }[] = []
+
+  let seatsUsed = account.seatsUsed
+
+  for (const email of emails) {
+    if (seatsUsed >= account.seatsTotal) {
+      results.push({ email, success: false, error: "Nu mai sunt locuri disponibile" })
+      continue
+    }
+
+    const existing = await prisma.corporateInvite.findFirst({
+      where: { corporateAccountId, email, acceptedAt: null, expiresAt: { gt: new Date() } },
+    })
+    if (existing) {
+      results.push({ email, success: false, error: "Invitație deja activă" })
+      continue
+    }
+
+    const alreadyMember = await prisma.corporateMember.findFirst({
+      where: {
+        corporateAccountId,
+        revokedAt: null,
+        user: { email },
+      },
+    })
+    if (alreadyMember) {
+      results.push({ email, success: false, error: "Deja membru activ" })
+      continue
+    }
+
+    try {
+      const expiresAt = new Date(Date.now() + 72 * 60 * 60 * 1000)
+      const invite = await prisma.corporateInvite.create({
+        data: { corporateAccountId, email, expiresAt },
+      })
+      const inviteUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/corporate/invite/${invite.token}`
+      if (!resend) {
+        seatsUsed++
+        results.push({ email, success: true, devUrl: inviteUrl })
+      } else {
+        await resend.emails.send({
+          from: process.env.RESEND_FROM_EMAIL ?? "noreply@apexfit.ro",
+          to: email,
+          subject: `Invitație abonament sala de fitness — ${account.companyName}`,
+          html: `
+            <p>Bună ziua,</p>
+            <p><strong>${account.companyName}</strong> ți-a oferit acces la sala de fitness ApexFit.</p>
+            <p>
+              <a href="${inviteUrl}" style="background:#FF5C00;color:white;padding:12px 24px;border-radius:6px;text-decoration:none;">
+                Activează accesul
+              </a>
+            </p>
+            <p>Link-ul este valabil 72 de ore.</p>
+          `,
+        })
+        seatsUsed++
+        results.push({ email, success: true })
+      }
+    } catch {
+      results.push({ email, success: false, error: "Eroare la trimitere" })
+    }
+  }
+
+  revalidatePath("/corporate/dashboard")
+  return results
 }
 
 export async function revokeEmployee(memberId: string) {
