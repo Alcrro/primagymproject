@@ -1,0 +1,123 @@
+.card {
+  background: var(--color-card);
+  border-radius: 16px;
+  border: 1px solid rgba(128, 128, 128, 0.12);
+  overflow: hidden;
+}
+
+// ─── Header ──────────────────────────────────────────────────────────────────
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+.cardIcon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #FF5C00, #e03e00);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-content);
+  flex: 1;
+  margin: 0;
+}
+
+.cardDate {
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  flex-shrink: 0;
+}
+
+// ─── Summary (trainer view) ───────────────────────────────────────────────────
+
+.summary {
+  margin: 1rem 1.25rem 0;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 92, 0, 0.05);
+  border: 1px solid rgba(255, 92, 0, 0.15);
+  border-radius: 10px;
+}
+
+.summaryLabel {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  margin-bottom: 0.35rem;
+}
+
+.summaryText {
+  font-size: 0.825rem;
+  line-height: 1.55;
+  color: var(--color-content);
+  margin: 0;
+}
+
+// ─── Fields ──────────────────────────────────────────────────────────────────
+
+.fields {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.field,
+.medicalField {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.fieldLabel {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  flex-shrink: 0;
+  min-width: 130px;
+}
+
+.fieldValue {
+  font-size: 0.825rem;
+  color: var(--color-content);
+  font-weight: 500;
+}
+
+// ─── Medical section ─────────────────────────────────────────────────────────
+
+.medicalSection {
+  margin: 0 1.25rem 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.medicalHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #ef4444;
+  margin-bottom: 0.1rem;
+}

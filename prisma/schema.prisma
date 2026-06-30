@@ -28,10 +28,14 @@ model User {
   trainerProfile      Trainer?
   trainerReviews      TrainerReview[]
   badges              UserBadge[]
-  managedCorporate    CorporateAccount?    @relation("HRManager")
-  corporateMembership CorporateMember[]    @relation("CorporateMembers")
-  createdAt           DateTime             @default(now())
-  updatedAt           DateTime             @updatedAt
+  managedCorporate       CorporateAccount?    @relation("HRManager")
+  corporateMembership    CorporateMember[]    @relation("CorporateMembers")
+  retentionEmailsEnabled Boolean              @default(true)
+  aiQuizResults          AIQuizResult[]
+  aiRetentionLogs        AIRetentionLog[]
+  clientProfile          ClientProfile?
+  createdAt              DateTime             @default(now())
+  updatedAt              DateTime             @updatedAt
 }
 
 model Account {
@@ -174,6 +178,8 @@ model Trainer {
   instagram        String?
   email            String?
   thumbnail        String?
+  teachingStyle    String?
+  avoidedApproaches String?
   locationId       Int?
   location         Location?         @relation(fields: [locationId], references: [id], onDelete: SetNull)
   userId           String?           @unique
@@ -401,6 +407,58 @@ model CorporateInvite {
 
   @@index([corporateAccountId])
   @@index([token])
+}
+
+// ─── AI ──────────────────────────────────────────────────────────────────────
+
+model ClientProfile {
+  id                  String   @id @default(cuid())
+  userId              String   @unique
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reason              String?
+  injuries            String?
+  medicalRestrictions String?
+  fitnessGoal         String?
+  experienceLevel     String?
+  daysPerWeek         Int?
+  preferredHours      String?
+  aiSummary           String?
+  trainerNotes        String?
+  rawConversation     Json?
+  communicationStyle  String?  @default("prietenos")
+  completedAt         DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model AIQuizResult {
+  id                      String    @id @default(cuid())
+  userId                  String?
+  user                    User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  sessionId               String?
+  budget                  Int?
+  frequency               String?
+  activity                String?
+  goal                    String?
+  level                   String?
+  recommendedSubscriptionId Int?
+  convertedAt             DateTime?
+  createdAt               DateTime  @default(now())
+
+  @@index([userId])
+}
+
+model AIRetentionLog {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  triggerType  String
+  sentAt       DateTime @default(now())
+  emailSubject String
+
+  @@unique([userId, triggerType, sentAt])
+  @@index([userId])
 }
 
 // ─── Galerie ─────────────────────────────────────────────────────────────────

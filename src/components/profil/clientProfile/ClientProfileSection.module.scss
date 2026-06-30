@@ -1,0 +1,80 @@
+.hasProfile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.updateBtn {
+  align-self: flex-end;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  border: 1.5px solid rgba(255, 92, 0, 0.3);
+  background: transparent;
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+
+  &:hover {
+    border-color: var(--color-primary);
+    background: rgba(255, 92, 0, 0.06);
+  }
+}
+
+// ─── Banner (no profile) ─────────────────────────────────────────────────────
+
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1rem 1.125rem;
+  border-radius: 14px;
+  border: 1.5px dashed rgba(255, 92, 0, 0.3);
+  background: rgba(255, 92, 0, 0.04);
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: border-color 0.2s, background 0.2s;
+
+  &:hover {
+    border-color: rgba(255, 92, 0, 0.6);
+    background: rgba(255, 92, 0, 0.08);
+  }
+}
+
+.bannerIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #FF5C00, #e03e00);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(255, 92, 0, 0.3);
+}
+
+.bannerText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.bannerTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-content);
+}
+
+.bannerSub {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.bannerArrow {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}

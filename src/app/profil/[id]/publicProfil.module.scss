@@ -40,3 +40,17 @@
 	color: var(--color-content);
 	margin: 0;
 }
+
+.profileSection {
+	width: 100%;
+}
+
+.noProfile {
+	font-size: 0.825rem;
+	color: var(--color-muted);
+	padding: 1rem;
+	background: var(--color-card);
+	border-radius: 12px;
+	border: 1px dashed rgba(128, 128, 128, 0.2);
+	text-align: center;
+}

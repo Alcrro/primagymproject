@@ -1,3 +1,9 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .twoCol {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -35,4 +41,61 @@
   color: var(--color-muted);
   margin: 0;
   line-height: 1.5;
+}
+
+.fisaWarning {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  background: rgba(245, 158, 11, 0.07);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+
+  &:hover {
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.4);
+  }
+}
+
+.fisaWarningIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f59e0b;
+  flex-shrink: 0;
+}
+
+.fisaWarningText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.fisaWarningTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #f59e0b;
+  line-height: 1;
+}
+
+.fisaWarningSub {
+  font-size: 0.75rem;
+  color: rgba(245, 158, 11, 0.7);
+
+  @media (max-width: 480px) { display: none; }
+}
+
+.fisaWarningArrow {
+  color: rgba(245, 158, 11, 0.5);
+  flex-shrink: 0;
 }
