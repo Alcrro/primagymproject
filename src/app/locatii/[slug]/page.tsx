@@ -23,16 +23,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   const city = loc.city ?? loc.name;
   const description = [
-    `Vizitează PrimaGYM în ${city}`,
+    `Vizitează ApexFit în ${city}`,
     loc.address ? `${loc.address}` : null,
     loc.phone ? `Sună la ${loc.phone}` : null,
   ].filter(Boolean).join(". ") + ".";
 
   return {
-    title: `PrimaGYM ${city} — Sală de fitness și aerobic`,
+    title: `ApexFit ${city} — Sală de fitness și aerobic`,
     description,
     openGraph: {
-      title: `PrimaGYM ${city}`,
+      title: `ApexFit ${city}`,
       description,
       url: `${SITE_URL}/locatii/${slug}`,
       ...(loc.photo && { images: [{ url: `${SITE_URL}/locations/${loc.photo}` }] }),

@@ -14,33 +14,33 @@ const BASE_URL = 'https://apexfit.ro';
 
 export const metadata: Metadata = {
 	title: {
-		default: 'ApexFit | Sala de Fitness din Bacău',
+		default: 'ApexFit | Sală de Fitness & Aerobic',
 		template: '%s | ApexFit',
 	},
 	description:
-		'ApexFit — sala de fitness, zumba, aerobic și cycling din Bacău. Abonamente accesibile, antrenori certificați, echipamente moderne. Înscrie-te azi!',
+		'ApexFit — sală de fitness, zumba, aerobic și cycling. Abonamente accesibile, antrenori certificați, echipamente moderne. Înscrie-te azi!',
 	metadataBase: new URL(BASE_URL),
 	openGraph: {
 		type: 'website',
 		locale: 'ro_RO',
 		url: BASE_URL,
 		siteName: 'ApexFit',
-		title: 'ApexFit | Sala de Fitness din Bacău',
+		title: 'ApexFit | Sală de Fitness & Aerobic',
 		description:
-			'Sala de fitness, zumba, aerobic și cycling din Bacău. Antrenori certificați, echipamente moderne, prețuri accesibile.',
+			'Sală de fitness, zumba, aerobic și cycling. Antrenori certificați, echipamente moderne, prețuri accesibile.',
 		images: [
 			{
 				url: '/cardsImages/fitnessCards.jpg',
 				width: 1200,
 				height: 630,
-				alt: 'ApexFit — Sala de Fitness din Bacău',
+				alt: 'ApexFit — Sală de Fitness & Aerobic',
 			},
 		],
 	},
 	twitter: {
 		card: 'summary_large_image',
-		title: 'ApexFit | Sala de Fitness din Bacău',
-		description: 'Sala de fitness, zumba, aerobic și cycling din Bacău.',
+		title: 'ApexFit | Sală de Fitness & Aerobic',
+		description: 'Sală de fitness, zumba, aerobic și cycling.',
 		images: ['/cardsImages/fitnessCards.jpg'],
 	},
 	appleWebApp: {

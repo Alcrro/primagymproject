@@ -117,6 +117,32 @@ async function main() {
     });
   }
 
+  // ─── Locations ─────────────────────────────────────────────────────────────
+  await prisma.location.upsert({
+    where: { slug: 'satu-mare' },
+    update: {},
+    create: {
+      slug: 'satu-mare',
+      name: 'ApexFit Satu Mare',
+      city: 'Satu Mare',
+      county: 'Satu Mare',
+      postalCode: '440055',
+      address: 'Strada Careiului, nr. 11',
+      phone: '+40 744 000 000',
+      email: 'contact@apexfit.ro',
+      lat: 47.7991836,
+      lng: 22.8738521,
+      amenities: ['Vestiare', 'Dușuri', 'Parcare gratuită', 'WiFi', 'Aer condiționat', 'Saună'],
+      schedule: [
+        { days: 'Luni–Vineri', open: '08:00', close: '22:00' },
+        { days: 'Sâmbătă',     open: '08:00', close: '13:00' },
+        { days: 'Duminică',    open: null,     close: null    },
+      ],
+      isActive: true,
+      sortOrder: 0,
+    },
+  });
+
   // ─── Trainers ──────────────────────────────────────────────────────────────
   const trainers = [
     { name: 'alex',      age: 29, category: 'nimic',   thumbnail: 'eu', description: 'The best trainer' },
