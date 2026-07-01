@@ -461,13 +461,6 @@ body.home .navbar-v2-container {
 
 // ── Responsive: ecrane mici ───────────────────────────────────────────────────
 
-// Sub 900px: clip la colțurile rotunjite (nu există dropdown-uri absolute pe mobile)
-@media (max-width: 900px) {
-  .navbar-v2-container {
-    overflow: hidden;
-  }
-}
-
 // Sub 600px: ascunde separatorul și redu padding-ul navbar-ului
 @media (max-width: 600px) {
   .navbar-v2-container {
