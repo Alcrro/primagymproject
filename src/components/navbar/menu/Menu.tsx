@@ -65,7 +65,10 @@ export default function Menu({
                 <ul>
                   {categories.map((category) => (
                     <li key={category.slug}>
-                      <Link href={`/${item.link}/${category.slug}`}>
+                      <Link
+                        href={`/${item.link}/${category.slug}`}
+                        onClick={() => setActive?.(false)}
+                      >
                         <span>{category.name}</span>
                       </Link>
                     </li>
