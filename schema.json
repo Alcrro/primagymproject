@@ -472,5 +472,42 @@
       ],
       "detail": "Fotografie din galeria sălii. url = cale publică în /public/gallery/. Afișată în pagina /galerie cu modal intercepting route."
     }
+  ],
+  "edges": [
+    { "id": "e-Account-User",               "source": "Account",           "target": "User",                 "label": "userId" },
+    { "id": "e-Session-User",               "source": "Session",           "target": "User",                 "label": "userId" },
+    { "id": "e-PasswordResetToken-User",    "source": "PasswordResetToken","target": "User",                 "label": "userId" },
+
+    { "id": "e-SubscriptionPlan-Category",  "source": "SubscriptionPlan",  "target": "SubscriptionCategory", "label": "categoryId" },
+    { "id": "e-Order-User",                 "source": "Order",             "target": "User",                 "label": "userId" },
+    { "id": "e-Order-DiscountCode",         "source": "Order",             "target": "DiscountCode",         "label": "discountCode" },
+    { "id": "e-OrderItem-Order",            "source": "OrderItem",         "target": "Order",                "label": "orderId" },
+    { "id": "e-OrderItem-Plan",             "source": "OrderItem",         "target": "SubscriptionPlan",     "label": "planId" },
+    { "id": "e-CheckIn-OrderItem",          "source": "CheckIn",           "target": "OrderItem",            "label": "orderItemId" },
+    { "id": "e-CheckIn-User",               "source": "CheckIn",           "target": "User",                 "label": "userId" },
+    { "id": "e-CheckIn-ScannedBy",          "source": "CheckIn",           "target": "User",                 "label": "scannedById" },
+
+    { "id": "e-Trainer-Location",           "source": "Trainer",           "target": "Location",             "label": "locationId" },
+    { "id": "e-Trainer-User",               "source": "Trainer",           "target": "User",                 "label": "userId" },
+    { "id": "e-TrainerReview-Trainer",      "source": "TrainerReview",     "target": "Trainer",              "label": "trainerId" },
+    { "id": "e-TrainerReview-User",         "source": "TrainerReview",     "target": "User",                 "label": "userId" },
+
+    { "id": "e-ClassSession-Trainer",       "source": "ClassSession",      "target": "Trainer",              "label": "trainerId" },
+    { "id": "e-ClassSession-Location",      "source": "ClassSession",      "target": "Location",             "label": "locationId" },
+    { "id": "e-ClassBooking-Session",       "source": "ClassBooking",      "target": "ClassSession",         "label": "sessionId" },
+    { "id": "e-ClassBooking-User",          "source": "ClassBooking",      "target": "User",                 "label": "userId" },
+    { "id": "e-PersonalRequest-User",       "source": "PersonalRequest",   "target": "User",                 "label": "memberId" },
+    { "id": "e-PersonalRequest-Trainer",    "source": "PersonalRequest",   "target": "Trainer",              "label": "trainerId" },
+
+    { "id": "e-CorporateAccount-User",      "source": "CorporateAccount",  "target": "User",                 "label": "hrManagerId" },
+    { "id": "e-CorporateMember-Account",    "source": "CorporateMember",   "target": "CorporateAccount",     "label": "corporateAccountId" },
+    { "id": "e-CorporateMember-User",       "source": "CorporateMember",   "target": "User",                 "label": "userId" },
+    { "id": "e-CorporateInvite-Account",    "source": "CorporateInvite",   "target": "CorporateAccount",     "label": "corporateAccountId" },
+
+    { "id": "e-ClientProfile-User",         "source": "ClientProfile",     "target": "User",                 "label": "userId" },
+    { "id": "e-AIQuizResult-User",          "source": "AIQuizResult",      "target": "User",                 "label": "userId" },
+    { "id": "e-AIRetentionLog-User",        "source": "AIRetentionLog",    "target": "User",                 "label": "userId" },
+
+    { "id": "e-UserBadge-User",             "source": "UserBadge",         "target": "User",                 "label": "userId" }
   ]
 }
