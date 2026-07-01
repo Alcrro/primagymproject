@@ -1,0 +1,190 @@
+// ── Bottom nav — vizibil DOAR în PWA standalone mode ──────────────────────────
+
+.pwa-bottom-nav {
+  display: none;
+
+  @media (display-mode: standalone) {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    background-color: var(--color-navbar);
+    border-top: 1px solid rgba(128, 128, 128, 0.12);
+    box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.08);
+    padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
+    align-items: flex-start;
+  }
+}
+
+// ── Item (Link sau button) ────────────────────────────────────────────────────
+
+.pwa-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: var(--color-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.15s;
+
+  &.active {
+    color: var(--color-primary);
+
+    .pwa-icon-pill {
+      background-color: rgba(255, 92, 0, 0.12);
+    }
+  }
+}
+
+// ── Pill în jurul iconiței (active indicator) ─────────────────────────────────
+
+.pwa-icon-pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 32px;
+  border-radius: 16px;
+  transition: background-color 0.15s;
+}
+
+// ── Label ─────────────────────────────────────────────────────────────────────
+
+.pwa-label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+// ── Badge coș ─────────────────────────────────────────────────────────────────
+
+.pwa-badge {
+  position: absolute;
+  top: -2px;
+  right: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  background-color: var(--color-primary);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  line-height: 1;
+  border: 2px solid var(--color-navbar);
+}
+
+// ── Profile panel + backdrop ──────────────────────────────────────────────────
+
+.pwa-profile-backdrop {
+  display: none;
+
+  @media (display-mode: standalone) {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 198;
+    background: rgba(0, 0, 0, 0.35);
+  }
+}
+
+.pwa-profile-panel {
+  display: none;
+
+  @media (display-mode: standalone) {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: calc(64px + env(safe-area-inset-bottom));
+    z-index: 199;
+    background-color: var(--color-card);
+    border-radius: 20px 20px 0 0;
+    box-shadow:
+      0 -4px 32px rgba(0, 0, 0, 0.16),
+      0 -1px 0 rgba(128, 128, 128, 0.1);
+    padding: 8px 0 4px;
+    animation: panelSlideUp 0.22s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+}
+
+@keyframes panelSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pwa-profile-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: rgba(128, 128, 128, 0.3);
+  margin: 0 auto 12px;
+}
+
+.pwa-profile-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  text-decoration: none;
+  color: var(--color-content);
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.12s;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover,
+  &:active {
+    background-color: rgba(128, 128, 128, 0.06);
+  }
+
+  &--admin {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  &--logout {
+    color: #ef4444;
+  }
+}
+
+.pwa-profile-divider {
+  height: 1px;
+  background-color: rgba(128, 128, 128, 0.1);
+  margin: 4px 0;
+}
+
+// ── Spațiu la baza paginii ────────────────────────────────────────────────────
+
+@media (display-mode: standalone) {
+  body > main {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+}

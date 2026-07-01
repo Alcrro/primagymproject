@@ -6,42 +6,43 @@ import Footer from "@/components/footer/Footer";
 import { Roboto } from "next/font/google";
 import { ContextAPI } from "@/context/contextAPI/ContextAPI";
 import AddToCartProvider from "@/context/addToCart/AddToCartContext";
-import AiChatbot from "@/components/ai/AiChatbot"
-import AiIntakeGate from "@/components/ai/AiIntakeGate"
-import PwaInstallPrompt from "@/components/pwa/PwaInstallPrompt"
+import AiChatbot from "@/components/ai/AiChatbot";
+import AiIntakeGate from "@/components/ai/AiIntakeGate";
+import PwaInstallPrompt from "@/components/pwa/PwaInstallPrompt";
+import PwaBottomNav from "@/components/pwa/PwaBottomNav";
 import { Suspense } from "react";
-const BASE_URL = 'https://apexfit.ro';
+const BASE_URL = "https://apexfit.ro";
 
 export const metadata: Metadata = {
 	title: {
-		default: 'ApexFit | Sală de Fitness & Aerobic',
-		template: '%s | ApexFit',
+		default: "ApexFit | Sală de Fitness & Aerobic",
+		template: "%s | ApexFit",
 	},
 	description:
-		'ApexFit — sală de fitness, zumba, aerobic și cycling. Abonamente accesibile, antrenori certificați, echipamente moderne. Înscrie-te azi!',
+		"ApexFit — sală de fitness, zumba, aerobic și cycling. Abonamente accesibile, antrenori certificați, echipamente moderne. Înscrie-te azi!",
 	metadataBase: new URL(BASE_URL),
 	openGraph: {
-		type: 'website',
-		locale: 'ro_RO',
+		type: "website",
+		locale: "ro_RO",
 		url: BASE_URL,
-		siteName: 'ApexFit',
-		title: 'ApexFit | Sală de Fitness & Aerobic',
+		siteName: "ApexFit",
+		title: "ApexFit | Sală de Fitness & Aerobic",
 		description:
-			'Sală de fitness, zumba, aerobic și cycling. Antrenori certificați, echipamente moderne, prețuri accesibile.',
+			"Sală de fitness, zumba, aerobic și cycling. Antrenori certificați, echipamente moderne, prețuri accesibile.",
 		images: [
 			{
-				url: '/cardsImages/fitnessCards.jpg',
+				url: "/cardsImages/fitnessCards.jpg",
 				width: 1200,
 				height: 630,
-				alt: 'ApexFit — Sală de Fitness & Aerobic',
+				alt: "ApexFit — Sală de Fitness & Aerobic",
 			},
 		],
 	},
 	twitter: {
-		card: 'summary_large_image',
-		title: 'ApexFit | Sală de Fitness & Aerobic',
-		description: 'Sală de fitness, zumba, aerobic și cycling.',
-		images: ['/cardsImages/fitnessCards.jpg'],
+		card: "summary_large_image",
+		title: "ApexFit | Sală de Fitness & Aerobic",
+		description: "Sală de fitness, zumba, aerobic și cycling.",
+		images: ["/cardsImages/fitnessCards.jpg"],
 	},
 	appleWebApp: {
 		capable: true,
@@ -88,6 +89,7 @@ export default function RootLayout({
 									<AiIntakeGate />
 								</Suspense>
 								<PwaInstallPrompt />
+								<PwaBottomNav />
 							</main>
 						</DarkThemeProviders>
 					</AddToCartProvider>

@@ -97,6 +97,7 @@ body.home main {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
+  padding: 0;
 }
 body > main {
   position: relative;
@@ -114,9 +115,6 @@ body > main {
 
 .multiple-sections {
   position: relative;
-  top: 0;
-  transform: translateY(-50px);
-  // max-width: 96rem;
   margin: 0 auto;
 }
 
