@@ -1,0 +1,476 @@
+{
+  "nodes": [
+    {
+      "id": "User",
+      "collection": "User",
+      "color": "#6366f1",
+      "x": 0,
+      "y": 0,
+      "fields": [
+        { "name": "id", "type": "String (cuid)", "required": true },
+        { "name": "name", "type": "String" },
+        { "name": "email", "type": "String", "required": true },
+        { "name": "emailVerified", "type": "DateTime" },
+        { "name": "image", "type": "String" },
+        { "name": "password", "type": "String" },
+        { "name": "role", "type": "UserRole" },
+        { "name": "isActive", "type": "Boolean" },
+        { "name": "retentionEmailsEnabled", "type": "Boolean" },
+        { "name": "createdAt", "type": "DateTime" },
+        { "name": "updatedAt", "type": "DateTime" }
+      ],
+      "detail": "Utilizator principal. role: MEMBER | TRAINER | ADMIN | HR_MANAGER. Hub central — toate entitățile au relație cu User."
+    },
+    {
+      "id": "Account",
+      "collection": "Account",
+      "color": "#6366f1",
+      "x": 540,
+      "y": 0,
+      "fields": [
+        { "name": "userId", "type": "String → User", "required": true },
+        { "name": "provider", "type": "String", "required": true },
+        { "name": "providerAccountId", "type": "String", "required": true },
+        { "name": "type", "type": "String", "required": true },
+        { "name": "refresh_token", "type": "String" },
+        { "name": "access_token", "type": "String" },
+        { "name": "expires_at", "type": "Int" },
+        { "name": "token_type", "type": "String" },
+        { "name": "scope", "type": "String" },
+        { "name": "id_token", "type": "String" },
+        { "name": "session_state", "type": "String" },
+        { "name": "createdAt", "type": "DateTime" },
+        { "name": "updatedAt", "type": "DateTime" }
+      ],
+      "detail": "Conturi OAuth legate la User (Google etc.). PK compus: [provider, providerAccountId]."
+    },
+    {
+      "id": "Session",
+      "collection": "Session",
+      "color": "#6366f1",
+      "x": 1020,
+      "y": 0,
+      "fields": [
+        { "name": "sessionToken", "type": "String (unique)", "required": true },
+        { "name": "userId", "type": "String → User", "required": true },
+        { "name": "expires", "type": "DateTime", "required": true },
+        { "name": "createdAt", "type": "DateTime" },
+        { "name": "updatedAt", "type": "DateTime" }
+      ],
+      "detail": "Sesiuni NextAuth active. Token unic per sesiune de browser."
+    },
+    {
+      "id": "VerificationToken",
+      "collection": "VerificationToken",
+      "color": "#6366f1",
+      "x": 1300,
+      "y": 0,
+      "fields": [
+        { "name": "identifier", "type": "String", "required": true },
+        { "name": "token", "type": "String", "required": true },
+        { "name": "expires", "type": "DateTime", "required": true }
+      ],
+      "detail": "Token pentru verificare email. PK compus: [identifier, token]."
+    },
+    {
+      "id": "PasswordResetToken",
+      "collection": "PasswordResetToken",
+      "color": "#6366f1",
+      "x": 1580,
+      "y": 0,
+      "fields": [
+        { "name": "id", "type": "String (cuid)", "required": true },
+        { "name": "token", "type": "String (cuid, unique)", "required": true },
+        { "name": "userId", "type": "String → User", "required": true },
+        { "name": "expires", "type": "DateTime", "required": true },
+        { "name": "createdAt", "type": "DateTime" }
+      ],
+      "detail": "Token de reset parolă generat la cerere. Un utilizator poate avea mai multe tokene active."
+    },
+    {
+      "id": "SubscriptionCategory",
+      "collection": "SubscriptionCategory",
+      "color": "#0ea5e9",
+      "x": 0,
+      "y": 800,
+      "fields": [
+        { "name": "id", "type": "Int (PK)", "required": true },
+        { "name": "slug", "type": "String (unique)", "required": true },
+        { "name": "name", "type": "String", "required": true },
+        { "name": "imageUrl", "type": "String" },
+        { "name": "isActive", "type": "Boolean" },
+        { "name": "sortOrder", "type": "Int" }
+      ],
+      "detail": "Categorii de abonament: fitness, zumba, aerobic, cycling. slug unic pentru URL."
+    },
+    {
+      "id": "SubscriptionPlan",
+      "collection": "SubscriptionPlan",
+      "color": "#0ea5e9",
+      "x": 400,
+      "y": 800,
+      "fields": [
+        { "name": "id", "type": "Int (PK)", "required": true },
+        { "name": "categoryId", "type": "Int → SubscriptionCategory", "required": true },
+        { "name": "name", "type": "String", "required": true },
+        { "name": "planType", "type": "PlanType" },
+        { "name": "entries", "type": "Int" },
+        { "name": "durationMonths", "type": "Int" },
+        { "name": "withTrainer", "type": "Boolean" },
+        { "name": "priceRon", "type": "Decimal(10,2)", "required": true },
+        { "name": "discountPct", "type": "Decimal(5,2)" },
+        { "name": "isActive", "type": "Boolean" },
+        { "name": "sortOrder", "type": "Int" },
+        { "name": "createdAt", "type": "DateTime" },
+        { "name": "updatedAt", "type": "DateTime" }
+      ],
+      "detail": "Plan individual dintr-o categorie. planType: ENTRIES (nr intrări) | MONTHLY (lunar). Legat la OrderItem."
+    },
+    {
+      "id": "DiscountCode",
+      "collection": "DiscountCode",
+      "color": "#0ea5e9",
+      "x": 880,
+      "y": 800,
+      "fields": [
+        { "name": "id", "type": "Int (PK)", "required": true },
+        { "name": "code", "type": "String (unique)", "required": true },
+        { "name": "discountPct", "type": "Decimal(5,2)" },
+        { "name": "discountRon", "type": "Decimal(10,2)" },
+        { "name": "validFrom", "type": "DateTime" },
+        { "name": "validUntil", "type": "DateTime" },
+        { "name": "maxUses", "type": "Int" },
+        { "name": "currentUses", "type": "Int" },
+        { "name": "isActive", "type": "Boolean" },
+        { "name": "createdAt", "type": "DateTime" }
+      ],
+      "detail": "Cod promoțional aplicabil la checkout. Reducere fie procentuală, fie sumă fixă. Referit din Order.discountCode."
+    },
+    {
+      "id": "Order",
+      "collection": "Order",
+      "color": "#f59e0b",
+      "x": 0,
+      "y": 1550,
+      "fields": [
+        { "name": "id", "type": "Int (PK)", "required": true },
+        { "name": "userId", "type": "String → User" },
+        { "name": "status", "type": "OrderStatus" },
+        { "name": "totalRon", "type": "Decimal(10,2)", "required": true },
+        { "name": "discountCode", "type": "String → DiscountCode" },
+        { "name": "discountRon", "type": "Decimal(10,2)" },
+        { "name": "paymentMethod", "type": "String" },
+        { "name": "paymentRef", "type": "String" },
+        { "name": "createdAt", "type": "DateTime" },
+        { "name": "updatedAt", "type": "DateTime" }
+      ],
+      "detail": "Comandă de cumpărare. status: PENDING | PAID | CANCELLED | EXPIRED. Conține unul sau mai multe OrderItem."
+    },
+    {
+      "id": "OrderItem",
+      "collection": "OrderItem",
+      "color": "#f59e0b",
+      "x": 450,
+      "y": 1550,
+      "fields": [
+        { "name": "id", "type": "Int (PK)", "required": true },
+        { "name": "orderId", "type": "Int → Order", "required": true },
+        { "name": "planId", "type": "Int → SubscriptionPlan" },
+        { "name": "planName", "type": "String", "required": true },
+        { "name": "categoryName", "type": "String", "required": true },
+        { "name": "quantity", "type": "Int" },
+        { "name": "priceRon", "type": "Decimal(10,2)", "required": true },
+        { "name": "totalEntries", "type": "Int" },
+        { "name": "expiresAt", "type": "DateTime" },
+        { "name": "createdAt", "type": "DateTime" }
+      ],
+      "detail": "Linie din comandă. planName/categoryName salvate denormalizat pentru istoric. CheckIn-urile consumă intrările din acest item."
+    },
+    {
+      "id": "CheckIn",
+      "collection": "CheckIn",
+      "color": "#f59e0b",
+      "x": 900,
+      "y": 1550,
+      "fields": [
+        { "name": "id", "type": "Int (PK)", "required": true },
+        { "name": "orderItemId", "type": "Int → OrderItem", "required": true },
+        { "name": "userId", "type": "String → User", "required": true },
+        { "name": "scannedById", "type": "String → User", "required": true },
+        { "name": "scannedAt", "type": "DateTime" }
+      ],
+      "detail": "Intrare QR la sală. scannedById = staff care a scanat codul. Consumă o intrare din OrderItem."
+    },
+    {
+      "id": "Location",
+      "collection": "Location",
+      "color": "#10b981",
+      "x": 1950,
+      "y": 0,
+      "fields": [
+        { "name": "id", "type": "Int (PK)", "required": true },
+        { "name": "slug", "type": "String (unique)", "required": true },
+        { "name": "name", "type": "String", "required": true },
+        { "name": "city", "type": "String" },
+        { "name": "county", "type": "String" },
+        { "name": "postalCode", "type": "String" },
+        { "name": "address", "type": "String" },
+        { "name": "phone", "type": "String" },
+        { "name": "email", "type": "String" },
+        { "name": "lat", "type": "Float" },
+        { "name": "lng", "type": "Float" },
+        { "name": "photo", "type": "String" },
+        { "name": "amenities", "type": "String[]" },
+        { "name": "schedule", "type": "Json" },
+        { "name": "isActive", "type": "Boolean" },
+        { "name": "sortOrder", "type": "Int" },
+        { "name": "createdAt", "type": "DateTime" }
+      ],
+      "detail": "Locație fizică a sălii. schedule = JSON cu orele de funcționare. amenities = dotări disponibile."
+    },
+    {
+      "id": "Trainer",
+      "collection": "Trainer",
+      "color": "#10b981",
+      "x": 2400,
+      "y": 0,
+      "fields": [
+        { "name": "id", "type": "Int (PK)", "required": true },
+        { "name": "name", "type": "String", "required": true },
+        { "name": "age", "type": "Int" },
+        { "name": "category", "type": "String", "required": true },
+        { "name": "classes", "type": "String[]" },
+        { "name": "specializations", "type": "String[]" },
+        { "name": "certifications", "type": "String[]" },
+        { "name": "description", "type": "String" },
+        { "name": "bio", "type": "String" },
+        { "name": "instagram", "type": "String" },
+        { "name": "email", "type": "String" },
+        { "name": "thumbnail", "type": "String" },
+        { "name": "teachingStyle", "type": "String" },
+        { "name": "avoidedApproaches", "type": "String" },
+        { "name": "locationId", "type": "Int → Location" },
+        { "name": "userId", "type": "String → User (unique)" },
+        { "name": "isActive", "type": "Boolean" },
+        { "name": "sortOrder", "type": "Int" },
+        { "name": "createdAt", "type": "DateTime" },
+        { "name": "updatedAt", "type": "DateTime" }
+      ],
+      "detail": "Profil antrenor. Poate fi legat la un cont User (userId unique). Aparține unei locații."
+    },
+    {
+      "id": "TrainerReview",
+      "collection": "TrainerReview",
+      "color": "#10b981",
+      "x": 2900,
+      "y": 0,
+      "fields": [
+        { "name": "id", "type": "Int (PK)", "required": true },
+        { "name": "trainerId", "type": "Int → Trainer", "required": true },
+        { "name": "userId", "type": "String → User", "required": true },
+        { "name": "rating", "type": "Int", "required": true },
+        { "name": "comment", "type": "String" },
+        { "name": "createdAt", "type": "DateTime" }
+      ],
+      "detail": "Recenzie lăsată de un membru pentru un antrenor. Unique pe (trainerId, userId) — un singur review per pereche."
+    },
+    {
+      "id": "ClassSession",
+      "collection": "ClassSession",
+      "color": "#f97316",
+      "x": 1950,
+      "y": 800,
+      "fields": [
+        { "name": "id", "type": "Int (PK)", "required": true },
+        { "name": "trainerId", "type": "Int → Trainer", "required": true },
+        { "name": "locationId", "type": "Int → Location" },
+        { "name": "categorySlug", "type": "String", "required": true },
+        { "name": "startAt", "type": "DateTime", "required": true },
+        { "name": "durationMinutes", "type": "Int" },
+        { "name": "maxCapacity", "type": "Int" },
+        { "name": "status", "type": "SessionStatus" },
+        { "name": "notes", "type": "String" },
+        { "name": "createdAt", "type": "DateTime" },
+        { "name": "updatedAt", "type": "DateTime" }
+      ],
+      "detail": "Sesiune de clasă de grup programată. status: SCHEDULED | CANCELLED | COMPLETED. Membrii se înscriu prin ClassBooking."
+    },
+    {
+      "id": "ClassBooking",
+      "collection": "ClassBooking",
+      "color": "#f97316",
+      "x": 2430,
+      "y": 800,
+      "fields": [
+        { "name": "id", "type": "Int (PK)", "required": true },
+        { "name": "sessionId", "type": "Int → ClassSession", "required": true },
+        { "name": "userId", "type": "String → User", "required": true },
+        { "name": "status", "type": "BookingStatus" },
+        { "name": "createdAt", "type": "DateTime" }
+      ],
+      "detail": "Rezervare a unui User la o ClassSession. status: CONFIRMED | CANCELLED. Unique pe (sessionId, userId)."
+    },
+    {
+      "id": "PersonalRequest",
+      "collection": "PersonalRequest",
+      "color": "#f97316",
+      "x": 2850,
+      "y": 800,
+      "fields": [
+        { "name": "id", "type": "Int (PK)", "required": true },
+        { "name": "memberId", "type": "String → User", "required": true },
+        { "name": "trainerId", "type": "Int → Trainer", "required": true },
+        { "name": "requestedAt", "type": "DateTime", "required": true },
+        { "name": "message", "type": "String" },
+        { "name": "status", "type": "RequestStatus" },
+        { "name": "responseNote", "type": "String" },
+        { "name": "createdAt", "type": "DateTime" },
+        { "name": "updatedAt", "type": "DateTime" }
+      ],
+      "detail": "Cerere pentru ședință personală cu un antrenor. status: PENDING | ACCEPTED | REJECTED | CANCELLED."
+    },
+    {
+      "id": "CorporateAccount",
+      "collection": "CorporateAccount",
+      "color": "#8b5cf6",
+      "x": 1950,
+      "y": 1550,
+      "fields": [
+        { "name": "id", "type": "String (cuid)", "required": true },
+        { "name": "companyName", "type": "String", "required": true },
+        { "name": "seatsTotal", "type": "Int", "required": true },
+        { "name": "seatsUsed", "type": "Int" },
+        { "name": "stripeSubscriptionId", "type": "String" },
+        { "name": "status", "type": "CorporateStatus" },
+        { "name": "hrManagerId", "type": "String → User (unique)", "required": true },
+        { "name": "createdAt", "type": "DateTime" },
+        { "name": "updatedAt", "type": "DateTime" }
+      ],
+      "detail": "Cont corporativ B2B. hrManagerId unique — un singur HR Manager per companie. status: ACTIVE | SUSPENDED | CANCELLED."
+    },
+    {
+      "id": "CorporateMember",
+      "collection": "CorporateMember",
+      "color": "#8b5cf6",
+      "x": 2470,
+      "y": 1550,
+      "fields": [
+        { "name": "id", "type": "String (cuid)", "required": true },
+        { "name": "corporateAccountId", "type": "String → CorporateAccount", "required": true },
+        { "name": "userId", "type": "String → User", "required": true },
+        { "name": "joinedAt", "type": "DateTime" },
+        { "name": "revokedAt", "type": "DateTime" }
+      ],
+      "detail": "Angajat activ într-un CorporateAccount. Unique pe (corporateAccountId, userId). revokedAt setat la revocare."
+    },
+    {
+      "id": "CorporateInvite",
+      "collection": "CorporateInvite",
+      "color": "#8b5cf6",
+      "x": 2900,
+      "y": 1550,
+      "fields": [
+        { "name": "id", "type": "String (cuid)", "required": true },
+        { "name": "corporateAccountId", "type": "String → CorporateAccount", "required": true },
+        { "name": "email", "type": "String", "required": true },
+        { "name": "token", "type": "String (cuid, unique)", "required": true },
+        { "name": "expiresAt", "type": "DateTime", "required": true },
+        { "name": "acceptedAt", "type": "DateTime" },
+        { "name": "createdAt", "type": "DateTime" }
+      ],
+      "detail": "Invitație trimisă pe email unui angajat. Acceptată la /corporate/invite/[token]. acceptedAt null = în așteptare."
+    },
+    {
+      "id": "ClientProfile",
+      "collection": "ClientProfile",
+      "color": "#06b6d4",
+      "x": 0,
+      "y": 2300,
+      "fields": [
+        { "name": "id", "type": "String (cuid)", "required": true },
+        { "name": "userId", "type": "String → User (unique)", "required": true },
+        { "name": "reason", "type": "String" },
+        { "name": "injuries", "type": "String" },
+        { "name": "medicalRestrictions", "type": "String" },
+        { "name": "fitnessGoal", "type": "String" },
+        { "name": "experienceLevel", "type": "String" },
+        { "name": "daysPerWeek", "type": "Int" },
+        { "name": "preferredHours", "type": "String" },
+        { "name": "aiSummary", "type": "String" },
+        { "name": "trainerNotes", "type": "String" },
+        { "name": "rawConversation", "type": "Json" },
+        { "name": "communicationStyle", "type": "String" },
+        { "name": "completedAt", "type": "DateTime" },
+        { "name": "updatedAt", "type": "DateTime" }
+      ],
+      "detail": "Profil creat prin AI onboarding chat. Un profil per User. rawConversation = istoricul complet al conversației cu AI."
+    },
+    {
+      "id": "AIQuizResult",
+      "collection": "AIQuizResult",
+      "color": "#06b6d4",
+      "x": 520,
+      "y": 2300,
+      "fields": [
+        { "name": "id", "type": "String (cuid)", "required": true },
+        { "name": "userId", "type": "String → User" },
+        { "name": "sessionId", "type": "String" },
+        { "name": "budget", "type": "Int" },
+        { "name": "frequency", "type": "String" },
+        { "name": "activity", "type": "String" },
+        { "name": "goal", "type": "String" },
+        { "name": "level", "type": "String" },
+        { "name": "recommendedSubscriptionId", "type": "Int" },
+        { "name": "convertedAt", "type": "DateTime" },
+        { "name": "createdAt", "type": "DateTime" }
+      ],
+      "detail": "Rezultat quiz AI pentru recomandare abonament. userId opțional (și utilizatori neautentificați pot da quiz). convertedAt = cumpărat ulterior."
+    },
+    {
+      "id": "AIRetentionLog",
+      "collection": "AIRetentionLog",
+      "color": "#06b6d4",
+      "x": 1000,
+      "y": 2300,
+      "fields": [
+        { "name": "id", "type": "String (cuid)", "required": true },
+        { "name": "userId", "type": "String → User", "required": true },
+        { "name": "triggerType", "type": "String", "required": true },
+        { "name": "sentAt", "type": "DateTime" },
+        { "name": "emailSubject", "type": "String", "required": true }
+      ],
+      "detail": "Log email de retenție trimis automat de AI. Unique pe (userId, triggerType, sentAt) pentru a preveni spam."
+    },
+    {
+      "id": "UserBadge",
+      "collection": "UserBadge",
+      "color": "#ec4899",
+      "x": 1950,
+      "y": 2300,
+      "fields": [
+        { "name": "id", "type": "Int (PK)", "required": true },
+        { "name": "userId", "type": "String → User", "required": true },
+        { "name": "badgeId", "type": "String", "required": true },
+        { "name": "unlockedAt", "type": "DateTime" }
+      ],
+      "detail": "Badge/achievement deblocat de un utilizator. badgeId referă definițiile din codul aplicației (IBadgeDefinition). Unique pe (userId, badgeId)."
+    },
+    {
+      "id": "GalleryPhoto",
+      "collection": "GalleryPhoto",
+      "color": "#64748b",
+      "x": 2380,
+      "y": 2300,
+      "fields": [
+        { "name": "id", "type": "Int (PK)", "required": true },
+        { "name": "filename", "type": "String", "required": true },
+        { "name": "url", "type": "String", "required": true },
+        { "name": "altText", "type": "String" },
+        { "name": "sortOrder", "type": "Int" },
+        { "name": "isActive", "type": "Boolean" },
+        { "name": "createdAt", "type": "DateTime" }
+      ],
+      "detail": "Fotografie din galeria sălii. url = cale publică în /public/gallery/. Afișată în pagina /galerie cu modal intercepting route."
+    }
+  ]
+}
